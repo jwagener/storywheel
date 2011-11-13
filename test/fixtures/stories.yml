@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  slug: MyString
+  title: MyString
+  sc_username: MyString
+  sc_permalink: MyString
+  sc_user_id: 1
+  story_track_id: 1
+  background_track_id: 1
+  images: MyText
+  data: MyText
+
+two:
+  slug: MyString
+  title: MyString
+  sc_username: MyString
+  sc_permalink: MyString
+  sc_user_id: 1
+  story_track_id: 1
+  background_track_id: 1
+  images: MyText
+  data: MyText

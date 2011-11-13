@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>The Carousel</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>	
+	<script src="http://connect.soundcloud.com/sdk.js"></script>
+	<script src="http://cdn.openkeyval.org/statics/openkeyval.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+  
+	<script>
+	  SC.initialize({
+	    client_id: "YOUR_CLIENT_ID"
+	  });
+
+
+   var slideClickTrackId = 27266065;
+   var slideClick;
+	  
+	  var trackId = 27264724;
+	  
+	  var drapperMode = false;
+	  
+	  if(drapperMode){
+	    trackId = 26976919;
+	  }
+	  
+	  function slideshow(trackId, images){
+	    console.log(images);
+	    abc = SC.stream(trackId, {
+	      autoPlay: true,
+	      onload: function(){
+	        var sound = this;
+	        
+	        $.each(images, function(){
+	          console.log(image);
+	          var image = this;
+	          sound.onposition(image.timestamp, function() {
+              console.log(image.url)
+	            slideClick.play();
+	            //nextImage(images);
+	            updateImage(image.url);
+            });
+          });
+	      },
+	      onplay: function(){
+	        $("#image").show();
+	      },
+	      onfinish:function() {
+	        $("#image").hide();
+        }
+	    });
+	  }
+  
+	  function adjustResize(){
+	    $("#page").height($(window).height());
+	    
+	    $("#outercanvas").height($(window).width());
+	    
+	    $("#image").width($("#image").height());
+	  }
+	  
+	  function updateImage(image){
+	    $("img").attr("src", image);
+	  }
+	  
+	  $(function(){
+	    // load slideClick
+	    SC.whenStreamingReady(function(){
+	      SC.stream(slideClickTrackId, {autoLoad: true, onload: function(){
+  	      slideClick = this;
+  	    }});
+	      var uri = new SC.URI(window.location.toString(), {decodeFragment: true, decodeQuery: true});
+	      var at = uri.fragment.access_token;
+        
+	      window.remoteStorage.getItem(uri.query.k, function(val){
+	        var slideConf = uri.decodeParams(val)
+	        var i=0;
+	        var images = $.map(slideConf.timestamp, function(timestamp){
+	          var timestamp = parseInt(timestamp, 10)
+	          if(timestamp > 0){
+	            return {
+	              "timestamp": timestamp,
+	              "url": slideConf.url[i++]
+	            }
+            } 
+	        });
+	        
+	        slideshow(slideConf.trackId, images);
+	      });
+	    });
+
+	    adjustResize();
+	  });
+	  
+	  $(window).resize(adjustResize);
+	</script>
+	
+	
+	<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-26838742-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body class="home">
+  <div id="page">
+    
+   <div id="step2" class="step">
+
+      <h2>Step 2: Tell your story</h2>
+      <a href="https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://carousel.ponyho.st/builder.html&response_type=token" class="connect hidden">Connect to instagram</a>
+      <div id="right-now">
+        <ul class="connect-to-sc hidden">
+          <li class="first">
+            <div class="inner">
+              Ok, now it's time to tell your story.
+            </div>
+          </li>
+          <li class="rec">
+            <div class="inner">
+              We will capture your story using SoundCloud. It's a free service and if you don't have an account, it's easy to sign up.
+              
+              <img src="http://connect.soundcloud.com/medium-connect-with-sc.png">
+            </div>
+          </li>
+        </ul>
+        
+        <ul class="recording ">
+          <li style="background-image: url('http://distilleryimage4.s3.amazonaws.com/f3042044087211e1a87612313804ec91_7.jpg')"></li>
+          <li class="rec">
+            <div class="inner start hidden">
+              <div id="controlButton"></div>
+              <div class="expl">
+                Just hit the Record button and start to describe your first image
+              </div>
+            </div>
+            <div class="inner recording">
+              <div id="controlButton" class="stop"></div>
+              <div class="expl">
+                Click the rec button to start your recording
+              </div>
+              <div class="time">
+                0 min
+                <a class="button">Cancel</a>
+              </div>  
+            </div>
+          </li>
+        </ul>
+        
+         <ul class="uploading hidden">
+            <li style="background-image: url('http://distilleryimage4.s3.amazonaws.com/f3042044087211e1a87612313804ec91_7.jpg')"></li>
+            <li class="rec">
+              <div class="inner start hidden">
+                <div id="controlButton"></div>
+                <div class="expl">
+                  Just hit the Record button and start to describe your first image
+                </div>
+              </div>
+              <div class="inner recording">
+                <div id="controlButton" class="stop"></div>
+                <div class="expl">
+                  Hit space to get to the next image
+                </div>
+                <div class="time">
+                  1.21 min
+                  <a class="button">Cancel</a>
+                </div>  
+              </div>
+            </li>
+          </ul>
+      <div style="clear: left;"></div>
+      </div>
+      <div id="selection" class="">
+        <ul>
+          <li class="filled" style="background-image: url('http://distilleryimage4.s3.amazonaws.com/f3042044087211e1a87612313804ec91_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distilleryimage3.s3.amazonaws.com/ae5fac12085c11e180c9123138016265_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distilleryimage2.s3.amazonaws.com/0fabad82065911e180c9123138016265_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distilleryimage9.s3.amazonaws.com/21463f5e065311e180c9123138016265_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distilleryimage8.s3.amazonaws.com/cb048f3203fb11e180c9123138016265_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distilleryimage4.s3.amazonaws.com/7cdbd33a039f11e180c9123138016265_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distillery.s3.amazonaws.com/media/2011/10/30/1e82bae002fc11e1b0a81231381b5470_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distillery.s3.amazonaws.com/media/2011/10/29/ede163e7196e455f87915ec797f31bb9_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distillery.s3.amazonaws.com/media/2011/10/29/59c362f8d4a54a4e8b1f341019872784_7.jpg')"></li>
+          <li class="filled upcoming" style="background-image: url('http://distillery.s3.amazonaws.com/media/2011/10/25/f65fa3fe621546f1b04e7f9fe487539a_7.jpg')"></li>
+        </ul> 
+        
+       
+          <div style="clear: left;"></div>
+      </div>  
+    </div>
+  
+  </div>  
+</body>
+</html>

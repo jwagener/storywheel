@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title StoryWheel
+    = stylesheet_link_tag    "/style.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
+    = javascript_include_tag "application"
+  	
+    = csrf_meta_tags
+  %body.home{:class => "test"}
+    #page
+      .intro
+        %h1 Story Wheel
+        %h2 Tell the story behind your images
+        %img{:src => "/carousel.png"}
+        = link_to 'Build your own Story Wheel', new_story_path, :class => "button"
+      .examples
+        = yield
+        %div{:style => "clear: left;"}
+      .footer
+        .social
+          %iframe#like{:allowTransparency => "true", :frameborder => "0", :scrolling => "no", :src => "", :style => "border:none; overflow:hidden; width:50px; height:25px;"}
+        %span{:style => "float: right;"}
+          Built at Music Hack Day Boston 2011 by Johannes Wagener & Katharina Birkenbach

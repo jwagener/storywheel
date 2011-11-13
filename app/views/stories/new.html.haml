@@ -1,0 +1,31 @@
+%h2 Step 1: Pick some images and arrange them to your Story Wheel
+%a.connect.hidden{:href => "https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://carousel.ponyho.st/builder.html&response_type=token"} Connect to instagram
+#selection
+  %ul
+    %li.filled{:style => "background-image: url('http://distilleryimage11.instagram.com/e932f4340d3e11e1abb01231381b65e3_7.jpg')"}
+      %span Drag image here
+    %li.filled{:style => "background-image: url('http://distilleryimage6.instagram.com/ccaf2b720d3c11e1a87612313804ec91_7.jpg')"}
+      %span Drag image here
+    %li
+      %span Drag image here
+    %li
+      %span Drag image here
+    %li
+      %span Drag image here
+    %li
+      %span Drag image here
+    %li
+      %span Drag image here
+    %li
+      %span Drag image here
+  %div{:style => "clear: left;"}
+#images
+  %ul.ui-sortable
+    %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')"}
+  %div{:style => "clear: left;"}
+    <a href="" class="view-all">Load more images</a>
+.explanation
+  .inner
+    %a.button.all{:href => ""} + Add all images
+    %a.button.reset{:href => ""} Reset
+    %a.button.save{:href => "builder2.html"} Ok, I'm done!

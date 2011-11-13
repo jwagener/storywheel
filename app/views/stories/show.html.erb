@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Slug:</b>
+  <%= @story.slug %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @story.title %>
+</p>
+
+<p>
+  <b>Sc username:</b>
+  <%= @story.sc_username %>
+</p>
+
+<p>
+  <b>Sc permalink:</b>
+  <%= @story.sc_permalink %>
+</p>
+
+<p>
+  <b>Sc user:</b>
+  <%= @story.sc_user_id %>
+</p>
+
+<p>
+  <b>Story track:</b>
+  <%= @story.story_track_id %>
+</p>
+
+<p>
+  <b>Background track:</b>
+  <%= @story.background_track_id %>
+</p>
+
+<p>
+  <b>Images:</b>
+  <%= @story.images %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @story.data %>
+</p>
+
+
+<%= link_to 'Edit', edit_story_path(@story) %> |
+<%= link_to 'Back', stories_path %>

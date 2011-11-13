@@ -1,0 +1,53 @@
+<%= form_for(@story) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :slug %><br />
+    <%= f.text_field :slug %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :sc_username %><br />
+    <%= f.text_field :sc_username %>
+  </div>
+  <div class="field">
+    <%= f.label :sc_permalink %><br />
+    <%= f.text_field :sc_permalink %>
+  </div>
+  <div class="field">
+    <%= f.label :sc_user_id %><br />
+    <%= f.number_field :sc_user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :story_track_id %><br />
+    <%= f.number_field :story_track_id %>
+  </div>
+  <div class="field">
+    <%= f.label :background_track_id %><br />
+    <%= f.number_field :background_track_id %>
+  </div>
+  <div class="field">
+    <%= f.label :images %><br />
+    <%= f.text_area :images %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.text_area :data %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
