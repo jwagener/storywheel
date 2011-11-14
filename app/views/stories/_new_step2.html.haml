@@ -1,0 +1,14 @@
+%h2 Step 2: Record your story while stepping through your slideshow
+
+#slideControls.fresh{:style => "float: left; display: inline"}
+  %a#recordButton.reset{:href => "#"}
+    %span#timer.hidden
+  %a.button.nextImage{:href => "", :class => "hidden"} Next Image
+  
+#selection{:style => "float: left; display: inline"}
+  %ul.images.step2-selection
+    - 5.times do
+      %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')", "data-image-url" => "http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg"}
+  
+%div{:style => "float: right; display: inline"}
+  %a.button.red.goToStep3.hidden{:href => ""} Go To The Next Step!

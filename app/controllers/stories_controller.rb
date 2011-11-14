@@ -3,6 +3,17 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index
     @stories = Story.all
+    
+    story = Story.new({
+      title: "My Trip To Boston",
+      sc_username: "Johannes",
+      id: 123,
+      images: [{
+        url: "http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg",
+        timestamp: 123
+      }]
+    })
+    @stories = [story, story, story]
 
     respond_to do |format|
       format.html # index.html.erb

@@ -3,21 +3,29 @@
   %head
     %title StoryWheel
     = stylesheet_link_tag    "/style.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
-    = javascript_include_tag "application"
+    = javascript_include_tag "application", "http://connect.soundcloud.com/sdk.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"
   	
     = csrf_meta_tags
-  %body.home{:class => "test"}
+  %body.home{:class => [@body_state, controller.params[:controller], controller.params[:action]]}
     #page
       .intro
         %h1 Story Wheel
         %h2 Tell the story behind your images
         %img{:src => "/carousel.png"}
-        = link_to 'Build your own Story Wheel', new_story_path, :class => "button"
+        = link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
+      
+      .welcome.hidden
+        %h1 Johannes
+        %h2 My Trip To Boston
+        %img{:src => "/carousel.png"}
+        
+      .image
+      
       .examples
         = yield
         %div{:style => "clear: left;"}
       .footer
         .social
           %iframe#like{:allowTransparency => "true", :frameborder => "0", :scrolling => "no", :src => "", :style => "border:none; overflow:hidden; width:50px; height:25px;"}
-        %span{:style => "float: right;"}
+        %div{:style => "float: right;"}
           Built at Music Hack Day Boston 2011 by Johannes Wagener & Katharina Birkenbach

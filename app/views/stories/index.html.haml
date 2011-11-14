@@ -1,10 +1,11 @@
 %ul
+  %li
+    %h2 Popular Stories:
   - @stories.each do |story|
     %li
       %h3
-        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first.try(:url)});"}
+        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
           %span.user= story.sc_username
           %br
           %span= story.title
-
 

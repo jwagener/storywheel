@@ -1,0 +1,37 @@
+- # %h2 Step 1: What's the title of your story?
+%a.connect.hidden{:href => "https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://carousel.ponyho.st/builder.html&response_type=token"} Connect to instagram
+
+
+- ##selection
+- #  %input{type: "text", class: "text", id: "title", name: "title", placeholder: "What's the title of your story?" }
+
+%h2 Step 1: Pick some photos and arrange them to your story
+
+#selection
+  %ul.selection
+    - # %li.filled{:style => "background-image: url('http://distilleryimage11.instagram.com/e932f4340d3e11e1abb01231381b65e3_7.jpg')"}
+    - 8.times do
+      %li.empty
+        %span Click pictures below to add
+  %div{:style => "clear: left;"}
+#images
+  %script{id: "imageTmpl", type:"text/x-jquery-tmpl"}
+    %li.image{:style => "background-image: url('${thumbnail_url}')"}
+      .hidden
+        %input.url{:name => "url[]", :type => "hidden", :value => "${url}"}/
+        %input.timestamp{:name => "timestamp[]", :type => "text", :value => "${timestamp}"}/
+        
+    - #%li.image
+    - #  %img{:src => "${url}"}/
+    - #  %button.delete X
+  %ul.ui-sortable.all-images
+    - 0.times do
+      %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')"}
+
+  - # %div{:style => "clear: left;"}
+  - #   <a href="" class="view-all">Load more images</a>
+.explanation
+  .inner
+    - #%a.button.all{:href => ""} + Add all images
+    %a.button.reset{:href => connect_instagram_path} Reset
+    %a.button.save.red.goToStep2{:href => ""} Go To The Next Step!

@@ -25,3 +25,13 @@ image_url -> primary image
 
  + simplicity, reuse the shit i have
  
+ 
+ 
+# Hit record
+  -> timer 
+  -> highlight first image
+
+
+# Hit space
+  -> replace hightlight image
+  -> if last picture -> stop recording
