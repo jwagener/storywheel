@@ -29,6 +29,8 @@ $("ul.all-images li").live "click", (e) ->
 
 # Reset Button
 
+showScreen = (name) ->
+  $(".screen ." + name).show().siblings().hide();
 
 # Second step
 
@@ -37,6 +39,7 @@ $(".goToStep2").live "click", (e) ->
     $("#step2").show().siblings().hide()
     $("body").removeClass("example-focus").addClass("example-half-focus")
     $("ul.selection li.image").appendTo("ul.step2-selection");
+    showScreen("rec");
   else
     alert("Pick some photos first")
   e.preventDefault()
@@ -56,8 +59,8 @@ $("#recordButton.reset}").live "click", (e) ->
     start: () ->
       $(".button.nextImage").show()
       $(".goToStep3").hide()
-      
-      
+      showScreen("slideshow")
+      nextImage()
       setRecorderUIState("recording")
       $("#timer").show();
     progress: (ms, avgPeak) ->
@@ -74,15 +77,18 @@ $("#recordButton.recording}").live "click", (e) ->
   e.preventDefault()
   
 $(".button.nextImage").live "click", (e) ->
+  nextImage()
+  e.preventDefault()
+  
+  
+nextImage = ->
   $nextLi = $("ul.step2-selection li").first()
-  console.log $nextLi
   if $nextLi.length > 0
-    $("#image}").css("background-image", "url(" + $nextLi.attr("data-image-url") + ")")
-    $nextLi.hide()
+    #$("#image}").css("background-image", "url(" + $nextLi.attr("data-image-url") + ")")
+    showImage($nextLi.attr("data-image-url"))
+    $nextLi.remove()
   else
     stopRecording()
-
-  e.preventDefault()
 
 stopRecording = ->
   SC.recordStop();
@@ -93,8 +99,10 @@ stopRecording = ->
   setRecorderUIState("reset");
   $("#timer").hide();
   
-  
-nextImage = ->
+showImage = (imageUrl) ->
+  #$(".image img").attr("src", imageUrl)
+  console.log($(".slideshow"));
+  $(".slideshow").css("background-image", "url(" + imageUrl + ")")
   
 
 updateTimer = (ms) ->

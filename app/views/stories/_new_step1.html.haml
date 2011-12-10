@@ -16,7 +16,7 @@
   %div{:style => "clear: left;"}
 #images
   %script{id: "imageTmpl", type:"text/x-jquery-tmpl"}
-    %li.image{:style => "background-image: url('${thumbnail_url}')"}
+    %li.image{:style => "background-image: url('${thumbnail_url}')", "data-image-url" => "${url}"}
       .hidden
         %input.url{:name => "url[]", :type => "hidden", :value => "${url}"}/
         %input.timestamp{:name => "timestamp[]", :type => "text", :value => "${timestamp}"}/
