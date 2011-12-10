@@ -55,24 +55,26 @@ h2 {
 	width: 300px;
 	padding: 50px;
 	margin: 20px auto;
+	-webkit-transition: all 0.2s linear;
 }
 
 .screen .home, .screen .small, .screen .record, .screen .slideshow, .screen.intro.small .home {
 	display: none;
 }
 
-.screen.intro .home {
+.screen.intro .home, .screen.intro.small .small, .screen.rec .record, .screen.slideshow .slideshow {
 	display: block;
+}
+
+.screen.intro {
 	height: 400px;
 }
 
-.screen.intro.small .small {
-	display: block;
+.screen.intro.small {
 	height: 100px;
 }
 
-.screen.rec .record {
-	display: block;
+.screen.rec {
 	height: 400px;
 }
 
