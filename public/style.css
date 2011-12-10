@@ -79,6 +79,8 @@ h2 {
 /* BUILDER */
 .images {
   display: block;
+  overflow: hidden;
+  height: 120px;
 }
 
 .image {
