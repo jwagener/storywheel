@@ -7,7 +7,8 @@ $ ->
   accessToken = uri.fragment.access_token;
   
   if accessToken
-    $(".intro").addClass("small")
+    showScreen("intro");
+    $(".intro, .screen").addClass("small")
     $.ajax(
       dataType: "JSONP"
       url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=32&access_token=" + accessToken
@@ -31,7 +32,7 @@ $("ul.all-images li").live "click", (e) ->
 # Reset Button
 
 showScreen = (name) ->
-  $(".screen").removeClass(["intro", "rec", "image"]).addClass(name)
+  $(".screen").removeClass("intro").removeClass("rec").removeClass("image").removeClass("small").addClass(name)
   $(".screen ." + name).show().siblings().hide();
   $(".intro").removeClass("small")
   
