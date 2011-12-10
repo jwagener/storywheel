@@ -57,16 +57,27 @@ h2 {
 	margin: 20px auto;
 }
 
-.screen .intro {
+.screen .home, .screen .small, .screen .record, .screen .slideshow, .screen.intro.small .home {
+	display: none;
+}
+
+.screen.intro .home {
+	display: block;
+	height: 400px;
+}
+
+.screen.intro.small .small {
+	display: block;
 	height: 100px;
 }
 
-.screen .rec {
-	height: 100px;
+.screen.rec .record {
+	display: block;
+	height: 400px;
 }
 
-.screen .slideshow {
-	height: 100px;
+.screen.slideshow {
+	height: 800px;
 }
 
 

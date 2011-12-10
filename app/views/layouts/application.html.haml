@@ -9,22 +9,22 @@
   %body.home{:class => [@body_state, controller.params[:controller], controller.params[:action]]}
     #page
       .top
-        .screen
-          .intro
+        .screen.intro
+          .home
             %h1 Story Wheel
             %h2 Tell the story behind your images
             %img{:src => "/carousel.png"}
             = link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
           
-          .small-nav.hidden
+          .small
             hello
         
-          .rec.hidden
+          .record
             %a#recordButton{:href => ""} Record
             Click to record.
             Hit space to slide to next image
         
-          .slideshow.hidden
+          .slideshow
             .cover
               %h1 Johannes
               %h2 My Trip To Boston
