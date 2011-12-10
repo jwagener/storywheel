@@ -28,6 +28,12 @@ h2 {
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
 }
 
+h2 {
+  font-size: 30px;
+	margin-bottom: 5px;
+	color: #51678A;
+}
+
 #page {
   width: 100%;
   height: 100%;
@@ -68,20 +74,18 @@ h2 {
 
 .screen.intro {
 	height: 400px;
+	width: 400px;
 }
 
 .screen.intro.small {
 	height: 20px;
 }
 
-
 .screen.rec, .screen.slideshow {
 	height: 480px;
 	width: 500px;
 	background-size: cover;
 }
-
-
 
 #outercanvas {
   position: absolute;
@@ -219,11 +223,6 @@ body.builder {
 
 
 
-.storywheel h2,.intro h2 {
-  font-size: 30px;
-	margin-bottom: 5px;
-	color: #51678A;
-}
 
 .storywheel {
 	text-align: center;
@@ -612,7 +611,7 @@ body.stories.new .intro .build-your-own {
 	margin-bottom: 200px;
 }
 
-.examples h2, .step h2 {
+.examples h2, .record h2 {
 	text-align: center;
   font-size: 40px;
 	margin-bottom: 30px;

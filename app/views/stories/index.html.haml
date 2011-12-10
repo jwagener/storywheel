@@ -7,22 +7,6 @@
           %br
           %span= story.title
 
-  - @stories.each do |story|
-    %li
-      %h3
-        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
-          %span.user= story.sc_username
-          %br
-          %span= story.title
-
-  - @stories.each do |story|
-    %li
-      %h3
-        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
-          %span.user= story.sc_username
-          %br
-          %span= story.title
-
 %div{:style => "clear: left;"}
 .footer
   Built at Music Hack Day Boston 2011 by Johannes Wagener & Katharina Birkenbach
