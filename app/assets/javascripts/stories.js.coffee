@@ -60,6 +60,7 @@ $("#recordButton.reset}").live "click", (e) ->
       $(".button.nextImage").show()
       $(".goToStep3").hide()
       showScreen("slideshow")
+      $(".screen .slideshow .cover").html("");
       nextImage()
       setRecorderUIState("recording")
       $("#timer").show();
@@ -100,8 +101,6 @@ stopRecording = ->
   $("#timer").hide();
   
 showImage = (imageUrl) ->
-  #$(".image img").attr("src", imageUrl)
-  console.log($(".slideshow"));
   $(".slideshow").css("background-image", "url(" + imageUrl + ")")
   
 
