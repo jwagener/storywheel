@@ -74,9 +74,11 @@ h2 {
 	height: 20px;
 }
 
+
 .screen.rec, .screen.slideshow {
 	height: 480px;
 	width: 500px;
+	background-size: cover;
 }
 
 

@@ -2,6 +2,9 @@
 
 # Load Instagram Pictures
 
+window.slideshowOrder = []
+window.recordingPosition = 0
+
 $ ->
   uri = new SC.URI(window.location.toString(), {decodeFragment: true});
   accessToken = uri.fragment.access_token;
@@ -66,10 +69,12 @@ $("#recordButton.reset}").live "click", (e) ->
       $(".goToStep3").hide()
       showScreen("slideshow")
       $(".screen .slideshow .cover").html("");
-      nextImage()
       setRecorderUIState("recording")
-      $("#timer").show();
+      $("#timer").show()
+      nextImage()
+
     progress: (ms, avgPeak) ->
+      console.log(ms)
       recordingPosition = ms;
       updateTimer(ms);
     
@@ -90,9 +95,14 @@ $(".button.nextImage").live "click", (e) ->
 nextImage = ->
   $nextLi = $("ul.step2-selection li").first()
   if $nextLi.length > 0
-    #$("#image}").css("background-image", "url(" + $nextLi.attr("data-image-url") + ")")
-    showImage($nextLi.attr("data-image-url"))
+    imageUrl = $nextLi.attr("data-image-url")
+    showImage(imageUrl)
+    slideshowOrder.push({
+      "imageUrl": imageUrl,
+      "timestamp": recordingPosition;
+    })
     $nextLi.remove()
+    
   else
     stopRecording()
 
