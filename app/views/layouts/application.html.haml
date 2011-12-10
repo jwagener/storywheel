@@ -8,18 +8,22 @@
     = csrf_meta_tags
   %body.home{:class => [@body_state, controller.params[:controller], controller.params[:action]]}
     #page
-      .intro
-        %h1 Story Wheel
-        %h2 Tell the story behind your images
-        %img{:src => "/carousel.png"}
-        = link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
+      .screen
+        .intro.hidden
+          %h1 Story Wheel
+          %h2 Tell the story behind your images
+          %img{:src => "/carousel.png"}
+          = link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
       
-      .welcome.hidden
-        %h1 Johannes
-        %h2 My Trip To Boston
-        %img{:src => "/carousel.png"}
-        
-      .image
+        .welcome.hidden
+          %h1 Johannes
+          %h2 My Trip To Boston
+          %img{:src => "/carousel.png"}
+      
+        .rec
+
+
+        .image
       
       .examples
         = yield
