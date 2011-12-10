@@ -58,15 +58,15 @@ h2 {
 }
 
 .screen .intro {
-	height: 400px;
+	height: 100px;
 }
 
 .screen .rec {
-	height: 400px;
+	height: 100px;
 }
 
 .screen .slideshow {
-	height: 400px;
+	height: 100px;
 }
 
 
@@ -467,7 +467,7 @@ body.builder {
 
 .explanation {
 	height: 60px;
-	position: absolute;
+	position: fixed;
 	width: 90%;
 	bottom: 0px;
 	padding-top: 10px;
