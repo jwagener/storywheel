@@ -7,6 +7,7 @@ $ ->
   accessToken = uri.fragment.access_token;
   
   if accessToken
+    $(".intro").addClass("small")
     $.ajax(
       dataType: "JSONP"
       url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=32&access_token=" + accessToken
@@ -30,7 +31,10 @@ $("ul.all-images li").live "click", (e) ->
 # Reset Button
 
 showScreen = (name) ->
+  $(".screen").removeClass(["intro", "rec", "image"]).addClass(name)
   $(".screen ." + name).show().siblings().hide();
+  $(".intro").removeClass("small")
+  
 
 # Second step
 
@@ -60,6 +64,7 @@ $("#recordButton.reset}").live "click", (e) ->
       $(".button.nextImage").show()
       $(".goToStep3").hide()
       showScreen("slideshow")
+      $(".screen .slideshow .cover").html("");
       nextImage()
       setRecorderUIState("recording")
       $("#timer").show();
@@ -100,8 +105,6 @@ stopRecording = ->
   $("#timer").hide();
   
 showImage = (imageUrl) ->
-  #$(".image img").attr("src", imageUrl)
-  console.log($(".slideshow"));
   $(".slideshow").css("background-image", "url(" + imageUrl + ")")
   
 
