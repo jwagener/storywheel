@@ -1,6 +1,22 @@
-%ul
-  %li
-    %h2 Popular Stories:
+%h2 Popular Stories:
+//%iframe#like{:allowTransparency => "true", :frameborder => "0", :scrolling => "no", :src => "", :style => "border:none; overflow:hidden; width:50px; height:25px;"}
+%ul    
+  - @stories.each do |story|
+    %li
+      %h3
+        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
+          %span.user= story.sc_username
+          %br
+          %span= story.title
+
+  - @stories.each do |story|
+    %li
+      %h3
+        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
+          %span.user= story.sc_username
+          %br
+          %span= story.title
+
   - @stories.each do |story|
     %li
       %h3
