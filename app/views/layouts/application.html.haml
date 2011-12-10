@@ -16,16 +16,15 @@
             %img{:src => "/carousel.png"}
             = link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
         
-          .welcome.hidden
-            %h1 Johannes
-            %h2 My Trip To Boston
-            %img{:src => "/carousel.png"}
-        
           .rec.hidden
             Click to record.
             Hit space to slide to next image
         
-          .image.hidden
+          .slideshow.hidden
+            .cover
+              %h1 Johannes
+              %h2 My Trip To Boston
+              %img{:src => "/carousel.png"}
             
       
       .bottom

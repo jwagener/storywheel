@@ -36,6 +36,40 @@ h2 {
   border: 0;
 }
 
+.top {
+	width: 100%;
+	text-align: center;
+	margin: 0px auto 30px;
+	padding: 0px 0;
+  background-image: url(background.png);
+	background-repeat: no-repeat;
+	background-color: #000;
+	background-position: 50% 10%;
+	border-bottom: 1px solid #222;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+	-webkit-transition: all 0.2s linear;
+}
+
+.screen {
+	background: rgba(255,255,255,0.1);
+	width: 300px;
+	padding: 50px;
+	margin: 20px auto;
+}
+
+.screen .welcome {
+	height: 400px;
+}
+
+.screen .intro {
+	height: 400px;
+}
+
+.screen .rec {
+	height: 400px;
+}
+
+
 #outercanvas {
   position: absolute;
   width: 100%;
@@ -170,30 +204,7 @@ body.builder {
   margin: 20px;
 }
 
-.intro {
-	width: 100%;
-	text-align: center;
-	margin: 0px auto 0px;
-	padding: 50px 0;
-  background-image: url(background.png);
-	background-repeat: no-repeat;
-	background-color: #000;
-	height: 450px;
-	background-position: 50% 10%;
-	border-bottom: 1px solid #222;
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
-	-webkit-transition: all 0.2s linear;
-}
 
-.example-focus .intro {
-	height: 100px;
-	padding: 10px 0 30px 0;
-	overflow: hidden;
-}
-
-.example-half-focus .intro {
-  height: 350px;
-}
 
 .storywheel h2,.intro h2 {
   font-size: 30px;
