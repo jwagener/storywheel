@@ -79,7 +79,8 @@ h2 {
 }
 
 .screen.slideshow {
-	height: 800px;
+	height: 300px;
+	background-size: cover;
 }
 
 
