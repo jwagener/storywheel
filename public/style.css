@@ -624,8 +624,7 @@ p {
 
 
 
-
-#recordButton { margin: auto !important; padding: 0 !important; border: 0 !important; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; border-radius: 0; -webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none; display: block; width: 84px; height: 84px; background-color: transparent !important; background-image: url(rec2.png) !important; background-position: 0 0; }
+#recordButton { margin: auto !important; padding: 0 !important; border: 0 !important; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; border-radius: 0; -webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none; display: block; width: 84px; height: 84px; background-color: transparent !important; background-image: url(rec2.png) !important; background-position: 0 0; text-indent: -9999px;}
 #recordButton.recording {  background-position: 0 -84px;}
 
 
