@@ -10,11 +10,14 @@
     #page
       .top
         .screen
-          .intro
+          .intro.hidden
             %h1 Story Wheel
             %h2 Tell the story behind your images
             %img{:src => "/carousel.png"}
             = link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
+          
+          .small-nav
+            hello
         
           .rec.hidden
             Click to record.
