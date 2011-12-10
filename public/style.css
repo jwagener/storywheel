@@ -53,9 +53,9 @@ h2 {
 .screen {
 	background: rgba(255,255,255,0.1);
 	width: 300px;
-	padding: 50px;
+	padding: 10px;
 	margin: 20px auto;
-	-webkit-transition: all 0.2s linear;
+	-webkit-transition: all 0.4s linear;
 }
 
 .screen .home, .screen .small, .screen .record, .screen .slideshow, .screen.intro.small .home {
@@ -71,15 +71,13 @@ h2 {
 }
 
 .screen.intro.small {
-	height: 100px;
+	height: 20px;
 }
 
-.screen.rec {
-	height: 400px;
-}
 
-.screen.slideshow {
-	height: 300px;
+.screen.rec, .screen.slideshow {
+	height: 480px;
+	width: 500px;
 	background-size: cover;
 }
 
@@ -638,7 +636,17 @@ p {
 
 
 
-#recordButton { margin: auto !important; padding: 0 !important; border: 0 !important; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; border-radius: 0; -webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none; display: block; width: 84px; height: 84px; background-color: transparent !important; background-image: url(rec2.png) !important; background-position: 0 0; text-indent: -9999px;}
+/*#recordButton { margin: auto !important; padding: 0 !important; border: 0 !important; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; border-radius: 0; -webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none; display: block; width: 84px; height: 84px; background-color: transparent !important; background-image: url(rec2.png) !important; background-position: 0 0;}*/
+#recordButton {
+	background: rgba(205,0,0,1);
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	font-size: 60px;
+	line-height: 100px;
+	margin: 50px auto;
+	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
+}
 #recordButton.recording {  background-position: 0 -84px;}
 
 
