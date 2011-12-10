@@ -278,7 +278,7 @@ body.builder {
 .examples {
 	width: 90%;
 	margin: 0px auto 0px;
-	padding-bottom: 100px;
+	padding-bottom: 20px;
 }
 
 .example-focus .examples {
@@ -359,15 +359,15 @@ body.builder {
 	float: left;
 	display: block;
 	width: 73px;
-	height: 63px;
-	padding: 20px 10px 10px;
+	height: 76px;
+	padding: 7px 10px 10px;
 	margin: 0 0 20px 20px;
 	opacity: 1;
 	-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
 	-moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
 	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-	background-size: 105px;
-	background-position: -5px -5px;
+	background-size: 110px;
+	background-position: -7px -7px;
 	-webkit-transition: all 0.3s ease;
 	text-decoration: none;
 	color: rgba(81,103,138, 0);
@@ -375,9 +375,10 @@ body.builder {
 	border: 2px dashed rgba(81,103,138, 0.5);
 	font-size: 21px;
 	border-radius: 10px;
+	text-align: center;
 }
 
-#selection ul li.filled, #selection ul li.filled:hover {
+#selection ul li.image, #selection ul li.image:hover {
 	width: 77px;
 	height: 67px;
 	padding: 20px 10px 10px;
@@ -389,6 +390,7 @@ body.builder {
 	font-family: helvetica, arial, sans-serif;
 	border: 0px dashed rgba(81,103,138, 0.5);
 	cursor: move;
+	border-bottom: 1px solid rgba(81,103,138, 1);
 }
 
 #selection ul li.upcoming, #selection ul li.upcoming:hover {
@@ -455,7 +457,7 @@ body.builder {
 	height: 60px;
 	position: absolute;
 	width: 90%;
-	bottom: 40px;
+	bottom: 0px;
 	padding-top: 10px;
 	background: #080822;
 	border-top: 1px solid rgba(81,103,138, 0.2);
