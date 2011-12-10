@@ -57,10 +57,6 @@ h2 {
 	margin: 20px auto;
 }
 
-.screen .welcome {
-	height: 400px;
-}
-
 .screen .intro {
 	height: 400px;
 }
@@ -68,6 +64,11 @@ h2 {
 .screen .rec {
 	height: 400px;
 }
+
+.screen .slideshow {
+	height: 400px;
+}
+
 
 
 #outercanvas {
