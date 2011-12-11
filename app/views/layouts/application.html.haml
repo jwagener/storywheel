@@ -8,7 +8,16 @@
     = csrf_meta_tags
   %body.home{:class => [@body_state, controller.params[:controller], controller.params[:action]]}
     #page
+      .background 
+        .left-top
+        .left-middle
+        .left-bottom
+        .right
+        .right-middle
+        .right-bottom
+      
       .top
+          
         .screen.intro
           .home
             %h1 Story Wheel
@@ -16,12 +25,9 @@
             %img{:src => "/carousel.png"}
             = link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
           
-          .small
-            Story Wheel
-        
           .record
-            %h2 Step 2: Tell your story
-            #recordButton REC
+            %h1 Step 2: Tell your story
+            #recordButton.reset REC
             %h2 Hit space to slide to next image
         
           .slideshow
@@ -32,7 +38,6 @@
             
       
       .bottom
-        .examples
-          = yield
-          %div{:style => "clear: left;"}
+        = yield
+        %div{:style => "clear: left;"}
     
