@@ -60,6 +60,10 @@ h2 {
 	-webkit-transition: all 0.2s linear;
 }
 
+.new .top {
+	display: none;
+}
+
 .bottom {
 	text-align: center;
 	position: relative;
@@ -153,7 +157,7 @@ h2 {
 
 .screen.intro {
 	height: 360px;
-	width: 360px;
+	width: 500px;
 }
 
 .screen.intro.small {
@@ -551,42 +555,29 @@ body.builder {
 	position: fixed;
 	width: 100%;
 	bottom: 0px;
+	left: 0;
 	padding-top: 10px;
 	border-top: 1px solid rgba(81,103,138, 0.2);
 }
 
 .explanation .inner {
 	position: relative;
-	width: 900px;
+	width: 920px;
 	margin: 0 auto;
 }
 
-.button.all {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 150px;
+.inner .button {
+	float: right;
+	margin: 7px 0 0 20px;
+	width: auto;
+	padding: 0 20px;
 }
 
-.button.save {
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	width: 160px;
-}
 
 .button.red {
   background-color: rgba(100,0,0,1);
 }
 
-
-.button.reset {
-	position: absolute;
-	right: 190px;
-	top: 0px;
-	width: 80px;
-	color: rgba(255,255,255,0.5);
-}
 
 .slideControls {
   width: 120px
@@ -672,12 +663,22 @@ body.stories.new .intro .build-your-own {
 
 .step {
   width: 90%;
-	margin: 40px auto 40px;
+	margin: 50px auto 40px;
 	text-align: center;
 }
 
+
 #form {
 	margin-bottom: 200px;
+}
+
+.record {
+	height: 260px;
+	width: 300px;
+	background: rgba(81,103,138,0.1);
+	padding: 40px 20px;
+	border-radius: 20px;
+	margin: 0 auto 40px;
 }
 
 .examples h2, .record h2 {
@@ -707,14 +708,15 @@ p {
 /*#recordButton { margin: auto !important; padding: 0 !important; border: 0 !important; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; border-radius: 0; -webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none; display: block; width: 84px; height: 84px; background-color: transparent !important; background-image: url(rec2.png) !important; background-position: 0 0;}*/
 #recordButton {
 	background: rgba(205,0,0,1);
-	width: 100px;
-	height: 100px;
-	border-radius: 50px;
+	width: 120px;
+	height: 120px;
+	border-radius: 60px;
 	font-size: 60px;
-	line-height: 100px;
-	margin: 50px auto;
+	line-height: 120px;
+	margin: 0px auto;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
 }
+
 #recordButton.recording {  background-position: 0 -84px;}
 
 
