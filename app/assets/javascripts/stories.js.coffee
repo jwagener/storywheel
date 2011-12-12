@@ -2,10 +2,24 @@
 
 # Load Instagram Pictures
 
-window.slideshowOrder = []
+slides = []
 window.recordingPosition = 0
 
+SETTINGS = 
+  soundcloud:
+    client_id: "3a57e26203bc5210285a02f8eee95d91"
+    redirect_uri: "http://localhost:3000/callback.html"
+  instagram:
+    client_id: "3a57e26203bc5210285a02f8eee95d91"
+    redirect_uri: "http://localhost:3000/callback.html"
+  soundcloudGroup: "/groups/59904"
+    
+
+
 $ ->
+  SC.initialize(SETTINGS.soundcloud)
+  
+  
   uri = new SC.URI(window.location.toString(), {decodeFragment: true});
   accessToken = uri.fragment.access_token;
   
@@ -63,7 +77,7 @@ $(".goToStep3").live "click", (e) ->
 
 $("#recordButton.reset}").live "click", (e) -> 
   updateTimer(0);
-  SC.record({
+  SC.record
     start: () ->
       $(".button.nextImage").show()
       $(".goToStep3").hide()
@@ -74,12 +88,9 @@ $("#recordButton.reset}").live "click", (e) ->
       nextImage()
 
     progress: (ms, avgPeak) ->
-      console.log(ms)
-      recordingPosition = ms;
+      window.recordingPosition = ms;
       updateTimer(ms);
-    
-    
-  })
+
   e.preventDefault()
 
 
@@ -91,16 +102,48 @@ $(".button.nextImage").live "click", (e) ->
   nextImage()
   e.preventDefault()
   
-  
+$("#upload").live "click", (e) ->
+  e.preventDefault()
+  SC.connect
+    connected: ->
+      title = $("#title").val()
+      if title == ""
+        title = "A story"
+      options =
+        track: 
+          title: title
+          sharing: "private"
+
+      SC.recordUpload options, (track) -> 
+        storyUrl = "http://storywheel.com/" + track.user.permalink + "/" + track.permalink
+        # update description with link to carousel
+        # create comments
+        $.each slides, ->
+          slide = this;
+          
+          body = "<a href=" + storyUrl + "#" + slide.imageUrl + ">StoryWheel Photo</a>"
+          SC.post track.uri + "/comments", {
+            comment: {
+              body: body,
+              timestamp: slide.timestamp
+            }
+          }, (comment) ->
+            # ignore
+            
+        # post to group
+
+
+
 nextImage = ->
   $nextLi = $("ul.step2-selection li").first()
   if $nextLi.length > 0
     imageUrl = $nextLi.attr("data-image-url")
     showImage(imageUrl)
-    slideshowOrder.push({
+    slides.push({
       "imageUrl": imageUrl,
-      "timestamp": recordingPosition;
+      "timestamp": window.recordingPosition;
     })
+    console.log(slides)
     $nextLi.remove()
     
   else
