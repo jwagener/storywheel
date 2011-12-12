@@ -5,7 +5,7 @@
 - ##selection
 - #  %input{type: "text", class: "text", id: "title", name: "title", placeholder: "What's the title of your story?" }
 
-%h2 Step 1: Pick some photos and arrange them to your story
+%h1 Step 1: Pick some pictures
 
 #selection
   %ul.selection
@@ -32,6 +32,5 @@
   - #   <a href="" class="view-all">Load more images</a>
 .explanation
   .inner
-    - #%a.button.all{:href => ""} + Add all images
-    %a.button.reset{:href => connect_instagram_path} Reset
     %a.button.save.red.goToStep2{:href => ""} Go To The Next Step!
+    %a.button.reset{:href => connect_instagram_path} Reset

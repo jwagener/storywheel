@@ -1,27 +1,46 @@
-%ul    
-  - @stories.each do |story|
-    %li
-      %h3
-        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
-          %span.user= story.sc_username
-          %br
-          %span= story.title
+%h2 hello
 
-  - @stories.each do |story|
-    %li
-      %h3
-        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
-          %span.user= story.sc_username
-          %br
-          %span= story.title
+.examples
+  %ul    
+    - @stories.each do |story|
+      %li
+        %h3
+          %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
+            %span.user= story.sc_username
+            %br
+            %span= story.title
 
-  - @stories.each do |story|
-    %li
-      %h3
-        %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
-          %span.user= story.sc_username
-          %br
-          %span= story.title
+    - @stories.each do |story|
+      %li
+        %h3
+          %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
+            %span.user= story.sc_username
+            %br
+            %span= story.title
+
+    - @stories.each do |story|
+      %li
+        %h3
+          %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
+            %span.user= story.sc_username
+            %br
+            %span= story.title
+
+    - @stories.each do |story|
+      %li
+        %h3
+          %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
+            %span.user= story.sc_username
+            %br
+            %span= story.title
+
+    - @stories.each do |story|
+      %li
+        %h3
+          %a{:href => "carousel.html", :style => "background-image: url(#{story.try(:images).first[:url]});"}
+            %span.user= story.sc_username
+            %br
+            %span= story.title
 
 %div{:style => "clear: left;"}
 .footer

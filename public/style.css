@@ -10,9 +10,11 @@ hr {display: none; visibility: hidden;}
 
 :focus {outline: 0;}
 
-body{
-  background-color: black;
-
+body, html {
+	margin: 0;
+	padding: 0;
+	background: #000;
+	background: #080822;
 }
 
 h1, h2 {
@@ -21,11 +23,24 @@ h1, h2 {
 
 h1 {
 	font-size: 60px;
+	margin-top: 40px;
+	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
+}
+
+.bottom h1 {
+	font-size: 60px;
+	margin: 0 0 20px 0;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
 }
 
 h2 {
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
+}
+
+h2 {
+  font-size: 30px;
+	margin-bottom: 5px;
+	color: #51678A;
 }
 
 #page {
@@ -40,21 +55,95 @@ h2 {
 	width: 100%;
 	text-align: center;
 	margin: 0px auto 30px;
-	padding: 0px 0;
-  background-image: url(background.png);
+	padding: 0px 0 0 0;
 	background-repeat: no-repeat;
-	background-color: #000;
-	background-position: 50% 10%;
-	border-bottom: 1px solid #222;
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
 	-webkit-transition: all 0.2s linear;
 }
 
+.new .top {
+	display: none;
+}
+
+.bottom {
+	text-align: center;
+	position: relative;
+	z-index: 99999999;
+}
+.background {
+	height: 400px;
+	width: 100%;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+}
+
+.background .left-top {
+	background: rgba(81,103,138,0.4);
+	width: 500px;
+	height: 200px;
+	position: absolute;
+	left: -800px;
+	top: -125px;
+	-webkit-transform: skew(80deg);
+}
+
+.background .left-middle {
+	background: rgba(81,103,138,0.4);
+	width: 365px;
+	height: 255px;
+	position: absolute;
+	border-right: 1px solid black;
+	left: -100px;
+	top: 75px;
+}
+
+.background .left-bottom {
+	background: rgba(81,103,138,0.4);
+	width: 500px;
+	height: 200px;
+	position: absolute;
+	left: -800px;
+	bottom: -130px;
+	-webkit-transform: skew(-80deg);
+}
+
+.background .right {
+	background: rgba(81,103,138,0.6);
+	width: 500px;
+	height: 200px;
+	position: absolute;
+	right: -850px;
+	top: -125px;
+	-webkit-transform: skew(-80deg);
+}
+
+.background .right-middle {
+	background: rgba(81,103,138,0.6);
+	width: 365px;
+	height: 255px;
+	position: absolute;
+	border-left: 1px solid black;
+	right: -150px;
+	top: 75px;
+}
+
+.background .right-bottom {
+	background: rgba(81,103,138,0.6);
+	width: 500px;
+	height: 200px;
+	position: absolute;
+	right: -850px;
+	bottom: -130px;
+	-webkit-transform: skew(80deg);
+}
+
 .screen {
-	background: rgba(255,255,255,0.1);
+	background: rgba(255,255,255,0);
 	width: 300px;
 	padding: 10px;
-	margin: 20px auto;
+	position: relative;
+	z-index: 999999;
+	margin: 0px auto;
 	-webkit-transition: all 0.4s linear;
 }
 
@@ -67,21 +156,20 @@ h2 {
 }
 
 .screen.intro {
-	height: 400px;
+	height: 360px;
+	width: 500px;
 }
 
 .screen.intro.small {
 	height: 20px;
+	padding: 0;
 }
-
 
 .screen.rec, .screen.slideshow {
 	height: 480px;
 	width: 500px;
 	background-size: cover;
 }
-
-
 
 #outercanvas {
   position: absolute;
@@ -181,7 +269,7 @@ body {
 }
 
 body.home {
-	background: #080822;
+
 }
 
 input#title {
@@ -201,13 +289,6 @@ input#title {
 }
 
 
-body.carousel {
-	background-image: url(background.png);
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-size: 100%;
-	background-color: #000;
-}
 
 body a {
   color: white;
@@ -219,11 +300,6 @@ body.builder {
 
 
 
-.storywheel h2,.intro h2 {
-  font-size: 30px;
-	margin-bottom: 5px;
-	color: #51678A;
-}
 
 .storywheel {
 	text-align: center;
@@ -301,21 +377,17 @@ body.builder {
 
 .examples {
 	width: 90%;
-	margin: 0px auto 0px;
-	padding-bottom: 20px;
-}
-
-.example-focus .examples {
-	margin: 20px auto 0;
-}
-
-
-.examples ul {
-	-webkit-transition: all 0.3s ease;
+	margin: 0px auto 40px;
+	height: 180px;
+	overflow: scroll;
+	border-top: 1px solid rgba(81,103,138, 0.2);
+	padding-top: 20px;
+	-webkit-transition: all 0.4s linear;
 	-webkit-transition-delay: 0.5s;
 }
 
-.examples ul:hover {
+.examples:hover {
+	height: 400px;
 }
 
 .examples ul li {
@@ -435,7 +507,7 @@ body.builder {
 }
 
 #images {
-	border-top: 1px solid rgba(81,103,138, 0.2);
+	/*border-top: 1px solid rgba(81,103,138, 0.2);*/
 	padding-top: 20px;
 }
 
@@ -454,6 +526,7 @@ body.builder {
 	opacity: 0.4;
 	background-size: 70px;
 	background-position: 50%;
+	background-color: black;
 	-webkit-transition: all 0.3s ease;
 	text-decoration: none;
 	color: rgba(81,103,138, 0);
@@ -480,45 +553,31 @@ body.builder {
 .explanation {
 	height: 60px;
 	position: fixed;
-	width: 90%;
+	width: 100%;
 	bottom: 0px;
+	left: 0;
 	padding-top: 10px;
-	background: #080822;
 	border-top: 1px solid rgba(81,103,138, 0.2);
 }
 
 .explanation .inner {
 	position: relative;
-	width: 900px;
+	width: 920px;
 	margin: 0 auto;
 }
 
-.button.all {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 150px;
+.inner .button {
+	float: right;
+	margin: 7px 0 0 20px;
+	width: auto;
+	padding: 0 20px;
 }
 
-.button.save {
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	width: 160px;
-}
 
 .button.red {
   background-color: rgba(100,0,0,1);
 }
 
-
-.button.reset {
-	position: absolute;
-	right: 190px;
-	top: 0px;
-	width: 80px;
-	color: rgba(255,255,255,0.5);
-}
 
 .slideControls {
   width: 120px
@@ -604,15 +663,25 @@ body.stories.new .intro .build-your-own {
 
 .step {
   width: 90%;
-	margin: 40px auto 40px;
+	margin: 50px auto 40px;
 	text-align: center;
 }
+
 
 #form {
 	margin-bottom: 200px;
 }
 
-.examples h2, .step h2 {
+.record {
+	height: 260px;
+	width: 300px;
+	background: rgba(81,103,138,0.1);
+	padding: 40px 20px;
+	border-radius: 20px;
+	margin: 0 auto 40px;
+}
+
+.examples h2, .record h2 {
 	text-align: center;
   font-size: 40px;
 	margin-bottom: 30px;
@@ -639,14 +708,15 @@ p {
 /*#recordButton { margin: auto !important; padding: 0 !important; border: 0 !important; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; border-radius: 0; -webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none; display: block; width: 84px; height: 84px; background-color: transparent !important; background-image: url(rec2.png) !important; background-position: 0 0;}*/
 #recordButton {
 	background: rgba(205,0,0,1);
-	width: 100px;
-	height: 100px;
-	border-radius: 50px;
+	width: 120px;
+	height: 120px;
+	border-radius: 60px;
 	font-size: 60px;
-	line-height: 100px;
-	margin: 50px auto;
+	line-height: 120px;
+	margin: 0px auto;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
 }
+
 #recordButton.recording {  background-position: 0 -84px;}
 
 
@@ -661,4 +731,6 @@ p {
   margin: auto;
 }
 
-
+#recorderFlashContainer {
+	z-index: 9999999999;
+}

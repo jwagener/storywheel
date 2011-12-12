@@ -1,11 +1,17 @@
-#slideControls.fresh{:style => "float: left; display: inline"}
-  %span#timer.hidden
-  %a.button.nextImage{:href => "", :class => "hidden"} Next Image
+%h1 Step 2: Tell your story
+.record
+  #recordButton.reset REC
+  %h2 Hit the REC button to tell your story
   
-#selection{:style => "float: left; display: inline"}
+#selection
   %ul.images.step2-selection
     - 2.times do
       %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')", "data-image-url" => "http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg"}
-  
-%div{:style => "float: right; display: inline"}
-  %a.button.red.goToStep3.hidden{:href => ""} Go To The Next Step!
+
+.explanation
+  .inner
+    #slideControls.fresh
+      %span#timer.hidden
+      %a.button.nextImage{:href => "", :class => "hidden"} Next Image
+    
+    %a.button.red.goToStep3.hidden{:href => ""} Go To The Next Step!
