@@ -3,19 +3,11 @@
   %head
     %title StoryWheel
     = stylesheet_link_tag    "/style.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
-    = javascript_include_tag "application", "http://connect.soundcloud.com/sdk.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"
-  	
+    = javascript_include_tag "application", "http://connect.soundcloud.com/sdk.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js" 	
     = csrf_meta_tags
+    
   %body.home{:class => [@body_state, controller.params[:controller], controller.params[:action]]}
     #page
-      .background 
-        .left-top
-        .left-middle
-        .left-bottom
-        .right
-        .right-middle
-        .right-bottom
-      
       .top
           
         .screen.intro
@@ -23,7 +15,7 @@
             %h1 Story Wheel
             %h2 Tell the story behind your images
             %img{:src => "/carousel.png"}
-            = link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
+            //= link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
         
           .slideshow
             .cover
@@ -33,6 +25,21 @@
             
       
       .bottom
+        .footer
+          %ul
+            %li
+              %a{:href => "/"}
+                %img{:src => "/carousel.png",:width => "20"}
+                Story Wheel
+            %li
+              %a{:href => "/show"}  
+                View All
+            %li
+              = link_to 'Create your Story Wheel', connect_instagram_path
+            %li 
+              %a Like
+          //.sc-labs
+          //  SoundCloud Labs
         = yield
         %div{:style => "clear: left;"}
     
