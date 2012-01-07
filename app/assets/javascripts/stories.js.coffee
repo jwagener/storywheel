@@ -44,7 +44,12 @@ $ ->
 # List UI
 
 $("ul.all-images li").live "click", (e) ->
-  $("ul.selection li.empty").first().replaceWith($(this))
+  
+  empties = $("ul.selection li.empty")
+  if empties.length < 2
+    empties.first().clone().appendTo("ul.selection")
+    $("#selection").scrollLeft(100000)
+  empties.first().replaceWith($(this))
 
 # Reset Button
 
@@ -167,3 +172,63 @@ updateTimer = (ms) ->
 
 setRecorderUIState = (state) ->
   $("#recordButton").attr("class", state);
+    
+    
+    
+    
+    
+    
+    
+    
+####################################################
+################# NEW STUFF ########################
+
+$(".connectInstagram").live 'click', (e) ->
+  e.preventDefault()
+  instagramUrl = "https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://carousel.ponyho.st/builder.html&response_type=token"
+  instagramUrl = "https://instagram.com/oauth/authorize/?client_id=c8b97e3a8e3f4cfe8274ad1c26da1d77&redirect_uri=http://localhost:3000/instagram-callback.html&response_type=token"
+  window.instagramPopup = SC.Helper.openCenteredPopup(instagramUrl, 1024, 370)
+
+
+window.instagramToken = null
+window.instagramPopup = null
+window.instagramCallback = () ->
+  popupLocation = window.instagramPopup.location.toString()
+  uri = new SC.URI(popupLocation, {decodeQuery: true, decodeFragment: true})
+  error = uri.query.error || uri.fragment.error
+  window.instagramPopup.close()
+
+  if error
+    throw new Error(uri.query.error)
+  else
+    window.instagramToken = uri.fragment.access_token
+    $(".connectInstagram").hide()
+    $.ajax(
+      dataType: "JSONP"
+      url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=24&access_token=" + window.instagramToken
+      success: (r) ->
+        $.each r.data, -> 
+          image = 
+            url: this.images.standard_resolution.url,
+            thumbnail_url: this.images.thumbnail.url,
+            timestamp: null
+          $("#imageTmpl").tmpl(image).appendTo("ul.all-images");
+        $("ul.selection").sortable();
+    )
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

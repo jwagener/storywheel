@@ -14,6 +14,9 @@
       %li.empty
         %span Click pictures below to add
   %div{:style => "clear: left;"}
+
+%a.button.red.connectInstagram{:href => ""} Connect to Instagram
+
 #images
   %script{id: "imageTmpl", type:"text/x-jquery-tmpl"}
     %li.image{:style => "background-image: url('${thumbnail_url}')", "data-image-url" => "${url}"}
@@ -24,7 +27,7 @@
     - #%li.image
     - #  %img{:src => "${url}"}/
     - #  %button.delete X
-  %ul.ui-sortable.all-images
+  %ul.all-images
     - 0.times do
       %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')"}
 
@@ -33,4 +36,4 @@
 .explanation
   .inner
     %a.button.save.red.goToStep2{:href => ""} Go To The Next Step!
-    %a.button.reset{:href => connect_instagram_path} Reset
+    %a.button.reset{:href => "/stories/new"} Reset
