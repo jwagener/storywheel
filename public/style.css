@@ -81,6 +81,15 @@ h2 {
 	background: rgba(0,0,0,0.5);
 }
 
+body.new .bottom {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 99999999;
+	background: rgba(0,0,0,0.5);
+}
+
 .screen .home, .screen .small, .screen .record, .screen .slideshow, .screen.intro.small .home {
 	display: none;
 }
@@ -290,6 +299,9 @@ body.builder {
 	bottom: 0;
 }
 
+body.new .footer {
+	display: none;
+}
 .button {
   display: block;
   text-align: center;
@@ -383,11 +395,11 @@ body.builder {
 }
 
 #selection {
-  overflow-x: scroll;
+	width: 1000px;
+	margin: 0 auto;
 }
 
 #selection ul {
-	width: 9500px;
 	margin: 0 auto;
 }
 
@@ -447,14 +459,12 @@ body.builder {
 }
 
 #images {
-	/*border-top: 1px solid rgba(81,103,138, 0.2);*/
-	padding-top: 20px;
-	overflow-x: scroll;
-  
+	width: 1000px;
+	margin: 0 auto;
 }
 
 #images ul {
-  width: 100000px;
+
 	margin: 0 auto;
 }
 
