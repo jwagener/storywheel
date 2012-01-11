@@ -3,7 +3,7 @@
   %head
     %title StoryWheel
     = stylesheet_link_tag    "/style.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
-    = javascript_include_tag "application", "http://connect.soundcloud.com/sdk.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js" 	
+    = javascript_include_tag "application", "http://connect.soundcloud.com/sdk.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js", "shared" 	
     = csrf_meta_tags
     
   %body.home{:class => [@body_state, controller.params[:controller], controller.params[:action]]}
@@ -22,7 +22,7 @@
               %h1 Johannes
               %h2 My Trip To Boston
               %img{:src => "/carousel.png"}
-            
+          #currentImage
       
       .bottom
         .footer

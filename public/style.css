@@ -68,10 +68,6 @@ h2 {
 	padding: 0px 0 0 0;
 }
 
-.new .top {
-	display: none;
-}
-
 .bottom {
 	position: absolute;
 	bottom: 0;
@@ -89,6 +85,10 @@ h2 {
 	display: block;
 }
 
+.new .home {
+  display: none!important;
+}
+
 
 .screen.intro {
 	position: absolute;
@@ -99,7 +99,6 @@ h2 {
 
 .screen.intro {
 	height: 360px;
-	width: 500px;
 }
 
 .screen.intro.small {
@@ -109,8 +108,17 @@ h2 {
 
 .screen.rec, .screen.slideshow {
 	height: 480px;
-	width: 500px;
 	background-size: cover;
+}
+
+
+#currentImage {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  background-repeat: no-repeat;
+  margin-top: 100px;
+  background-position: -20px -20px;
 }
 
 #outercanvas {
@@ -208,6 +216,7 @@ h2 {
 body {
   font-family: "Lucida Grande";
   color: white;
+  min-width: 1000px;
 }
 
 
@@ -429,6 +438,17 @@ body.builder {
 	border-bottom: 1px solid rgba(81,103,138, 1);
 }
 
+#selection ul li.fin {
+  line-height: 76px;
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+#selection ul li.fin:hover {
+  color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);  
+}
+
 #selection ul li.upcoming, #selection ul li.upcoming:hover {
 	opacity: 0.3;
 	-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
@@ -646,13 +666,34 @@ p {
 .hidden {
 	display: none;
 }
+
+.clear {
+  clear: both;
+}
 /* Recording */
 
 
 
 
 /*#recordButton { margin: auto !important; padding: 0 !important; border: 0 !important; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; border-radius: 0; -webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none; display: block; width: 84px; height: 84px; background-color: transparent !important; background-image: url(rec2.png) !important; background-position: 0 0;}*/
+
+.whileRecording, .whilePreRecording, .whilePostRecording {
+	display: none;
+}
+
+.preRecording .whilePreRecording, .recording .whileRecording, .postRecording .whilePostRecording {
+	display: block;
+}
+
+/* TODO remove */
+.whileRecording {
+	width: 305px;
+	margin: auto;
+}
+
 #recordButton {
+	display: block;
+	text-decoration: none;
 	background: rgba(205,0,0,1);
 	width: 120px;
 	height: 120px;
@@ -665,16 +706,17 @@ p {
 
 #recordButton.recording {  background-position: 0 -84px;}
 
+#nextPicture, .goToStep3 {
+  float: left;
+}
 
-#recordButton #timer {
-  font-weight: bold;
-  color: #333;
-  line-height: 85px;
-  width: 100%;
-  text-align: center;
-  display: block;
-  width: 30px;
-  margin: auto;
+#timer {
+  border-radius: 20px;
+  border: 10px solid rgba(100, 0, 0, 1);
+  background-color: rgba(100, 0, 0, 1);
+  float: left;
+  margin-top: 4px;
+  margin-right: 10px;
 }
 
 #recorderFlashContainer {
