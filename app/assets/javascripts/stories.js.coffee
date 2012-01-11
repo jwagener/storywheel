@@ -61,41 +61,62 @@ showScreen = (name) ->
 
 # Second step
 
+showNextImage = ->
+  $img = $("#selection li.image").first()
+  SW.showImage($img.attr("data-image-url"))
+  $img.remove()
+
+
 $(".goToStep2").live "click", (e) ->
   if $("ul.selection li.image").length > -1
     $("#step2").show().siblings().hide()
     $("body").removeClass("example-focus").addClass("example-half-focus")
     $("ul.selection li.image").appendTo("ul.step2-selection");
+    $("<li class='empty fin'><span>Fin</span></li>").appendTo("ul.step2-selection");
+
     showScreen("rec");
   else
     alert("Pick some photos first")
+  SW.setState("preRecording")
   e.preventDefault()
+
+
+$("#nextPicture").live "click", (e) ->
+  showNextImage()
+  e.preventDefault()
+  if $("#selection li.image").length == 0
+    SW.setState("postRecording")
 
 $(".goToStep3").live "click", (e) ->
     $("#step3").show().siblings().hide()
+    SW.showImage('')
     e.preventDefault()
   #$(".intro").html("<h2>Press record to start. Hit &lt;space&gt; to show the next picture.</h2>")
   
 # Recording UI
 
 
-
+# Start Recording
 $("#recordButton.reset}").live "click", (e) -> 
-  updateTimer(0);
-  SC.record
-    start: () ->
-      $(".button.nextImage").show()
-      $(".goToStep3").hide()
-      showScreen("slideshow")
-      $(".screen .slideshow .cover").html("");
-      setRecorderUIState("recording")
-      $("#timer").show()
-      nextImage()
+  updateTimer(0);  
+  SW.setState("recording")
+  showNextImage()
 
-    progress: (ms, avgPeak) ->
-      window.recordingPosition = ms;
-      updateTimer(ms);
-
+  #setRecorderUIState("recording")
+  #SC.record
+  #  start: () ->
+  #    $(".button.nextImage").show()
+  #    $(".goToStep3").hide()
+  #    showScreen("slideshow")
+  #    $(".screen .slideshow .cover").html("");
+  #    setRecorderUIState("recording")
+  #    $("#timer").show()
+  #    nextImage()
+  #
+  #  progress: (ms, avgPeak) ->
+  #    window.recordingPosition = ms;
+  #    updateTimer(ms);
+  #
   e.preventDefault()
 
 
@@ -139,21 +160,21 @@ $("#upload").live "click", (e) ->
 
 
 
-nextImage = ->
-  $nextLi = $("ul.step2-selection li").first()
-  if $nextLi.length > 0
-    imageUrl = $nextLi.attr("data-image-url")
-    showImage(imageUrl)
-    slides.push({
-      "imageUrl": imageUrl,
-      "timestamp": window.recordingPosition;
-    })
-    console.log(slides)
-    $nextLi.remove()
-    
-  else
-    stopRecording()
-
+#nextImage = ->
+#  $nextLi = $("ul.step2-selection li").first()
+#  if $nextLi.length > 0
+#    imageUrl = $nextLi.attr("data-image-url")
+#    showImage(imageUrl)
+#    slides.push({
+#      "imageUrl": imageUrl,
+#      "timestamp": window.recordingPosition;
+#    })
+#    console.log(slides)
+#    $nextLi.remove()
+#    
+#  else
+#    stopRecording()
+#
 stopRecording = ->
   SC.recordStop();
   
