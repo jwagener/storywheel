@@ -91,10 +91,9 @@ h2 {
 
 
 .screen.intro {
-	position: absolute;
-	top: 10%;
-	left: 50%;
-	margin-left: -250px;
+  width: 300px;
+  margin: auto;
+  margin-top: 10%;
 }
 
 .screen.intro {
