@@ -2,19 +2,6 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
-    
-    story = Story.new({
-      title: "My Trip To Boston",
-      sc_username: "Johannes",
-      id: 123,
-      images: [{
-        url: "http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg",
-        timestamp: 123
-      }]
-    })
-    @stories = [story, story, story]
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stories }
@@ -24,8 +11,6 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @story = Story.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @story }
@@ -35,8 +20,6 @@ class StoriesController < ApplicationController
   # GET /stories/new
   # GET /stories/new.json
   def new
-    @story = Story.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @story }
@@ -45,13 +28,11 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
-    @story = Story.find(params[:id])
   end
 
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(params[:story])
 
     respond_to do |format|
       if @story.save
@@ -67,8 +48,6 @@ class StoriesController < ApplicationController
   # PUT /stories/1
   # PUT /stories/1.json
   def update
-    @story = Story.find(params[:id])
-
     respond_to do |format|
       if @story.update_attributes(params[:story])
         format.html { redirect_to @story, notice: 'Story was successfully updated.' }
@@ -83,9 +62,6 @@ class StoriesController < ApplicationController
   # DELETE /stories/1
   # DELETE /stories/1.json
   def destroy
-    @story = Story.find(params[:id])
-    @story.destroy
-
     respond_to do |format|
       format.html { redirect_to stories_url }
       format.json { head :ok }
