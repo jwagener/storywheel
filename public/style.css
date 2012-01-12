@@ -355,7 +355,7 @@ body.builder {
 	border-bottom: 1px solid rgba(255,255,255, 0.2);
 }
 
-.example-focus .stories ul li a, .stories ul li a:hover, .stories ul li a:active {
+.stories ul li a:hover, .stories ul li a:active {
 	opacity: 1;
 	cursor: pointer;
 	border-bottom: 1px solid rgba(255,255,255, 0.4);
@@ -372,15 +372,6 @@ body.builder {
 .stories ul li h3 a span.user {
 	color: rgba(81,103,138, 0);
 }
-
-.example-focus .stories ul li h3 a span {
-	background: rgba(255,255,255,0.8);
-}
-
-.example-focus .stories ul li h3 a span.user {
-	color: rgba(81,103,138, 0.8);
-}
-
 .stories ul li h3 a:hover span {
 	background: rgba(255,255,255,0.9);
 	color: rgba(0,0,0,1);
@@ -649,9 +640,10 @@ body.stories.new .intro .build-your-own {
 	padding: 40px 20px;
 	border-radius: 20px;
 	margin: 0 auto 40px;
+  -webkit-transition: height 0.4s linear;
 }
 
-.examples h2, .recordControls h2 {
+.recordControls h2 {
 	text-align: center;
   font-size: 40px;
 	margin-bottom: 30px;
