@@ -1,16 +1,8 @@
 %h1 Step 2: Tell your story
 
-.record.whilePreRecording
-  %a#recordButton.reset{href: ""} REC
+.recordControls.hidden
+  %a#recordButton.startRecording.reset{href: ""} REC
   %h2 Hit the REC button and tell your story.
-  
-  
-.whileRecording.whilePostRecording
-  %span#timer 0.00
-  .whileRecording
-    %a#nextPicture.button{:href => "#"} Show The Next Picture
-  .whilePostRecording
-    %a.button.red.goToStep3{:href => "#"} Stop recording & finish!
 
 .clear
 
@@ -18,3 +10,11 @@
   %ul.images.step2-selection
     - 3.times do
       %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')", "data-image-url" => "http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg"}
+
+.controls
+  .inner
+    %span#timer.hidden 0.00
+    %a.button.save.red.startRecording.hidden{:href => ""} Start Recording
+    %a#nextPicture.button.save.red.hidden{:href => "", :title => "Hit space"} Show Next Picture
+    %a#goToStep3.button.save.red.hidden{:href => ""} Stop Recording
+    %a.button.reset{:href => "/stories/new"} Reset

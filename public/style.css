@@ -62,7 +62,6 @@ h2 {
 
 .top {
 	width: 100%;
-	height: 100%;
 	text-align: center;
 	margin: 0px auto 30px;
 	padding: 0px 0 0 0;
@@ -75,24 +74,11 @@ h2 {
 	text-align: center;
 	z-index: 99999999;
 	background: rgba(0,0,0,0.5);
+  overflow: hidden;
+  max-height: 100%;
+  -webkit-transition: height 0.4s linear;
 }
 
-body.new .bottom {
-	position: absolute;
-	top: 0;
-	width: 100%;
-	text-align: center;
-	z-index: 99999999;
-	background: rgba(0,0,0,0.5);
-}
-
-.screen .home, .screen .small, .screen .record, .screen .slideshow, .screen.intro.small .home {
-	display: none;
-}
-
-.screen.intro .home, .screen.intro.small .small, .screen.rec .record, .screen.slideshow .slideshow {
-	display: block;
-}
 
 .new .home {
   display: none!important;
@@ -307,9 +293,6 @@ body.builder {
 	bottom: 0;
 }
 
-body.new .footer {
-	display: none;
-}
 .button {
   display: block;
   text-align: center;
@@ -330,7 +313,13 @@ body.new .footer {
 	background: #293a55;
 }
 
-.examples {
+
+
+
+
+/* home stories start */ 
+
+.stories {
 	width: 100%;
 	margin: 0px auto 0px;
 	overflow: scroll;
@@ -342,16 +331,16 @@ body.new .footer {
 	-webkit-transition-delay: 0.5s;
 }
 
-.examples ul {
+.stories ul {
 	width: 100000px;
 	padding: 10px 0;
 }
-.examples ul li {
+.stories ul li {
 	float: left;
 	text-align: left;
 }
 
-.examples ul li a {
+.stories ul li a {
 	display: block;
 	width: 80px;
 	height: 80px;
@@ -366,14 +355,13 @@ body.new .footer {
 	border-bottom: 1px solid rgba(255,255,255, 0.2);
 }
 
-
-.example-focus .examples ul li a, .examples ul li a:hover, .examples ul li a:active {
+.example-focus .stories ul li a, .stories ul li a:hover, .stories ul li a:active {
 	opacity: 1;
 	cursor: pointer;
 	border-bottom: 1px solid rgba(255,255,255, 0.4);
 }
 
-.examples ul li h3 a span {
+.stories ul li h3 a span {
 	background: rgba(255,255,255,0);
 	display: inline;
 	color: rgba(0,0,0,0);
@@ -381,26 +369,33 @@ body.new .footer {
 	-webkit-transition: all 0.1s ease;
 }
 
-.examples ul li h3 a span.user {
+.stories ul li h3 a span.user {
 	color: rgba(81,103,138, 0);
 }
 
-.example-focus .examples ul li h3 a span {
+.example-focus .stories ul li h3 a span {
 	background: rgba(255,255,255,0.8);
 }
 
-.example-focus .examples ul li h3 a span.user {
+.example-focus .stories ul li h3 a span.user {
 	color: rgba(81,103,138, 0.8);
 }
 
-.examples ul li h3 a:hover span {
+.stories ul li h3 a:hover span {
 	background: rgba(255,255,255,0.9);
 	color: rgba(0,0,0,1);
 }
 
-.examples ul li h3 a:hover span.user {
+.stories ul li h3 a:hover span.user {
 	color: rgba(81,103,138, 1);
 }
+
+/* home stories end */ 
+
+
+
+
+
 
 #selection {
 	width: 1000px;
@@ -419,9 +414,9 @@ body.new .footer {
 	padding: 7px 10px 10px;
 	margin: 0 0 20px 20px;
 	opacity: 1;
-	-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
+	/*-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
 	-moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);*/
 	background-size: 110px;
 	background-position: -7px -7px;
 /*	-webkit-transition: all 0.3s ease;*/
@@ -462,9 +457,9 @@ body.new .footer {
 
 #selection ul li.upcoming, #selection ul li.upcoming:hover {
 	opacity: 0.3;
-	-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
+	/*-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
 	-moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);*/
 	border-bottom: 1px solid rgba(81,103,138, 1);
 }
 
@@ -521,7 +516,7 @@ body.new .footer {
 	margin: 0 auto 10px;
 }
 
-.explanation {
+.controls {
 	height: 60px;
 	position: fixed;
 	width: 100%;
@@ -531,7 +526,7 @@ body.new .footer {
 	border-top: 1px solid rgba(81,103,138, 0.2);
 }
 
-.explanation .inner {
+.controls .inner {
 	position: relative;
 	width: 920px;
 	margin: 0 auto;
@@ -647,7 +642,7 @@ body.stories.new .intro .build-your-own {
 	margin-bottom: 200px;
 }
 
-.record {
+.recordControls {
 	height: 260px;
 	width: 300px;
 	background: rgba(81,103,138,0.1);
@@ -656,7 +651,7 @@ body.stories.new .intro .build-your-own {
 	margin: 0 auto 40px;
 }
 
-.examples h2, .record h2 {
+.examples h2, .recordControls h2 {
 	text-align: center;
   font-size: 40px;
 	margin-bottom: 30px;
@@ -679,20 +674,41 @@ p {
 .clear {
   clear: both;
 }
-/* Recording */
 
 
-
-
-/*#recordButton { margin: auto !important; padding: 0 !important; border: 0 !important; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; border-radius: 0; -webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none; display: block; width: 84px; height: 84px; background-color: transparent !important; background-image: url(rec2.png) !important; background-position: 0 0;}*/
-
-.whileRecording, .whilePreRecording, .whilePostRecording {
-	display: none;
+/* states */
+body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2, body#record #step2, body#endrecord #step2, body#finalize #step3, body#upload #step3 {
+  display: block;
 }
 
-.preRecording .whilePreRecording, .recording .whileRecording, .postRecording .whilePostRecording {
-	display: block;
+body#home .home {
+  display: block;
+  
 }
+
+body#prerecord .recordControls {
+  display: block;
+}
+
+body#record #timer, body#endrecord #timer, body#prerecord .startRecording, body#record #nextPicture, body#endrecord #goToStep3 {
+  display: block;
+}
+
+body#home      .bottom { height: 165px; }
+body#connect   .bottom { height: 1999px; }
+body#pick      .bottom { height: 1999px; }
+body#prerecord .bottom { height: 1999px; }
+body#record    .bottom { height: 335px; }
+body#endrecord .bottom { height: 335px; }
+body#finalize  .bottom { height: 1999px;  }
+body#upload    .bottom { height: 165px; } 
+
+body.record .bottom, body.endrecord .bottom {
+  top: 60%;
+}
+
+/* states end */
+
 
 /* TODO remove */
 .whileRecording {
@@ -711,12 +727,6 @@ p {
 	line-height: 120px;
 	margin: 0px auto;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
-}
-
-#recordButton.recording {  background-position: 0 -84px;}
-
-#nextPicture, .goToStep3 {
-  float: left;
 }
 
 #timer {

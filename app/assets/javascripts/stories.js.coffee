@@ -69,15 +69,15 @@ showNextImage = ->
 
 $(".goToStep2").live "click", (e) ->
   if $("ul.selection li.image").length > -1
-    $("#step2").show().siblings().hide()
-    $("body").removeClass("example-focus").addClass("example-half-focus")
+    #$("#step2").show().siblings().hide()
+    #$("body").removeClass("example-focus").addClass("example-half-focus")
     $("ul.selection li.image").appendTo("ul.step2-selection");
     $("<li class='empty fin'><span>Fin</span></li>").appendTo("ul.step2-selection");
 
     showScreen("rec");
   else
     alert("Pick some photos first")
-  SW.setState("preRecording")
+  SW.setState("prerecord")
   e.preventDefault()
 
 
@@ -85,10 +85,10 @@ $("#nextPicture").live "click", (e) ->
   showNextImage()
   e.preventDefault()
   if $("#selection li.image").length == 0
-    SW.setState("postRecording")
+    SW.setState("endrecord")
 
-$(".goToStep3").live "click", (e) ->
-    $("#step3").show().siblings().hide()
+$("#goToStep3").live "click", (e) ->
+    SW.setState("finalize")
     SW.showImage('')
     e.preventDefault()
   #$(".intro").html("<h2>Press record to start. Hit &lt;space&gt; to show the next picture.</h2>")
@@ -97,9 +97,9 @@ $(".goToStep3").live "click", (e) ->
 
 
 # Start Recording
-$("#recordButton.reset}").live "click", (e) -> 
+$(".startRecording").live "click", (e) -> 
   updateTimer(0);  
-  SW.setState("recording")
+  SW.setState("record")
   showNextImage()
 
   #setRecorderUIState("recording")
@@ -237,8 +237,10 @@ window.instagramCallback = () ->
         $("ul.selection").sortable();
     )
 
-    
-    
+$("#createYourOwn").live "click", (e) ->
+  SW.setState("connect")
+  e.preventDefault()
+
     
     
     

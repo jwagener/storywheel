@@ -1,8 +1,5 @@
 Storywheel::Application.routes.draw do
-  resources :stories
-
   root to: "stories#index"
-  
   instragram_url = if Rails.env == "production"
     "https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://carousel.ponyho.st/builder.html&response_type=token"
   else

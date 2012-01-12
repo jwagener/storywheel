@@ -5,10 +5,10 @@ window.SW =
     $("#currentImage").css("background-image", "url("+imageUrl+")")
 
   setState: (state) ->
-    states = ["home", "connecting", "picking", "preRecording", "recording", "postRecording"]
-
-    $("body").removeClass(s) for s in states
-    $("body").addClass(state)
+    states = ["home", "connect", "pick", "prerecord", "record", "endrecord", "finalize", "upload"]
+    $("body").attr("id", state)
+    #$("body").removeClass(s) for s in states
+    #$("body").addClass(state)
 
     
 # story -> slides -> {image_large_url, image_small_url, timestamp}

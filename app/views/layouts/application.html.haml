@@ -6,18 +6,17 @@
     = javascript_include_tag "application", "http://connect.soundcloud.com/sdk.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js", "shared" 	
     = csrf_meta_tags
     
-  %body.home{:class => [@body_state, controller.params[:controller], controller.params[:action]]}
+  %body#home
     #page
       .top
-          
         .screen.intro
-          .home
+          .home.hidden
             %h1 Story Wheel
             %h2 Tell the story behind your images
             %img{:src => "/carousel.png"}
             //= link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
         
-          .slideshow
+          .slideshow.hidden
             .cover
               %h1 Johannes
               %h2 My Trip To Boston
@@ -31,15 +30,24 @@
               %a{:href => "/"}
                 %img{:src => "/carousel.png",:width => "20"}
                 Story Wheel
+            - # %li
+            - #   %a{:href => "/show"}  
+            - #     View All
             %li
-              %a{:href => "/show"}  
-                View All
-            %li
-              = link_to 'Create your Story Wheel', "/stories/new"
-            %li 
-              %a Like
-          //.sc-labs
-          //  SoundCloud Labs
-        = yield
-        %div{:style => "clear: left;"}
-    
+              = link_to 'Create your Story Wheel', "/stories/new", :id => "createYourOwn"
+            - # %li 
+            - #   %a Like
+      
+        .stories.hidden
+          %ul 
+            - 5.times do
+              %li
+                %h3
+                  %a{:href => "carousel.html", :style => "background-image: url(http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg);"}
+                    %span.user= "Johannes Wagener"
+                    %br
+                    %span= "A trip to boston"
+        
+        #step1.step.hidden= render :partial => "new_step1"
+        #step2.step.hidden= render :partial => "new_step2"
+        #step3.step.hidden= render :partial => "new_step3"
