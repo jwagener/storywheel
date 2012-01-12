@@ -673,7 +673,7 @@ body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2
   display: block;
 }
 
-body#home .home {
+body#home .home, body#show .show {
   display: block;
   
 }

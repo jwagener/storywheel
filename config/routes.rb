@@ -8,7 +8,8 @@ Storywheel::Application.routes.draw do
 
   match "/connect-instagram" => redirect(instragram_url), as: :connect_instagram
 
-  match ":id" => "stories#show"
+  match ":user"        => "stories#show"
+  match ":user/:track" => "stories#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

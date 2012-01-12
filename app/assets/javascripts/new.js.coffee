@@ -9,12 +9,14 @@ SETTINGS =
   soundcloud:
     client_id: "3a57e26203bc5210285a02f8eee95d91"
     redirect_uri: "http://localhost:3000/callback.html"
-  instagram:
-    client_id: "3a57e26203bc5210285a02f8eee95d91"
-    redirect_uri: "http://localhost:3000/callback.html"
   soundcloudGroup: "/groups/59904"
     
-
+if window.location.host != "localhost:3000"
+  SETTINGS.soundcloud = 
+    client_id: "732fa8e77cc2fe02a4a9edfe5f76135d"
+    redirect_uri: "http://pure-sunrise-5956.herokuapp.com/callback.html"
+    
+  
 
 $ ->
   SC.initialize(SETTINGS.soundcloud)
@@ -22,27 +24,14 @@ $ ->
   
   uri = new SC.URI(window.location.toString(), {decodeFragment: true});
   accessToken = uri.fragment.access_token;
-  
-  if accessToken
-    showScreen("intro");
-    $(".intro, .screen").addClass("small")
-    $.ajax(
-      dataType: "JSONP"
-      url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=32&access_token=" + accessToken
-      success: (r) ->
-        $.each r.data, -> 
-          image = 
-            url: this.images.standard_resolution.url,
-            thumbnail_url: this.images.thumbnail.url,
-            timestamp: null
-          $("#imageTmpl").tmpl(image).appendTo("ul.all-images");
-        
-        $("ul.selection").sortable();
+   
 
-    )
+$("#createYourOwn").live "click", (e) ->
+  SW.setState("connect")
+  e.preventDefault()
+
 
 # List UI
-
 $("ul.all-images li").live "click", (e) ->
   
   empties = $("ul.selection li.empty")
@@ -51,30 +40,26 @@ $("ul.all-images li").live "click", (e) ->
     $("#selection").scrollLeft(100000)
   empties.first().replaceWith($(this))
 
-# Reset Button
-
-showScreen = (name) ->
-  $(".screen").removeClass("intro").removeClass("rec").removeClass("image").removeClass("small").addClass(name)
-  $(".screen ." + name).show().siblings().hide();
-  $(".intro").removeClass("small")
-  
 
 # Second step
 
 showNextImage = ->
   $img = $("#selection li.image").first()
   SW.showImage($img.attr("data-image-url"))
+  slides.push
+    imageUrl: $img.attr("data-image-url") 
+    timestamp: window.recordingPosition
   $img.remove()
+  if $("#selection li.image").length == 0
+    SW.setState("endrecord")
+
+
 
 
 $(".goToStep2").live "click", (e) ->
   if $("ul.selection li.image").length > -1
-    #$("#step2").show().siblings().hide()
-    #$("body").removeClass("example-focus").addClass("example-half-focus")
     $("ul.selection li.image").appendTo("ul.step2-selection");
     $("<li class='empty fin'><span>Fin</span></li>").appendTo("ul.step2-selection");
-
-    showScreen("rec");
   else
     alert("Pick some photos first")
   SW.setState("prerecord")
@@ -84,48 +69,27 @@ $(".goToStep2").live "click", (e) ->
 $("#nextPicture").live "click", (e) ->
   showNextImage()
   e.preventDefault()
-  if $("#selection li.image").length == 0
-    SW.setState("endrecord")
-
-$("#goToStep3").live "click", (e) ->
-    SW.setState("finalize")
-    SW.showImage('')
-    e.preventDefault()
-  #$(".intro").html("<h2>Press record to start. Hit &lt;space&gt; to show the next picture.</h2>")
-  
-# Recording UI
-
 
 # Start Recording
 $(".startRecording").live "click", (e) -> 
   updateTimer(0);  
-  SW.setState("record")
-  showNextImage()
-
-  #setRecorderUIState("recording")
-  #SC.record
-  #  start: () ->
-  #    $(".button.nextImage").show()
-  #    $(".goToStep3").hide()
-  #    showScreen("slideshow")
-  #    $(".screen .slideshow .cover").html("");
-  #    setRecorderUIState("recording")
-  #    $("#timer").show()
-  #    nextImage()
-  #
-  #  progress: (ms, avgPeak) ->
-  #    window.recordingPosition = ms;
-  #    updateTimer(ms);
-  #
-  e.preventDefault()
-
-
-$("#recordButton.recording}").live "click", (e) -> 
-  stopRecording()
-  e.preventDefault()
+  #SW.setState("record")
+  #showNextImage()
+  SC.record
+    start: () ->
+      SW.setState("record")
+      showNextImage()
   
-$(".button.nextImage").live "click", (e) ->
-  nextImage()
+    progress: (ms, avgPeak) ->
+      window.recordingPosition = ms;
+      updateTimer(ms);
+  e.preventDefault()
+
+
+$("#goToStep3").live "click", (e) ->
+  SC.recordStop();
+  updateTimer(0);
+  SW.setState("finalize")
   e.preventDefault()
   
 $("#upload").live "click", (e) ->
@@ -133,12 +97,11 @@ $("#upload").live "click", (e) ->
   SC.connect
     connected: ->
       title = $("#title").val()
-      if title == ""
-        title = "A story"
+      title = "A story" if title == ""
       options =
         track: 
           title: title
-          sharing: "private"
+          sharing: "public"
 
       SC.recordUpload options, (track) -> 
         storyUrl = "http://storywheel.com/" + track.user.permalink + "/" + track.permalink
@@ -158,47 +121,8 @@ $("#upload").live "click", (e) ->
             
         # post to group
 
-
-
-#nextImage = ->
-#  $nextLi = $("ul.step2-selection li").first()
-#  if $nextLi.length > 0
-#    imageUrl = $nextLi.attr("data-image-url")
-#    showImage(imageUrl)
-#    slides.push({
-#      "imageUrl": imageUrl,
-#      "timestamp": window.recordingPosition;
-#    })
-#    console.log(slides)
-#    $nextLi.remove()
-#    
-#  else
-#    stopRecording()
-#
-stopRecording = ->
-  SC.recordStop();
-  
-  $(".button.nextImage").hide()
-  updateTimer(0);
-  $(".goToStep3").show()
-  setRecorderUIState("reset");
-  $("#timer").hide();
-  
-showImage = (imageUrl) ->
-  $(".slideshow").css("background-image", "url(" + imageUrl + ")")
-  
-
 updateTimer = (ms) ->
   $("#timer").text(SC.Helper.millisecondsToHMS(ms));
-
-setRecorderUIState = (state) ->
-  $("#recordButton").attr("class", state);
-    
-    
-    
-    
-    
-    
     
     
 ####################################################
@@ -235,10 +159,6 @@ window.instagramCallback = () ->
           $("#imageTmpl").tmpl(image).appendTo("ul.all-images");
         $("ul.selection").sortable();
     )
-
-$("#createYourOwn").live "click", (e) ->
-  SW.setState("connect")
-  e.preventDefault()
 
     
     

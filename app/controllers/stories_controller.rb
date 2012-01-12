@@ -11,9 +11,17 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @story }
+    if params[:track].blank?
+      redirect_to root_url
+    else
+
+      sc = Soundcloud.new(:client_id => "YOUR_CLIENT_ID")
+      @track    = sc.get("/resolve", :url => "http://soundcloud.com/#{params[:user]}/#{params[:track]}")
+      @comments = sc.get("#{@track.uri}/comments")
+
+      p @track
+      p @comments
+      render :template => "stories/index"
     end
   end
 
