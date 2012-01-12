@@ -1,2 +1,2 @@
-class Story < ActiveRecord::Base
+class Story
 end
