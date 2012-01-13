@@ -669,13 +669,12 @@ p {
 
 
 /* states */
-body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2, body#record #step2, body#endrecord #step2, body#finalize #step3, body#upload #step3 {
+body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2, body#record #step2, body#endrecord #step2, body#upload #step3 {
   display: block;
 }
 
-body#home .home, body#show .show {
+body#home .home, body#show .show, body#upload .progress, body#record #currentImage, body#endrecord #currentImage, body#show #currentImage {
   display: block;
-  
 }
 
 body#prerecord .recordControls {
@@ -693,7 +692,7 @@ body#prerecord .bottom { height: 1999px; }
 body#record    .bottom { height: 335px; }
 body#endrecord .bottom { height: 335px; }
 body#finalize  .bottom { height: 1999px;  }
-body#upload    .bottom { height: 165px; } 
+body#upload    .bottom { height: 45px; } 
 
 body.record .bottom, body.endrecord .bottom {
   top: 60%;

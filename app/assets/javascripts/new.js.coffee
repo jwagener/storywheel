@@ -92,7 +92,7 @@ $("#goToStep3").live "click", (e) ->
   SW.setState("finalize")
   e.preventDefault()
   
-$("#upload").live "click", (e) ->
+$("#uploadButton").live "click", (e) ->
   e.preventDefault()
   SC.connect
     connected: ->
@@ -102,8 +102,11 @@ $("#upload").live "click", (e) ->
         track: 
           title: title
           sharing: "public"
-
+      SW.setState("upload")
+      $("#progressMessage").text("Uploading...")
       SC.recordUpload options, (track) -> 
+        $("#progressMessage").text("Processing...")
+
         storyUrl = "http://storywheel.com/" + track.user.permalink + "/" + track.permalink
         # update description with link to carousel
         # create comments
@@ -118,8 +121,17 @@ $("#upload").live "click", (e) ->
             }
           }, (comment) ->
             # ignore
-            
-        # post to group
+        
+        SC.put SETTINGS.soundcloudGroup + "/contributions/" + track.id, (contribution) ->
+          #contributed
+        
+        checkState = -> 
+          SC.get track.uri, (track) -> 
+            if track.state == "finished"
+              window.location = track.permalink_url.replace("soundcloud.com", window.location.host)
+            else
+              window.setTimeout(checkState, 2000)
+        window.setTimeout(checkState, 2000)
 
 updateTimer = (ms) ->
   $("#timer").text(SC.Helper.millisecondsToHMS(ms));
