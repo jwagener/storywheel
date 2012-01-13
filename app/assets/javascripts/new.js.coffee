@@ -81,6 +81,7 @@ $(".startRecording").live "click", (e) ->
       showNextImage()
   
     progress: (ms, avgPeak) ->
+      console.log(ms)
       window.recordingPosition = ms;
       updateTimer(ms);
   e.preventDefault()
@@ -110,10 +111,11 @@ $("#uploadButton").live "click", (e) ->
         storyUrl = "http://storywheel.com/" + track.user.permalink + "/" + track.permalink
         # update description with link to carousel
         # create comments
+        i = 0
         $.each slides, ->
-          slide = this;
-          
-          body = "<a href=" + storyUrl + "#" + slide.imageUrl + ">StoryWheel Photo</a>"
+          slide = this
+          i++
+          body = "<a href=" + storyUrl + "#" + slide.imageUrl + ">StoryWheel Picture #" + i + "</a>"
           SC.post track.uri + "/comments", {
             comment: {
               body: body,

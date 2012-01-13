@@ -669,7 +669,7 @@ p {
 
 
 /* states */
-body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2, body#record #step2, body#endrecord #step2, body#upload #step3 {
+body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2, body#record #step2, body#endrecord #step2, body#finalize #step3 {
   display: block;
 }
 
