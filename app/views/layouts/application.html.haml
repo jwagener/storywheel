@@ -15,8 +15,7 @@
             %h1 Story Wheel
             %h2 Tell the story behind your images
             %img{:src => "/carousel.png"}
-            //= link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
-        
+            = link_to 'Create your Story Wheel now!', "/stories/new", :id => "createYourOwn", :class => "button build-your-own"
           .show.hidden
             .cover
               %h1 Johannes
@@ -33,31 +32,39 @@
             //= link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
 
           #currentImage.hidden
-      
+        
+        .stories.hidden
+          %ul 
+            - 25.times do
+              %li
+                %h3
+                  %a{:href => "carousel.html", :style => "background-image: url(http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_5.jpg);"}
+                    %span.user= "Johannes Wagener"
+                    %br
+                    %span= "A trip to boston"
+          .prev
+            <
+          .next
+            >
       .bottom
+        
+        
         .footer
           %ul
             %li
               %a{:href => "/"}
-                %img{:src => "/carousel.png",:width => "20"}
                 Story Wheel
+            %li
+              %a{:href => "/"}
+                About
+
             - # %li
             - #   %a{:href => "/show"}  
             - #     View All
             %li
-              = link_to 'Create your Story Wheel', "/stories/new", :id => "createYourOwn"
             - # %li 
             - #   %a Like
       
-        .stories.hidden
-          %ul 
-            - 5.times do
-              %li
-                %h3
-                  %a{:href => "carousel.html", :style => "background-image: url(http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg);"}
-                    %span.user= "Johannes Wagener"
-                    %br
-                    %span= "A trip to boston"
         
         #step1.step.hidden= render :partial => "new_step1"
         #step2.step.hidden= render :partial => "new_step2"

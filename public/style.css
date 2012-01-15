@@ -13,6 +13,7 @@ hr {display: none; visibility: hidden;}
 body, html {
 	margin: 0;
 	padding: 0;
+	-moz-user-select: none;-webkit-user-select: none; 
 }
 
 html {
@@ -30,14 +31,15 @@ h1, h2 {
 }
 
 h1 {
-	font-size: 80px;
+	font-size: 100px;
+	line-height: 1.1em;
 	margin-top: 40px;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
 }
 
 .bottom h1 {
 	font-size: 60px;
-	margin: 0 0 20px 0;
+	margin: 0 0 30px 0;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
 }
 
@@ -73,7 +75,6 @@ h2 {
 	width: 100%;
 	text-align: center;
 	z-index: 99999999;
-	background: rgba(0,0,0,0.5);
   overflow: hidden;
   max-height: 100%;
   -webkit-transition: height 0.4s linear;
@@ -86,9 +87,9 @@ h2 {
 
 
 .screen.intro {
-  width: 300px;
+  width: 500px;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 8%;
 }
 
 .screen.intro {
@@ -107,12 +108,12 @@ h2 {
 
 
 #currentImage {
-  width: 300px;
-  height: 300px;
+  width: 360px;
+  height: 360px;
   margin: auto;
   background-repeat: no-repeat;
-  margin-top: 100px;
-  background-position: -20px -20px;
+	background-size: 360px;
+  margin-top: 140px;
 }
 
 #outercanvas {
@@ -273,18 +274,31 @@ body.builder {
 	padding: 0px;
 	text-align: left;
 	font-size: 20px;
+	display:  none;
+	background: rgba(0,0,0,0.4);
 }
 
 .footer ul li {
 	float: left;
-	padding: 10px 15px;
-	text-align: left;
-	border-right: 1px solid rgba(255,255,255,0.07);
-	font-size: 20px;
 }
 
 .footer ul li:last-child {
 	border-right: 0;
+}
+
+.footer ul li a {
+	padding: 15px 20px;
+	text-align: left;
+	display: block;
+	border-right: 1px solid rgba(255,255,255,0.10);
+	font-size: 24px;
+	text-decoration: none;
+	-webkit-transition: all 0.2s linear;
+}
+
+.footer ul li a:hover {
+	background: rgba(0,0,0,0.9);
+	border-right: 1px solid rgba(255,255,255,0.15);
 }
 
 .footer a.button {
@@ -299,41 +313,80 @@ body.builder {
 	display: block;
   font-size: 30px;
 	text-decoration: none;
-	background: #384d6e;
-	color: #fff;
+	background: rgba(81,39,42, 1);
+	background: rgba(0,0,0,0.6);
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+	color: #fff !important;
 	width: 240px;
 	margin: 5px auto;
-	padding: 0 7px;
-	border-radius: 2px;
-	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
-	-webkit-transition: background 0.2s linear;
+	padding: 3px 7px;
+	border-radius: 7px;
+	text-shadow: 0 2px 0px rgba(0,0,0,0.5);
+	-webkit-transition: all 0.2s linear;
+	border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 .button:hover {
-	background: #293a55;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
+	border-bottom: 1px solid rgba(255,255,255,0.7);
 }
 
+.button.build-your-own {
+	margin-top: 20px;
+	width: 280px;
+}
 
-
-
+.button.reset {
+	background: none;
+	border: 0; 
+}
 
 /* home stories start */ 
 
 .stories {
 	width: 100%;
-	margin: 0px auto 0px;
-	overflow: scroll;
+	margin: 0px auto 10px;
+	overflow-x: scroll;
+	overflow-y: hidden;
 	height: 120px;
-	border-top: 1px solid rgba(255,255,255, 0.12);
-	background: rgba(0,0,0,0.8);
+	position: absolute;
+	bottom: 55px;
 	padding-bottom: 0px;
 	-webkit-transition: all 0.4s linear;
 	-webkit-transition-delay: 0.5s;
 }
 
+.stories .prev, .stories .next {
+	height: 115px;
+	position: fixed;
+	width: 40px;
+	bottom: 77px;
+	background: rgba(0,0,0,1);
+	font-size: 80px;
+	color: rgba(255,255,255,0.4);
+	-webkit-transition: all 0.4s linear;
+	line-height: 1.3em;
+}
+
+.stories .prev:hover, .stories .next:hover {
+	color: rgba(255,255,255,1);
+}
+
+.stories .prev {
+	left: 0;
+	border-right: 1px solid rgba(255,255,255,0.2);
+	box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.9);
+}
+
+.stories .next {
+	right: 0;
+	border-left: 1px solid rgba(255,255,255,0.2);
+	box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.9);
+}
+
 .stories ul {
-	width: 100000px;
-	padding: 10px 0;
+	width: 10000px;
+	padding: 0px 0 0px 40px;
 }
 .stories ul li {
 	float: left;
@@ -342,17 +395,18 @@ body.builder {
 
 .stories ul li a {
 	display: block;
-	width: 80px;
-	height: 80px;
-	padding: 10px;
+	width: 90px;
+	height: 90px;
+	padding: 5px;
 	margin: 0px 0 0px 10px;
-	opacity: 0.7;
-	background-size: 155px;
+	opacity: 1;
+	background-size: 150px;
 	background-position: 50%;
 	-webkit-transition: all 0.3s ease;
 	text-decoration: none;
-	border-radius: 5px;
-	border-bottom: 1px solid rgba(255,255,255, 0.2);
+	border-radius: 7px;
+	border-bottom: 1px solid rgba(255,255,255, 0.3);
+	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 }
 
 .stories ul li a:hover, .stories ul li a:active {
@@ -365,8 +419,8 @@ body.builder {
 	background: rgba(255,255,255,0);
 	display: inline;
 	color: rgba(0,0,0,0);
-	font-size: 21px;
-	-webkit-transition: all 0.1s ease;
+	font-size: 19px;
+	-webkit-transition: all 0.8s ease;
 }
 
 .stories ul li h3 a span.user {
@@ -383,10 +437,14 @@ body.builder {
 
 /* home stories end */ 
 
-
-
-
-
+.button.connectInstagram {
+	background-image: url(instagram.png);
+	background-repeat: no-repeat;
+	background-position: 14px 8px;
+	text-align: left;
+	padding: 4px 0 4px 52px;
+	width: 200px;
+}
 
 #selection {
 	width: 1000px;
@@ -394,7 +452,7 @@ body.builder {
 }
 
 #selection ul {
-	margin: 0 auto;
+	margin: 0 auto 0px;
 }
 
 #selection ul li {
@@ -411,13 +469,15 @@ body.builder {
 	background-size: 110px;
 	background-position: -7px -7px;
 /*	-webkit-transition: all 0.3s ease;*/
+	-webkit-transition: border 0.3s ease, color 0.3s ease;
 	text-decoration: none;
-	color: rgba(81,103,138, 0);
+	color: rgba(255,255,255, 0);
 	font-family: helvetica, arial, sans-serif;
-	border: 2px dashed rgba(81,103,138, 0.5);
+	border: 2px dashed rgba(255,255,255, 0.4);
 	font-size: 21px;
-	border-radius: 10px;
+	border-radius: 7px;
 	text-align: center;
+	
 }
 
 #selection ul li.image, #selection ul li.image:hover {
@@ -426,13 +486,15 @@ body.builder {
 	padding: 20px 10px 10px;
 	margin: 0 0 20px 20px;
 	opacity: 1;
-	background-size: 105px;
+	background-size: 110px;
 	background-position: 50%;
-	/*-webkit-transition: all 0.3s ease;*/
 	font-family: helvetica, arial, sans-serif;
-	border: 0px dashed rgba(81,103,138, 0.5);
+
 	cursor: move;
-	border-bottom: 1px solid rgba(81,103,138, 1);
+	border: 0;
+	border-bottom: 1px solid rgba(255,255,255, 0.4);
+	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+
 }
 
 #selection ul li.fin {
@@ -460,16 +522,20 @@ body.builder {
 
 #selection ul li:hover {
 	border: 2px dashed rgba(255,255,255, 1);
-	color: rgba(81,103,138, 0.9);
+	color: rgba(255,255,255, 0.9);
+	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	cursor: default;
 }
 
 #images {
 	width: 1000px;
 	margin: 0 auto;
+	padding-top: 20px;
+	height: 90%;
+	overflow: auto;
 }
 
 #images ul {
-
 	margin: 0 auto;
 }
 
@@ -480,7 +546,7 @@ body.builder {
 	height: 18px;
 	padding: 20px;
 	margin: 0 0 20px 20px;
-	opacity: 0.4;
+	opacity: 0.8;
 	background-size: 70px;
 	background-position: 50%;
 	background-color: black;
@@ -490,12 +556,15 @@ body.builder {
 	font-family: helvetica, arial, sans-serif;
 	font-size: 12px;
 	border-radius: 7px;
-	border-bottom: 1px solid rgba(81,103,138, 1);
+	border-bottom: 1px solid rgba(255,255,255, 0.4);
+	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	cursor: pointer;
 }
 
 #images ul li:hover {
 	color: rgba(81,103,138, 0.9);
 	opacity: 1;
+	border-bottom: 1px solid rgba(255,255,255, 0.6);
 }
 
 .view-all {
@@ -508,13 +577,13 @@ body.builder {
 }
 
 .controls {
-	height: 60px;
+	height: 50px;
 	position: fixed;
 	width: 100%;
 	bottom: 0px;
 	left: 0;
 	padding-top: 10px;
-	border-top: 1px solid rgba(81,103,138, 0.2);
+	background: rgba(0,0,0,0.6);
 }
 
 .controls .inner {
@@ -525,14 +594,15 @@ body.builder {
 
 .inner .button {
 	float: right;
-	margin: 7px 0 0 20px;
+	margin: 3px 0 0 20px;
 	width: auto;
 	padding: 0 20px;
 }
 
 
 .button.red {
-  background-color: rgba(100,0,0,1);
+  background-color: rgba(255,255,255,1);
+	color: black !important;
 }
 
 
@@ -636,7 +706,7 @@ body.stories.new .intro .build-your-own {
 .recordControls {
 	height: 260px;
 	width: 300px;
-	background: rgba(81,103,138,0.1);
+	/*background: rgba(81,103,138,0.1);*/
 	padding: 40px 20px;
 	border-radius: 20px;
 	margin: 0 auto 40px;
@@ -645,9 +715,8 @@ body.stories.new .intro .build-your-own {
 
 .recordControls h2 {
 	text-align: center;
-  font-size: 40px;
+  font-size: 30px;
 	margin-bottom: 30px;
-	color: #51678a;
 	margin: 30px 0 30px 0;
 }
 
@@ -685,14 +754,19 @@ body#record #timer, body#endrecord #timer, body#prerecord .startRecording, body#
   display: block;
 }
 
-body#home      .bottom { height: 165px; }
+body#home      .bottom { height: 60px; }
+body#home      .bottom .footer { display: block; }
 body#connect   .bottom { height: 1999px; }
 body#pick      .bottom { height: 1999px; }
 body#prerecord .bottom { height: 1999px; }
-body#record    .bottom { height: 335px; }
-body#endrecord .bottom { height: 335px; }
+body#prerecord .bottom #selection { display: none }
+body#record    .bottom { height: 1999px; }
+body#record    .bottom #selection { display: none }
+body#endrecord .bottom { height: 1999px; }
 body#finalize  .bottom { height: 1999px;  }
 body#upload    .bottom { height: 45px; } 
+
+body#record    .top { position: absolute; z-index: 9999999999; }
 
 body.record .bottom, body.endrecord .bottom {
   top: 60%;
@@ -731,4 +805,13 @@ body.record .bottom, body.endrecord .bottom {
 
 #recorderFlashContainer {
 	z-index: 9999999999;
+}
+
+
+ul::after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
 }
