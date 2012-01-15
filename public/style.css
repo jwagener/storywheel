@@ -278,6 +278,19 @@ body.builder {
 	background: rgba(0,0,0,0.4);
 }
 
+.footer .labs {
+	background-color: white;
+	background-image: url('labs.png');
+	background-repeat: no-repeat;
+	background-position: 8px 5px;
+	position: absolute;
+	width: 170px;
+	right: 0;
+	border-top-left-radius: 7px;
+	bottom: 0;
+	text-indent: -9999px;
+}
+
 .footer ul li {
 	float: left;
 }
@@ -315,7 +328,7 @@ body.builder {
 	text-decoration: none;
 	background: rgba(81,39,42, 1);
 	background: rgba(0,0,0,0.6);
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 	color: #fff !important;
 	width: 240px;
 	margin: 5px auto;
@@ -327,8 +340,7 @@ body.builder {
 }
 
 .button:hover {
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
-	border-bottom: 1px solid rgba(255,255,255,0.7);
+	border-bottom: 1px solid rgba(255,255,255,0.5);
 }
 
 .button.build-your-own {
@@ -336,9 +348,15 @@ body.builder {
 	width: 280px;
 }
 
-.button.reset {
+a.button.reset {
 	background: none;
 	border: 0; 
+	-webkit-transition: all 0.2s linear;
+	color: rgba(255,255,255,0.4) !important;
+}
+
+a.button.reset:hover {
+	color: rgba(255,255,255,0.9) !important;
 }
 
 /* home stories start */ 
@@ -601,8 +619,13 @@ body.builder {
 
 
 .button.red {
-  background-color: rgba(255,255,255,1);
-	color: black !important;
+  background-color: rgba(150,0,0,1);
+	color: white !important;
+}
+
+.button.red:active {
+  background-color: rgba(100,0,0,1);
+	color: white !important;
 }
 
 
@@ -784,7 +807,7 @@ body.record .bottom, body.endrecord .bottom {
 #recordButton {
 	display: block;
 	text-decoration: none;
-	background: rgba(205,0,0,1);
+	background: #c00;
 	width: 120px;
 	height: 120px;
 	border-radius: 60px;
@@ -792,14 +815,23 @@ body.record .bottom, body.endrecord .bottom {
 	line-height: 120px;
 	margin: 0px auto;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
+	-webkit-transition: border 9s ease;
+	border-bottom: 1px solid rgba(255,255,255, 0.6);
+	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+}
+
+#recordButton:hover {
+	background: #f00;
+	border-bottom: 1px solid rgba(255,255,255, 0.8);
+	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 }
 
 #timer {
   border-radius: 20px;
-  border: 10px solid rgba(100, 0, 0, 1);
-  background-color: rgba(100, 0, 0, 1);
+  border: 10px solid rgba(205, 0, 0, 1);
+  background-color: rgba(205, 0, 0, 1);
   float: left;
-  margin-top: 4px;
+  margin-top: 2px;
   margin-right: 10px;
 }
 
