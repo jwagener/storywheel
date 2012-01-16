@@ -6,10 +6,10 @@
     - # %li.filled{:style => "background-image: url('http://distilleryimage11.instagram.com/e932f4340d3e11e1abb01231381b65e3_7.jpg')"}
     - 8.times do
       %li.empty
-        %span Click pictures below to add
-  %div{:style => "clear: left;"}
+        %span Select images below
+    
 
-%a.button.red.connectInstagram{:href => ""} Connect to Instagram
+%a.button.connectInstagram{:href => ""} Connect to Instagram
 
 #images
   %script{id: "imageTmpl", type:"text/x-jquery-tmpl"}
@@ -30,4 +30,4 @@
 .controls
   .inner
     %a.button.save.red.goToStep2{:href => ""} Go To The Next Step!
-    %a.button.reset{:href => "/stories/new"} Reset
+    %a.button.reset{:href => "/"} Cancel

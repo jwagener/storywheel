@@ -2,7 +2,7 @@
 
 .recordControls.hidden
   %a#recordButton.startRecording.reset{href: ""} REC
-  %h2 Hit the REC button and tell your story.
+  %h2 Hit the REC button and start to tell your story image by image.
 
 .clear
 
@@ -13,8 +13,10 @@
 
 .controls
   .inner
-    %span#timer.hidden 0.00
+    %span#timer.hidden 
+      0.00
+      
     %a.button.save.red.startRecording.hidden{:href => ""} Start Recording
     %a#nextPicture.button.save.red.hidden{:href => "", :title => "Hit space"} Show Next Picture
     %a#goToStep3.button.save.red.hidden{:href => ""} Stop Recording
-    %a.button.reset{:href => "/stories/new"} Reset
+    %a.button.reset{:href => "/stories/new"} Cancel
