@@ -4,6 +4,8 @@ $ ->
       $.each tracks, ->
         track = this
         track.story_url = track.permalink_url.replace("http://soundcloud.com", "")
+
+        track.artwork_url = track.tag_list.match(/storywheel:image=(.*)/)[1]
         $("#storyTmpl").tmpl(track).appendTo(".stories ul");
 
 $("#play").live "click", (e) ->

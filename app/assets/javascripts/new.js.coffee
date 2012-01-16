@@ -93,6 +93,7 @@ $("#uploadButton").live "click", (e) ->
       options =
         track: 
           title: title
+          tag_list: "storywheel:image=" + slides[0].imageUrl
           sharing: "public"
       SW.setState("upload")
       $("#progressMessage").text("Uploading...")
