@@ -14,7 +14,7 @@ SETTINGS =
 if window.location.host != "localhost:3000"
   SETTINGS.soundcloud = 
     client_id: "732fa8e77cc2fe02a4a9edfe5f76135d"
-    redirect_uri: "http://pure-sunrise-5956.herokuapp.com/callback.html"
+    redirect_uri: "http://storywheel.cc/callback.html"
     
   
 
