@@ -5,16 +5,6 @@
 slides = []
 window.recordingPosition = 0
 
-SETTINGS = 
-  soundcloud:
-    client_id: "3a57e26203bc5210285a02f8eee95d91"
-    redirect_uri: "http://localhost:3000/callback.html"
-  soundcloudGroup: "/groups/59904"
-    
-if window.location.host != "localhost:3000"
-  SETTINGS.soundcloud = 
-    client_id: "732fa8e77cc2fe02a4a9edfe5f76135d"
-    redirect_uri: "http://pure-sunrise-5956.herokuapp.com/callback.html"
     
   
 
@@ -47,8 +37,9 @@ showNextImage = ->
   $img = $("#selection li.image").first()
   SW.showImage($img.attr("data-image-url"))
   slides.push
-    imageUrl: $img.attr("data-image-url") 
-    timestamp: window.recordingPosition
+    imageUrl: $img.attr("data-image-url")
+    timestamp: Recorder.flashInterface().recordingDuration()
+
   $img.remove()
   if $("#selection li.image").length == 0
     SW.setState("endrecord")
@@ -81,7 +72,6 @@ $(".startRecording").live "click", (e) ->
       showNextImage()
   
     progress: (ms, avgPeak) ->
-      console.log(ms)
       window.recordingPosition = ms;
       updateTimer(ms);
   e.preventDefault()
@@ -94,6 +84,7 @@ $("#goToStep3").live "click", (e) ->
   e.preventDefault()
   
 $("#uploadButton").live "click", (e) ->
+  SC.options.site = "soundcloud.com" # TODO remove
   e.preventDefault()
   SC.connect
     connected: ->
@@ -118,7 +109,7 @@ $("#uploadButton").live "click", (e) ->
           body = "<a href=" + storyUrl + "#" + slide.imageUrl + ">StoryWheel Picture #" + i + "</a>"
           SC.post track.uri + "/comments", {
             comment: {
-              body: body,
+              body: body + slide.debug,
               timestamp: slide.timestamp
             }
           }, (comment) ->

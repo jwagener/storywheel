@@ -1,7 +1,7 @@
 Storywheel::Application.routes.draw do
   root to: "stories#index"
   instragram_url = if Rails.env == "production"
-    "https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://pure-sunrise-5956.herokuapp.com/instagram-callback.html&response_type=token"
+    "https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://storywheel.cc/instagram-callback.html&response_type=token"
   else
     "https://instagram.com/oauth/authorize/?client_id=c8b97e3a8e3f4cfe8274ad1c26da1d77&redirect_uri=http://localhost:3000/instagram-callback.html&response_type=token"
   end

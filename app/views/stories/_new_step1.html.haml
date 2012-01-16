@@ -12,6 +12,15 @@
 %a.button.connectInstagram{:href => ""} Connect to Instagram
 
 #images
+  %script{id: "storyTmpl", type:"text/x-jquery-tmpl"}
+    %li
+      %h3
+        %a{:href => "${story_url}", :style => "background-image: url(${artwork_url});"}
+          %span.user= "${user.username}"
+          %br
+          %span= "${title}"
+
+
   %script{id: "imageTmpl", type:"text/x-jquery-tmpl"}
     %li.image{:style => "background-image: url('${thumbnail_url}')", "data-image-url" => "${url}"}
       .hidden
