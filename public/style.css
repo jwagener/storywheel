@@ -280,12 +280,12 @@ body.builder {
 }
 
 .footer .labs {
-	background-color: white;
+	background-color: #333;
 	background-image: url('labs.png');
 	background-repeat: no-repeat;
-	background-position: 8px 5px;
+	background-position: 10px 6px;
 	position: absolute;
-	width: 170px;
+	width: 150px;
 	right: 0;
 	border-top-left-radius: 7px;
 	bottom: 0;
@@ -296,11 +296,8 @@ body.builder {
 	float: left;
 }
 
-.footer ul li:last-child {
-	border-right: 0;
-}
 
-.footer ul li a {
+.footer ul li a, .footer ul li.social {
 	padding: 15px 20px;
 	text-align: left;
 	display: block;
@@ -308,6 +305,16 @@ body.builder {
 	font-size: 24px;
 	text-decoration: none;
 	-webkit-transition: all 0.2s linear;
+}
+
+.footer ul li.social iframe {
+	padding: 5px 0;
+	width: 85px !important;
+	float: left;
+}
+
+.footer ul li:last-child  {
+	border-right: 0;
 }
 
 .footer ul li a:hover {
