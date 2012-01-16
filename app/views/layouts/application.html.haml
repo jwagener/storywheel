@@ -17,12 +17,12 @@
             %img{:src => "/carousel.png"}
             = link_to 'Create your Story Wheel now!', "/stories/new", :id => "createYourOwn", :class => "button build-your-own"
           .show.hidden
-            .cover
+            .cover#play
               %h1 Johannes
               %h2 My Trip To Boston
               %img{:src => "/carousel.png"}
 
-            %a#play.button{:href => "#"} Play!
+              %a.button{:href => "#"} Play this Story Wheel!
 
           .progress.hidden
             %h1 Story Wheel

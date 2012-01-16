@@ -114,7 +114,7 @@ h2 {
   margin: auto;
   background-repeat: no-repeat;
 	background-size: 360px;
-  margin-top: 140px;
+  margin-top: 80px;
 }
 
 #outercanvas {
@@ -360,6 +360,10 @@ body.builder {
 .button.build-your-own {
 	margin-top: 20px;
 	width: 280px;
+}
+
+#play:hover {
+	cursor: pointer;
 }
 
 .reset a.button.cancel {
@@ -770,7 +774,7 @@ body.stories.new .intro .build-your-own {
 	height: 260px;
 	width: 300px;
 	/*background: rgba(81,103,138,0.1);*/
-	padding: 40px 20px;
+	padding: 10px 20px 40px;
 	border-radius: 20px;
 	margin: 0 auto 40px;
   -webkit-transition: height 0.4s linear;
@@ -820,6 +824,7 @@ body#record #timer, body#endrecord #timer, body#prerecord .startRecording, body#
 body#home      .bottom { height: 60px; }
 body#home      .bottom .footer { display: block; }
 body#show      .bottom .footer { display: block; }
+body#play      .bottom .footer { display: block; }
 body#connect   .bottom { height: 1999px; }
 body#pick      .bottom { height: 1999px; }
 body#prerecord .bottom { height: 1999px; }
@@ -835,7 +840,7 @@ body.record .bottom, body.endrecord .bottom {
   top: 60%;
 }
 
-body#home .about, body#show .about, body#connect .about, body#pick .about, body#prerecord .about, body#record .about, body#endrecord .about, body#finalize .about, body#upload .about {
+body#home .about, body#show .about, body#connect .about, body#pick .about, body#prerecord .about, body#record .about, body#endrecord .about, body#finalize .about, body#upload .about, body#play .about {
 	display: none;
 }
 
@@ -884,9 +889,10 @@ body#home.about .bottom .about h1, body#show.about .bottom .about h1  {
 	line-height: 120px;
 	margin: 0px auto;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
-	-webkit-transition: border 9s ease;
 	border-bottom: 1px solid rgba(255,255,255, 0.6);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	-webkit-transition: all 0.2s linear;
+	cursor: pointer;
 }
 
 #recordButton:hover {
