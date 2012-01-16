@@ -17,6 +17,7 @@ $("#play").live "click", (e) ->
         offset += limit
         addCommentsAndPlay(stream)
       else
+        SW.setState("play")
         stream.play()
 
         

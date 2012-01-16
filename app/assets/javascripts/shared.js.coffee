@@ -5,7 +5,7 @@ window.SW =
     $("#currentImage").css("background-image", "url("+imageUrl+")")
 
   setState: (state) ->
-    states = ["home", "connect", "pick", "prerecord", "record", "endrecord", "finalize", "upload"]
+    states = ["home", "connect", "pick", "prerecord", "record", "endrecord", "finalize", "upload", "show", "play"]
     $("body").attr("id", state)
     #$("body").removeClass(s) for s in states
     #$("body").addClass(state)
