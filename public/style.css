@@ -362,16 +362,39 @@ body.builder {
 	width: 280px;
 }
 
-a.button.reset {
+.reset a.button.cancel {
 	background: none;
 	border: 0; 
 	-webkit-transition: all 0.2s linear;
 	color: rgba(255,255,255,0.4) !important;
 }
 
-a.button.reset:hover {
+.reset a.button.cancel:hover {
 	color: rgba(255,255,255,0.9) !important;
 }
+
+.reset.really a.button.cancel {
+	display: none;
+}
+
+.reset.really a.button {
+	background: #333;
+	margin-left: 8px;
+}
+
+.reset.really span {
+	  float: right;
+		text-align: center;
+	  font-size: 30px;
+		text-decoration: none;
+		background: rgba(81,39,42, 1);
+		background: rgba(0,0,0,0.6);
+		box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+		color: #fff !important;
+		margin: 1px auto;
+		padding: 0px 7px;
+}
+
 
 /* home stories start */ 
 
@@ -620,7 +643,7 @@ a.button.reset:hover {
 
 .controls .inner {
 	position: relative;
-	width: 920px;
+	width: 910px;
 	margin: 0 auto;
 }
 
@@ -642,6 +665,9 @@ a.button.reset:hover {
 	color: white !important;
 }
 
+.button.red.disabled {
+	display: none;
+}
 
 .slideControls {
   width: 120px
@@ -809,8 +835,16 @@ body.record .bottom, body.endrecord .bottom {
   top: 60%;
 }
 
+body#home .about, body#show .about, body#connect .about, body#pick .about, body#prerecord .about, body#record .about, body#endrecord .about, body#finalize .about, body#upload .about {
+	display: none;
+}
+
 body#home.about .top, body#show.about .top {
 	display: none;
+}
+
+body#home.about .about, body#show.about .about {
+	display: block !important;
 }
 
 body#home.about .bottom, body#show.about .bottom { 

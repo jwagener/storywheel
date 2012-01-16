@@ -39,4 +39,9 @@
 .controls
   .inner
     %a.button.save.red.goToStep2{:href => ""} Go To The Next Step!
-    %a.button.reset{:href => "/"} Cancel
+    %span.reset.really
+      %a.button.cancel{:href => "/"} Cancel
+      %span.sure
+        %a.button.sure.yes{:href => "/"} Yes
+        %a.button.sure.no{:href => "/"} No
+        %span Are You sure?
