@@ -803,11 +803,31 @@ body#record    .bottom #selection { display: none }
 body#endrecord .bottom { height: 1999px; }
 body#finalize  .bottom { height: 1999px;  }
 body#upload    .bottom { height: 45px; } 
-
 body#record    .top { position: absolute; z-index: 9999999999; }
 
 body.record .bottom, body.endrecord .bottom {
   top: 60%;
+}
+
+body#home.about .top, body#show.about .top {
+	display: none;
+}
+
+body#home.about .bottom, body#show.about .bottom { 
+		height: 1999px !important; 
+}
+
+body#home.about .bottom .about, body#show.about .bottom .about  { 
+		border-top: 1px solid rgba(255,255,255,0.1);
+		height: 1999px !important; 
+		background: rgba(0,0,0,0.3);
+		height: 19999px;
+		margin-top: -1px;
+		padding: 100px 0;
+}
+
+body#home.about .bottom .about h1, body#show.about .bottom .about h1  {
+	font-size: 120px;
 }
 
 /* states end */
