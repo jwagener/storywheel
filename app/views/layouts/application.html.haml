@@ -15,9 +15,9 @@
             %h1 Story Wheel
             %h2 Tell the story behind your images
             %img{:src => "/carousel.png"}
-            = link_to 'Create your Story Wheel now!', "/stories/new", :id => "createYourOwn", :class => "button build-your-own"
+            = link_to 'Create your Story Wheel now!', "/stories/new", :class => "button build-your-own"
           .show.hidden
-            .cover#play
+            .cover#playButton
               %h1 Johannes
               %h2 My Trip To Boston
               %img{:src => "/carousel.png"}
@@ -44,17 +44,9 @@
         
         .footer
           %ul
-            %li
-              %a{:href => "/"}
-                Story Wheel
-
-            %li
-              %a{:href => ""}
-                Create your Story Wheel
-            %li
-              %a.aboutLink{:href => "/"}
-                About
-
+            %li= link_to "Story Wheel", "/"
+            %li= link_to "Create your Story Wheel", "#", :class => "build-your-own"
+            %li= link_to "About", "#", :class => "aboutLink"
             %li.social
               <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

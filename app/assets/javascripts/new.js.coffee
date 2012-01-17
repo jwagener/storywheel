@@ -16,7 +16,7 @@ $ ->
   accessToken = uri.fragment.access_token;
    
 
-$("#createYourOwn").live "click", (e) ->
+$(".build-your-own").live "click", (e) ->
   SW.setState("connect")
   e.preventDefault()
 
