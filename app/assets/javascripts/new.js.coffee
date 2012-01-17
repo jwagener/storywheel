@@ -93,8 +93,8 @@ $("#uploadButton").live "click", (e) ->
       options =
         track: 
           title: title
-          tag_list: "storywheel:image=" + slides[0].imageUrl # use 150_150
-          sharing: "public"
+          tag_list: "storywheel:image=" + slides[0].imageUrl # TODO use 150_150
+          shared_to: {connections: [no: 0]}
       SW.setState("upload")
       $("#progressMessage").text("Uploading...")
       SC.recordUpload options, (track) -> 
@@ -110,7 +110,7 @@ $("#uploadButton").live "click", (e) ->
           body = "<a href=" + storyUrl + "#" + slide.imageUrl + ">StoryWheel Picture #" + i + "</a>"
           SC.post track.uri + "/comments", {
             comment: {
-              body: body + slide.debug,
+              body: body,
               timestamp: slide.timestamp
             }
           }, (comment) ->

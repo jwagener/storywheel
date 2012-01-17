@@ -817,7 +817,7 @@ body#home .home, body#show .show, body#upload .progress, body#record #currentIma
   display: block;
 }
 
-body#prerecord .recordControls, body#pick #selection, body#connect .connectInstagram {
+body#prerecord .recordControls, body#pick #selection, body#connect .connectInstagram, body#about .about {
   display: block;
 }
 
@@ -839,25 +839,10 @@ body#endrecord .bottom { height: 1999px; }
 body#finalize  .bottom { height: 1999px;  }
 body#upload    .bottom { height: 45px; } 
 body#record    .top { position: absolute; z-index: 9999999999; }
+body#about    .bottom { height: 1999px; }
 
 body.record .bottom, body.endrecord .bottom {
   top: 60%;
-}
-
-body#home .about, body#show .about, body#connect .about, body#pick .about, body#prerecord .about, body#record .about, body#endrecord .about, body#finalize .about, body#upload .about, body#play .about {
-	display: none;
-}
-
-body#home.about .top, body#show.about .top {
-	display: none;
-}
-
-body#home.about .about, body#show.about .about {
-	display: block !important;
-}
-
-body#home.about .bottom, body#show.about .bottom { 
-		height: 1999px !important; 
 }
 
 body#home.about .bottom .about, body#show.about .bottom .about  { 

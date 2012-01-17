@@ -37,3 +37,6 @@ $(".reset .no").live "click", (e) ->
   $(this).closest(".reset").removeClass("really")
   e.preventDefault()
 
+$(".aboutLink").live "click", (e) ->
+  SW.setState("about")
+  e.preventDefault()

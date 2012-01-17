@@ -35,13 +35,6 @@
         
         .stories.hidden
           %ul 
-            - 0.times do
-              %li
-                %h3
-                  %a{:href => "carousel.html", :style => "background-image: url(http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_5.jpg);"}
-                    %span.user= "Johannes Wagener"
-                    %br
-                    %span= "A trip to boston"
           .prev
             <
           .next
@@ -59,7 +52,7 @@
               %a{:href => ""}
                 Create your Story Wheel
             %li
-              %a{:href => "/"}
+              %a.aboutLink{:href => "/"}
                 About
 
             %li.social
@@ -71,9 +64,11 @@
           %a{:href => "http://soundcloudlabs.com", :class => "labs"}
             SoundCloud Labs
         
-        .about
-          %h1 hello hello
+        .about.hidden
+          %h1 About StoryWheel
 
+          StoryWheel was created by <a href="http://twitter.com/johannewagener">Johannes Wagener</a> &amp; Katharina Birkenbach. It initially got started at the MusicHackDay in Boston 2012.
+          It's using the SoundCloud API to store the recordings of each story.
         
         #step1.step.hidden= render :partial => "new_step1"
         #step2.step.hidden= render :partial => "new_step2"
