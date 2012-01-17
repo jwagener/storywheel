@@ -8,6 +8,7 @@
     - if @track.present?
       %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json};"
   %body{:id => (@track.present? ? "show" : "home")}
+    #preload.hidden
     #page
       .top
         .screen.intro
