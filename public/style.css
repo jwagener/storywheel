@@ -118,6 +118,12 @@ h2 {
   opacity: 0.9;
 }
 
+body#record #currentImage, body#endrecord #currentImage {
+	margin-top: 140px;
+	padding-top: 370px;
+	font-size: 30px;
+}
+
 #outercanvas {
   position: absolute;
   width: 100%;
@@ -676,6 +682,13 @@ a.labs:hover {
 	margin: 0 auto;
 }
 
+.controls .inner .help {
+	text-align: center;
+	font-size: 30px;
+	display: inline;
+	padding-top: 3px;
+}
+
 .inner .button {
 	float: right;
 	margin: 3px 0 0 20px;
@@ -891,6 +904,7 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 
 #recordButton {
 	display: block;
+	float: none !important;
 	text-decoration: none;
 	background: #c00;
 	width: 120px;
@@ -913,10 +927,12 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 }
 
 #timer {
-  border-radius: 20px;
+  border-radius: 50px;
   border: 10px solid rgba(205, 0, 0, 1);
   background-color: rgba(205, 0, 0, 1);
   float: left;
+	width: 40px;
+	height: 40px;
   margin-top: 2px;
   margin-right: 10px;
 }

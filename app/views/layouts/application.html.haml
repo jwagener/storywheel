@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 %html
   %head
-    %title StoryWheel
+    %title Story Wheel
     = stylesheet_link_tag    "/style.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
     = javascript_include_tag "application", "http://connect.soundcloud.com/sdk.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"
     = csrf_meta_tags
@@ -33,6 +33,9 @@
             //= link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
 
           #currentImage.hidden
+            %span#timer.hidden 
+              0.00
+            
         
         .stories.hidden
           %ul 
