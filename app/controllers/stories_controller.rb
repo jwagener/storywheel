@@ -24,7 +24,7 @@ class StoriesController < ApplicationController
         logger.info "SC GET: #{permalink}/comments"
         sc.get("#{@track.uri}/comments")
       end
-
+      
       render :template => "stories/index"
     end
   end
