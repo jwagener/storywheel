@@ -115,6 +115,7 @@ h2 {
   background-repeat: no-repeat;
 	background-size: 360px;
   margin-top: 80px;
+  opacity: 0.9;
 }
 
 #outercanvas {

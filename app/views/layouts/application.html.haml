@@ -17,12 +17,13 @@
             %img{:src => "/carousel.png"}
             = link_to 'Create your Story Wheel now!', "/stories/new", :class => "button build-your-own"
           .show.hidden
-            .cover#playButton
-              %h1 Johannes
-              %h2 My Trip To Boston
-              %img{:src => "/carousel.png"}
+            - if @track
+              .cover#playButton
+                %h1= @track.user.username
+                %h2= @track.title
+                %img{:src => "/carousel.png"}
 
-              %a.button{:href => "#"} Play this Story Wheel!
+                %a.button{:href => "#"} Play this Story Wheel!
 
           .progress.hidden
             %h1 Story Wheel
@@ -53,7 +54,7 @@
             %li.social              
               <iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=82985198723" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
 
-          %a{:href => "http://soundcloudlabs.com", :class => "labs"}
+          %a{:href => "http://soundcloudlabs.com", :class => "labs", :target => "_blank"}
             SoundCloud Labs
         
         .about.hidden
@@ -61,6 +62,8 @@
 
           StoryWheel was created by <a href="http://twitter.com/johannewagener">Johannes Wagener</a> &amp; Katharina Birkenbach. It initially got started at the MusicHackDay in Boston 2012.
           It's using the SoundCloud API to store the recordings of each story.
+
+          Background music is picked from http://soundcloud.com/tags/soundscape?creativecommons=1
         
         #step1.step.hidden= render :partial => "new_step1"
         #step2.step.hidden= render :partial => "new_step2"

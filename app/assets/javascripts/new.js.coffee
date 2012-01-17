@@ -50,7 +50,7 @@ showNextImage = ->
 $(".goToStep2").live "click", (e) ->
   if $("ul.selection li.image").length > -1
     $("ul.selection li.image").appendTo("ul.step2-selection");
-    $("<li class='empty fin'><span>Fin</span></li>").appendTo("ul.step2-selection");
+    #$("<li class='empty fin'><span>Fin</span></li>").appendTo("ul.step2-selection");
   else
     alert("Pick some photos first")
   SW.setState("prerecord")
@@ -90,10 +90,14 @@ $("#uploadButton").live "click", (e) ->
     connected: ->
       title = $("#title").val()
       title = "A story" if title == ""
+      tags = []
+      tags.push("storywheel:image=" + slides[0].imageUrl) # TODO use 150_150
+      tags.push("storywheel:backgroundTrackId=" + ($("#backgroundTrackId").val() || ""));
+      
       options =
         track: 
           title: title
-          tag_list: "storywheel:image=" + slides[0].imageUrl # TODO use 150_150
+          tag_list: tags.join(" ") 
           shared_to: {connections: [no: 0]}
       SW.setState("upload")
       $("#progressMessage").text("Uploading...")
@@ -134,6 +138,10 @@ updateTimer = (ms) ->
 ####################################################
 ################# NEW STUFF ########################
 
+$(".emotion .button").live "click", (e) ->
+  $(this).toggleClass("red").siblings().removeClass("red")
+  e.preventDefault()
+
 $(".connectInstagram").live 'click', (e) ->
   e.preventDefault()
   instagramUrl = "/connect-instagram"
@@ -156,7 +164,7 @@ window.instagramCallback = () ->
     #$(".connectInstagram").hide()
     $.ajax(
       dataType: "JSONP"
-      url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=24&access_token=" + window.instagramToken
+      url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=48&access_token=" + window.instagramToken
       success: (r) ->
         $.each r.data, -> 
           image = 

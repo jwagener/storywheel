@@ -16,7 +16,7 @@ class StoriesController < ApplicationController
     else
       sc = Soundcloud.new(:client_id => "YOUR_CLIENT_ID")
       permalink = "#{params[:user]}/#{params[:track]}"
-      @track    = cache_store.fetch permalink do
+      @track    = cache_store.fetch permalink, :force => true do
         logger.info "SC GET: #{permalink}"
         sc.get("/resolve", :url => "http://soundcloud.com/#{permalink}")
       end
