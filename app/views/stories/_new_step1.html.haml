@@ -1,7 +1,7 @@
 %a.connect.hidden{:href => "https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://carousel.ponyho.st/builder.html&response_type=token"} Connect to instagram
 %h1 Pick your images 
 
-#selection
+#selection.hidden
   %ul.selection
     - # %li.filled{:style => "background-image: url('http://distilleryimage11.instagram.com/e932f4340d3e11e1abb01231381b65e3_7.jpg')"}
     - 8.times do
@@ -9,7 +9,7 @@
         %span Select images below
     
 
-%a.button.connectInstagram{:href => ""} Connect to Instagram
+%a.button.connectInstagram.hidden{:href => ""} Connect to Instagram
 
 #images
   %script{id: "storyTmpl", type:"text/x-jquery-tmpl"}
@@ -36,12 +36,4 @@
 
   - # %div{:style => "clear: left;"}
   - #   <a href="" class="view-all">Load more images</a>
-.controls
-  .inner
-    %a.button.save.red.goToStep2{:href => ""} Go To The Next Step!
-    %span.reset.really
-      %a.button.cancel{:href => "/"} Cancel
-      %span.sure
-        %a.button.sure.yes{:href => "/"} Yes
-        %a.button.sure.no{:href => "/"} No
-        %span Are You sure?
+= render :partial => "stories/bottom_controls"

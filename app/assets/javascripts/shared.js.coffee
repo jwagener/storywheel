@@ -28,3 +28,12 @@ window.SW =
 #       -> background_audio
 #
 #
+
+$(".cancel").live "click", (e) ->
+  $(this).closest(".reset").addClass("really")
+  e.preventDefault()
+
+$(".reset .no").live "click", (e) ->
+  $(this).closest(".reset").removeClass("really")
+  e.preventDefault()
+

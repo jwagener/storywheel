@@ -381,6 +381,10 @@ body.builder {
 	display: none;
 }
 
+.reset.really .sure {
+  display: block;
+}
+
 .reset.really a.button {
 	background: #333;
 	margin-left: 8px;
@@ -813,7 +817,7 @@ body#home .home, body#show .show, body#upload .progress, body#record #currentIma
   display: block;
 }
 
-body#prerecord .recordControls {
+body#prerecord .recordControls, body#pick #selection, body#connect .connectInstagram {
   display: block;
 }
 

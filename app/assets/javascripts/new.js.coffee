@@ -93,7 +93,7 @@ $("#uploadButton").live "click", (e) ->
       options =
         track: 
           title: title
-          tag_list: "storywheel:image=" + slides[0].imageUrl
+          tag_list: "storywheel:image=" + slides[0].imageUrl # use 150_150
           sharing: "public"
       SW.setState("upload")
       $("#progressMessage").text("Uploading...")
@@ -152,7 +152,8 @@ window.instagramCallback = () ->
     throw new Error(uri.query.error)
   else
     window.instagramToken = uri.fragment.access_token
-    $(".connectInstagram").hide()
+    SW.setState("pick")
+    #$(".connectInstagram").hide()
     $.ajax(
       dataType: "JSONP"
       url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=24&access_token=" + window.instagramToken
