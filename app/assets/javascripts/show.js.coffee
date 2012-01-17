@@ -17,7 +17,7 @@ $("#playButton").live "click", (e) ->
     #SC.get "/tracks/" + track.id + "/comments", {"limit": limit, "offset": offset}, (comments) -> 
 
     for comment in comments
-      if comment.user_id == track.user_id && comment.body.match(/storywheel.com/)
+      if comment.user_id == track.user_id && comment.body.match(/storywheel.(com|cc)/)
         stream.onposition comment.timestamp, () ->
           url = this.body.match(/#([^>]*)\>/)[1]
           SW.showImage(url)

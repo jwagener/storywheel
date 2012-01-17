@@ -100,7 +100,7 @@ $("#uploadButton").live "click", (e) ->
       SC.recordUpload options, (track) -> 
         $("#progressMessage").text("Processing...")
 
-        storyUrl = "http://storywheel.com/" + track.user.permalink + "/" + track.permalink
+        storyUrl = "http://storywheel.cc/" + track.user.permalink + "/" + track.permalink
         # update description with link to carousel
         # create comments
         i = 0
