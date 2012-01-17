@@ -847,7 +847,7 @@ body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2
   display: block;
 }
 
-body#home .home, body#show .show, body#upload .progress, body#record #currentImage, body#endrecord #currentImage, body#play #currentImage {
+body#home .home, body#show .show, body#show #currentImage, body#upload .progress, body#record #currentImage, body#endrecord #currentImage, body#play #currentImage {
   display: block;
 }
 
@@ -894,7 +894,6 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
   font-size: 24px;
   margin-top: 100px;
 }
-
 
 /* TODO remove */
 .whileRecording {
