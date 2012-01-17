@@ -17,8 +17,8 @@ body, html {
 }
 
 html {
-	background-color: #080822;
-	background-image: url(bg.png);
+	background-color: #000;
+	background-image: url(bg.jpg);
 	background-position: 50%;
 	background-size: cover;
 	background-repeat: no-repeat;
