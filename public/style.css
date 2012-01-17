@@ -282,22 +282,21 @@ body.builder {
 }
 
 a.labs {
-	background: #222;
+	background-color: rgba(60,60,60,0.7);
 	background-image: url('labs.png');
 	background-repeat: no-repeat;
 	background-position: 10px 6px;
-
 	position: absolute;
 	width: 150px;
 	right: 0;
 	border-top-left-radius: 7px;
 	bottom: 0;
 	text-indent: -9999px;
-	-webkit-transition: all 0.8s linear;
+	-webkit-transition: all 0.2s linear;
 }
 
 a.labs:hover {
-	background-color: #333;
+	background-color: rgba(60,60,60,0.6);
 }
 
 .footer ul li {
@@ -368,6 +367,19 @@ a.labs:hover {
 	cursor: pointer;
 }
 
+.reset {
+	display: block;
+	float: right;
+	width: 100px;
+	height: 43px;
+	overflow: hidden;
+	-webkit-transition: width 0.2s linear;
+}
+
+.reset.really {
+	width: 270px;
+}
+
 .reset a.button.cancel {
 	background: none;
 	border: 0; 
@@ -388,8 +400,15 @@ a.labs:hover {
 }
 
 .reset.really a.button {
-	background: #333;
+	background: rgba(60,60,60,1);
 	margin-left: 8px;
+	cursor: pointer;
+	-webkit-transition: all 0.2s linear;
+}
+
+.reset.really a.button:hover {
+	background: rgba(60,60,60,0.8);
+	cursor: pointer;
 }
 
 .reset.really span {
