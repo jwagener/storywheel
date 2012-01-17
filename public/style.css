@@ -281,21 +281,22 @@ body.builder {
 	background: rgba(0,0,0,0.4);
 }
 
-.footer .labs {
-	background-color: #222;
+a.labs {
+	background: #222;
 	background-image: url('labs.png');
 	background-repeat: no-repeat;
 	background-position: 10px 6px;
+
 	position: absolute;
 	width: 150px;
 	right: 0;
 	border-top-left-radius: 7px;
 	bottom: 0;
 	text-indent: -9999px;
+	-webkit-transition: all 0.8s linear;
 }
 
-.footer .labs:hover {
-	-webkit-transition: background-color 0.2s linear;
+a.labs:hover {
 	background-color: #333;
 }
 
@@ -846,12 +847,12 @@ body.record .bottom, body.endrecord .bottom {
   top: 60%;
 }
 
-
-
 body#home.about .bottom .about h1, body#show.about .bottom .about h1  {
 	font-size: 120px;
 }
 
+body#about .bottom .footer { display: block; border-bottom: 1px solid rgba(255,255,255,0.1);}
+body#about .bottom { background: rgba(0,0,0,0.4)}
 /* states end */
 
 
