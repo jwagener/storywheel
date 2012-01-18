@@ -17,7 +17,7 @@
           .home.hidden
             %h1 Story Wheel
             %h2 Tell the story behind your images
-            %img{:src => "/carousel.png"}
+            %img#wheel{:src => "/carousel.png"}
             = link_to 'Create your Story Wheel now!', "/stories/new", :class => "button build-your-own"
           .show.hidden
             - if @track
@@ -31,8 +31,10 @@
           .progress.hidden
             %h1 Story Wheel
             %h2 Tell the story behind your images
+            %img#wheel{:src => "/carousel.png"}
+            .clear
             %span#progressMessage
-            %img{:src => "/carousel.png"}
+
             //= link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
         
         .stories.hidden

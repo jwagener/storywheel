@@ -250,8 +250,16 @@ body.builder {
   margin: 20px;
 }
 
+#wheel {
+  -webkit-transition: -webkit-transform 600s;
+  transition: transform 600s;
+  transition: -webkit-transform 600s;
+  -webkit-transition: transform 600s;
+}
 
-
+#wheel.rotate {
+  -webkit-transform: rotate(36140deg);
+}
 
 .storywheel {
 	text-align: center;

@@ -57,7 +57,12 @@ $(".goToStep2").live "click", (e) ->
   e.preventDefault()
 
 
-$("#nextPicture").live "click", (e) ->
+$(window).keyup (e) ->
+  if e.keyCode == 32 && $("body#record, body#endrecord").length > 0
+    showNextImage()
+
+
+$("body#record #currentImage, body#endrecord #currentImage").live "click", (e) ->
   showNextImage()
   e.preventDefault()
 
@@ -100,6 +105,7 @@ $("#uploadButton").live "click", (e) ->
           tag_list: tags.join(" ") 
           shared_to: {connections: [no: 0]}
       SW.setState("upload")
+      $(".progress #wheel", window).addClass("rotate")
       $("#progressMessage").text("Uploading...")
       SC.recordUpload options, (track) -> 
         $("#progressMessage").text("Processing...")

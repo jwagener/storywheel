@@ -21,7 +21,6 @@ $ ->
             imageUrl = comment.body.match(/#([^>]*)\>/)[1]
             SW.showImage(imageUrl) if comment.timestamp == 0
             SW.foregroundTrack.onposition comment.timestamp, () ->
-              console.log(imageUrl)
               SW.showImage(imageUrl)
               if this.timestamp > 0
                 SW.playSlideClick()
@@ -31,7 +30,7 @@ $ ->
         offset += limit
         SW.addComments()
       else
-        console.log('ready to play')
+        #console.log('ready to play')
         #SW.play()
 
     SC.whenStreamingReady ->
