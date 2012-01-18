@@ -64,5 +64,9 @@ $(".reset .no").live "click", (e) ->
   e.preventDefault()
 
 $(".aboutLink").live "click", (e) ->
-  SW.setState("about")
+  if $("body").attr("id") == "about" && window.oldState
+    SW.setState(window.oldState)
+  else
+    window.oldState = $("body").attr("id")
+    SW.setState("about")
   e.preventDefault()
