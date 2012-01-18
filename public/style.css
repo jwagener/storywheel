@@ -78,7 +78,10 @@ h2 {
 	z-index: 99999999;
   overflow: hidden;
   max-height: 100%;
-  -webkit-transition: height 0.4s linear;
+	transition: height 0.4s linear;
+	-moz-transition: height 0.4s linear;
+	-webkit-transition: height 0.4s linear;
+	-o-transition: height 0.4s linear;
 }
 
 
@@ -109,7 +112,10 @@ h2 {
 
 
 #currentImage {
+	border-radius: 5px;
   -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
   width: 360px;
   height: 360px;
   margin: auto;
@@ -122,6 +128,7 @@ body#record #currentImage, body#endrecord #currentImage {
 	margin-top: 140px;
 	padding-top: 370px;
 	font-size: 30px;
+	cursor: pointer;
 }
 
 #outercanvas {
@@ -147,7 +154,11 @@ body#record #currentImage, body#endrecord #currentImage {
   width: auto;
   margin: auto;
   opacity: 0.55;
-  border-radius: 7px;
+	border-radius: 7px;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+
 }
 
 .connect {
@@ -234,10 +245,18 @@ input#title {
 	padding: 5px;
 	background: rgba(0,0,0,0.1);
 	border-radius: 7px;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	-moz-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	-webkit-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
 	border: 1px solid rgba(0,0,0,0.9);
+	transition: background 0.2s linear;
+	-moz-transition: background 0.2s linear;
 	-webkit-transition: background 0.2s linear;
+	-o-transition: background 0.2s linear;
 }
 
 
@@ -274,7 +293,10 @@ body.builder {
 	z-index: 9999;
 	width: 30%;
 	height: 45%;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
 	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 }
 
 .storywheel .image {
@@ -283,8 +305,14 @@ body.builder {
 	background-position: 50%;
 	background-size: 110%;
 	border-radius: 10px;
+  -webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 	cursor: default;
-	box-shadow: 0px 0px  8px rgba(0,0,0, 0.1);
+	-moz-box-shadow:  0px 0px  8px rgba(0,0,0, 0.1);
+	-webkit-box-shadow:  0px 0px  8px rgba(0,0,0, 0.1);
+	box-shadow:  0px 0px  8px rgba(0,0,0, 0.1);
+	
 }
 
 .footer {
@@ -306,7 +334,11 @@ a.labs {
 	border-top-left-radius: 7px;
 	bottom: 0;
 	text-indent: -9999px;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
 	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+
 }
 
 a.labs:hover {
@@ -325,7 +357,11 @@ a.labs:hover {
 	border-right: 1px solid rgba(255,255,255,0.10);
 	font-size: 24px;
 	text-decoration: none;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
 	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+
 }
 
 .footer ul li.social iframe {
@@ -357,14 +393,23 @@ a.labs:hover {
 	text-decoration: none;
 	background: rgba(81,39,42, 1);
 	background: rgba(0,0,0,0.6);
+	-moz-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+	
 	color: #fff !important;
 	width: 240px;
 	margin: 5px auto;
 	padding: 3px 7px;
 	border-radius: 7px;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.5);
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
 	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 	border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
@@ -387,7 +432,10 @@ a.labs:hover {
 	width: 100px;
 	height: 43px;
 	overflow: hidden;
+	transition: width 0.2s linear;
+	-moz-transition: width 0.2s linear;
 	-webkit-transition: width 0.2s linear;
+	-o-transition: width 0.2s linear;
 }
 
 .reset.really {
@@ -397,7 +445,10 @@ a.labs:hover {
 .reset a.button.cancel {
 	background: none;
 	border: 0; 
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
 	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 	color: rgba(255,255,255,0.4) !important;
 }
 
@@ -417,7 +468,10 @@ a.labs:hover {
 	background: rgba(60,60,60,1);
 	margin-left: 8px;
 	cursor: pointer;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
 	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 }
 
 .reset.really a.button:hover {
@@ -432,6 +486,8 @@ a.labs:hover {
 		text-decoration: none;
 		background: rgba(81,39,42, 1);
 		background: rgba(0,0,0,0.6);
+		-moz-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+		-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 		box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 		color: #fff !important;
 		margin: 1px auto;
@@ -448,8 +504,10 @@ a.labs:hover {
 	position: absolute;
 	bottom: 55px;
 	padding-bottom: 0px;
-	-webkit-transition: all 0.4s linear;
-	-webkit-transition-delay: 0.5s;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 }
 
 .stories .prev, .stories .next {
@@ -460,7 +518,10 @@ a.labs:hover {
 	background: rgba(0,0,0,1);
 	font-size: 80px;
 	color: rgba(255,255,255,0.4);
-	-webkit-transition: all 0.4s linear;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 	line-height: 1.3em;
 }
 
@@ -472,12 +533,16 @@ a.labs:hover {
 .stories .prev {
 	left: 0;
 	border-right: 1px solid rgba(255,255,255,0.2);
+	-moz-box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.9);
+	-webkit-box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.9);
 	box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.9);
 }
 
 .stories .next {
 	right: 0;
 	border-left: 1px solid rgba(255,255,255,0.2);
+	-moz-box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.9);
+	-webkit-box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.9);
 	box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.9);
 }
 
@@ -519,23 +584,33 @@ a.labs:hover {
 	background-size: 110px;
 	background-position: 50%;
 	border-radius: 8px;
+  -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-o-border-radius: 8px;	
 	margin-left: 10px;
 }
 
 .stories ul li h3 a {
 	display: block;
 	opacity: 1;
-	-webkit-transition: background-color 0.3s ease;
+	transition: background-color 0.2s linear;
+	-moz-transition: background-color 0.2s linear;
+	-webkit-transition: background-color 0.2s linear;
+	-o-transition: background-color 0.2s linear;
 	text-decoration: none;
 	width: 90px;
 	height: 87px;
 	padding: 8px 5px 5px 5px;
 	border-radius: 7px;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
 	background-color: rgba(0,0,0,0);
 	margin: 0px 0 0px 0px;
 	border-bottom: 1px solid rgba(255,255,255, 0.3);
+	-moz-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	-webkit-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
-
 }
 
 .stories ul li h3 a:hover {
@@ -550,7 +625,11 @@ a.labs:hover {
 	display: inline;
 	color: rgba(255,255,255,0);
 	font-size: 19px;
-	-webkit-transition: all 0.8s ease;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+
 }
 
 .stories ul li h3 a span.user {
@@ -600,13 +679,19 @@ a.labs:hover {
 	background-size: 110px;
 	background-position: -7px -7px;
 /*	-webkit-transition: all 0.3s ease;*/
+	transition: border 0.3s ease, color 0.3s ease;
+	-moz-transition: border 0.3s ease, color 0.3s ease;
 	-webkit-transition: border 0.3s ease, color 0.3s ease;
+	-o-transition: border 0.3s ease, color 0.3s ease;
 	text-decoration: none;
 	color: rgba(255,255,255, 0);
 	font-family: helvetica, arial, sans-serif;
 	border: 2px dashed rgba(255,255,255, 0.4);
 	font-size: 21px;
 	border-radius: 7px;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
 	text-align: center;
 	
 }
@@ -624,8 +709,9 @@ a.labs:hover {
 	cursor: move;
 	border: 0;
 	border-bottom: 1px solid rgba(255,255,255, 0.4);
+	-moz-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	-webkit-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
-
 }
 
 #selection ul li.fin {
@@ -654,6 +740,8 @@ a.labs:hover {
 #selection ul li:hover {
 	border: 2px dashed rgba(255,255,255, 1);
 	color: rgba(255,255,255, 0.9);
+	-moz-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	-webkit-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	cursor: default;
 }
@@ -681,13 +769,21 @@ a.labs:hover {
 	background-size: 70px;
 	background-position: 50%;
 	background-color: black;
-	-webkit-transition: all 0.3s ease;
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 	text-decoration: none;
 	color: rgba(81,103,138, 0);
 	font-family: helvetica, arial, sans-serif;
 	font-size: 12px;
 	border-radius: 7px;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
 	border-bottom: 1px solid rgba(255,255,255, 0.4);
+	-moz-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	-webkit-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	cursor: pointer;
 }
@@ -768,6 +864,10 @@ a.labs:hover {
 	background-size: 430px;
 	background-position: 50%;
 	border-radius: 20px;
+  -webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-o-border-radius: 20px;
+	
 }
 
 #right-now ul li.rec, #right-now ul li.first {
@@ -855,8 +955,14 @@ body.stories.new .intro .build-your-own {
 	/*background: rgba(81,103,138,0.1);*/
 	padding: 10px 20px 40px;
 	border-radius: 20px;
+  -webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-o-border-radius: 20px;
 	margin: 0 auto 40px;
-  -webkit-transition: height 0.4s linear;
+	transition: height 0.2s linear;
+	-moz-transition: height 0.2s linear;
+	-webkit-transition: height 0.2s linear;
+	-o-transition: height 0.2s linear;
 }
 
 .recordControls h2 {
@@ -952,25 +1058,38 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 	background: #c00;
 	width: 120px;
 	height: 120px;
-	border-radius: 60px;
+	border-radius: 70px;
+  -webkit-border-radius: 70px;
+	-moz-border-radius: 70px;
+	-o-border-radius: 70px;
 	font-size: 60px;
 	line-height: 120px;
 	margin: 0px auto;
 	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
 	border-bottom: 1px solid rgba(255,255,255, 0.6);
+	-moz-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	-webkit-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
 	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
 	cursor: pointer;
 }
 
 #recordButton:hover {
 	background: #f00;
 	border-bottom: 1px solid rgba(255,255,255, 0.8);
+	-moz-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+	-webkit-box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
 }
 
 #timer {
-  border-radius: 50px;
+  border-radius: 70px;
+  -webkit-border-radius: 70px;
+	-moz-border-radius: 70px;
+	-o-border-radius: 70px;
   border: 10px solid rgba(205, 0, 0, 1);
   background-color: rgba(205, 0, 0, 1);
   float: left;
@@ -994,8 +1113,15 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 	height: 360px;
 	margin-top: 40px;
 	position: relative;
-	border-radius: 5px;
-  -webkit-transition: background-color 0.4s linear;
+	border-radius: 7px;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	transition: background-color 0.4s linear;
+	-moz-transition: background-color 0.4s linear;
+	-webkit-transition: background-color 0.4s linear;
+	-o-transition: background-color 0.4s linear;
+
 }
 
 .cover:hover {
