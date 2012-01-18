@@ -5,7 +5,7 @@ $ ->
         track = this
         track.story_url = track.permalink_url.replace("http://soundcloud.com", "")
         if match = track.tag_list.match(/storywheel:image=([^ ]*)/)
-          track.artwork_url = match[1]
+          track.artwork_url = match[1].replace("_7", "_5") # I HOPE THIS WORKS FOR ALL PICTURES!
         $("#storyTmpl").tmpl(track).appendTo(".stories ul");
 
 
