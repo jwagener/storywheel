@@ -466,6 +466,7 @@ a.labs:hover {
 
 .stories .prev:hover, .stories .next:hover {
 	color: rgba(255,255,255,1);
+	cursor: pointer;
 }
 
 .stories .prev {
@@ -514,24 +515,30 @@ a.labs:hover {
 	border-bottom: 1px solid rgba(255,255,255, 0.4);
 }
 
+.stories ul li h3 {
+	position: relative;
+	text-align: center;
+}
+
 .stories ul li h3 a span {
 	background: rgba(255,255,255,0);
 	display: inline;
-	color: rgba(0,0,0,0);
+	color: rgba(255,255,255,0);
 	font-size: 19px;
 	-webkit-transition: all 0.8s ease;
 }
 
 .stories ul li h3 a span.user {
-	color: rgba(81,103,138, 0);
+	color: rgba(255,255,255,0);
+	font-size: 25px;
 }
 .stories ul li h3 a:hover span {
-	background: rgba(255,255,255,0.9);
-	color: rgba(0,0,0,1);
+	color: rgba(255,255,255,1);
 }
 
 .stories ul li h3 a:hover span.user {
-	color: rgba(81,103,138, 1);
+	color: rgba(255,255,255,1);
+
 }
 
 /* home stories end */ 
