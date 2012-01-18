@@ -4,7 +4,8 @@ $ ->
       $.each tracks, ->
         track = this
         track.story_url = track.permalink_url.replace("http://soundcloud.com", "")
-        track.artwork_url = track.tag_list.match(/storywheel:image=([^ ]*)/)[1]
+        if match = track.tag_list.match(/storywheel:image=([^ ]*)/)
+          track.artwork_url = match[1]
         $("#storyTmpl").tmpl(track).appendTo(".stories ul");
 
 
@@ -43,8 +44,15 @@ $ ->
 
 $("#playButton").live "click", (e) ->
   e.preventDefault()
-
   SW.play()
 
 
-        
+$(".next").live "click", (e) ->
+  newScroll = $(".stories ul").width() + $(".stories ul").scrollLeft()
+  $(".stories ul").scrollLeft(newScroll - (newScroll % 110) - 115 )
+  e.preventDefault()
+
+$(".prev").live "click", (e) ->
+  newScroll = $(".stories ul").width() - $(".stories ul").scrollLeft()
+  $(".stories ul").scrollLeft(newScroll + (newScroll % 110) + 115 )
+  e.preventDefault()
