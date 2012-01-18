@@ -12,6 +12,8 @@
     #page
       .top
         .screen.intro
+          #currentImage.hidden
+            %span#timer.hidden 0.00
           .home.hidden
             %h1 Story Wheel
             %h2 Tell the story behind your images
@@ -32,11 +34,6 @@
             %span#progressMessage
             %img{:src => "/carousel.png"}
             //= link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
-
-          #currentImage.hidden
-            %span#timer.hidden 
-              0.00
-            
         
         .stories.hidden
           %ul 

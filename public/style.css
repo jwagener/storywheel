@@ -109,13 +109,13 @@ h2 {
 
 
 #currentImage {
+  -webkit-border-radius: 5px;
   width: 360px;
   height: 360px;
   margin: auto;
   background-repeat: no-repeat;
 	background-size: 360px;
   margin-top: 80px;
-  opacity: 0.9;
 }
 
 body#record #currentImage, body#endrecord #currentImage {
@@ -841,6 +841,9 @@ p {
   clear: both;
 }
 
+.show {
+  margin-top: -400px;
+}
 
 /* states */
 body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2, body#record #step2, body#endrecord #step2, body#finalize #step3 {
