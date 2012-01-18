@@ -484,6 +484,7 @@ a.labs:hover {
 .stories ul {
   overflow-x: scroll;
   white-space: nowrap;
+
   width: 100%;
   height: 122px;
 }
@@ -498,6 +499,7 @@ a.labs:hover {
 .stories ul li {
 	text-align: left;
   display: inline-block;
+	overflow: hidden;
 }
 
 .stories ul li:first,.stories ul li:last {
@@ -533,6 +535,7 @@ a.labs:hover {
 	margin: 0px 0 0px 0px;
 	border-bottom: 1px solid rgba(255,255,255, 0.3);
 	box-shadow: inset 0 1px 3px rgba(34,25,25,1);
+
 }
 
 .stories ul li h3 a:hover {
