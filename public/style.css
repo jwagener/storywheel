@@ -112,10 +112,10 @@ h2 {
 
 
 #currentImage {
-	border-radius: 5px;
-  -webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-o-border-radius: 5px;
+	border-radius: 7px;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
   width: 360px;
   height: 360px;
   margin: auto;
