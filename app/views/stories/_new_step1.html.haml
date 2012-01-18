@@ -14,8 +14,8 @@
 #images
   %script{id: "storyTmpl", type:"text/x-jquery-tmpl"}
     %li
-      %h3
-        %a{:href => "${story_url}", :style => "background-image: url(${artwork_url});"}
+      %h3{:style => "background-image: url(${artwork_url});"}
+        %a{:href => "${story_url}"}
           %span.user= "${user.username}"
           %br
           %span= "${title}"
