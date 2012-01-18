@@ -43,7 +43,7 @@ showNextImage = ->
   $img.remove()
   imagesLeft = $("#selection li.image").length 
   if imagesLeft == 0
-    $("#status").text("This is the last picture. Finish your story!")
+    $("#status").html("This is the last picture.<br/>Finish your story!")
     SW.setState("endrecord")
   else
     $("#status").text(imagesLeft + " pictures are left.")
@@ -60,6 +60,7 @@ $(".goToStep2").live "click", (e) ->
 $(window).keyup (e) ->
   if e.keyCode == 32 && $("body#record, body#endrecord").length > 0
     showNextImage()
+    e.preventDefault()
 
 
 $("body#record #currentImage, body#endrecord #currentImage").live "click", (e) ->

@@ -481,15 +481,26 @@ a.labs:hover {
 }
 
 .stories ul {
-	padding: 0px 0 0px 40px;
   overflow-x: scroll;
   white-space: nowrap;
   width: 100%;
   height: 122px;
 }
+
+.stories ul li:first-child {
+  margin-left: 40px;
+}
+.stories ul li:last-child {
+  margin-right: 40px;
+}
+
 .stories ul li {
 	text-align: left;
   display: inline-block;
+}
+
+.stories ul li:first,.stories ul li:last {
+  margin-left: 40px;
 }
 
 .stories ul li a {
@@ -867,7 +878,7 @@ body#prerecord .recordControls, body#pick #selection, body#connect .connectInsta
   display: block;
 }
 
-body#record #timer, body#endrecord #timer, body#prerecord .startRecording, body#record #nextPicture, body#endrecord #goToStep3 {
+body#record #timer, body#endrecord #timer, body#record #status, body#endrecord #status, body#endrecord #goToStep3 {
   display: block;
 }
 
