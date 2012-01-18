@@ -21,12 +21,11 @@
             = link_to 'Create your Story Wheel now!', "/stories/new", :class => "button build-your-own"
           .show.hidden
             - if @track
-              .cover#playButton
-                %h1= @track.user.username
-                %h2= @track.title
-                %img{:src => "/carousel.png", :width => "111", :height => "111"}
+              .cover#playButton{:href => "#"}
+                .text
+                  %h1= @track.user.username
+                  %h2= @track.title
 
-                %a.red.button{:href => "#"} Play this Story Wheel!
 
           .progress.hidden
             %h1 Story Wheel
