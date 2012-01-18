@@ -963,6 +963,37 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 	z-index: 9999999999;
 }
 
+.cover {
+	background: rgba(0,0,0,0.4);
+	width: 360px;
+	background-image: url(play.png);
+	background-repeat: no-repeat;
+	background-position: 112px 190px;
+	margin: 0 auto;
+	height: 360px;
+	margin-top: 40px;
+	position: relative;
+	border-radius: 5px;
+  -webkit-transition: background-color 0.4s linear;
+}
+
+.cover:hover {
+	background-color: rgba(0,0,0,0.1);
+	cursor: pointer;
+}
+
+.cover .text {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 340px;
+}
+
+.cover h1, .cover h2 {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
 
 ul::after {
 content: ".";
