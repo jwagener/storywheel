@@ -30,13 +30,8 @@ $ ->
                 SW.playSlideClick()
             , comment
           )()
-      if comments.length >= limit
-        offset += limit
-        SW.addComments()
-      else
-        if window.location.hash == "#autoplay"
-          SW.play()
-
+      if window.location.hash == "#autoplay"
+        SW.play()
     SC.whenStreamingReady ->
       SW.foregroundTrack = SC.stream track.id, autoLoad: true
       if matchData = track.tag_list.match(/storywheel:backgroundTrackId=([^ ]*)/)

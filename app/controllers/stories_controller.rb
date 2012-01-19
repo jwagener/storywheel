@@ -23,7 +23,7 @@ class StoriesController < ApplicationController
       end
       @comments = cache_store.fetch "#{permalink}/comments", :force => force do
         logger.info "SC GET: #{permalink}/comments"
-        sc.get("#{@track.uri}/comments")
+        sc.get("#{@track.uri}/comments", :limit => 200)
       end.sort_by(&:timestamp)
       
       render :template => "stories/index"
