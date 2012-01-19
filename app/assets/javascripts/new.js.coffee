@@ -23,11 +23,9 @@ $(".build-your-own").live "click", (e) ->
 
 # List UI
 $("ul.all-images li").live "click", (e) ->
-  
   empties = $("ul.selection li.empty")
   if empties.length < 2
     empties.first().clone().appendTo("ul.selection")
-    $("#selection").scrollLeft(100000)
   empties.first().replaceWith($(this))
 
 

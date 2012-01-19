@@ -819,7 +819,6 @@ a.labs:hover {
 .controls .inner .help {
 	text-align: center;
 	font-size: 30px;
-	display: inline;
 	padding-top: 3px;
 }
 
@@ -998,12 +997,16 @@ body#home .home, body#show .show, body#show #currentImage, body#upload .progress
   display: block;
 }
 
-body#prerecord .recordControls, body#pick #selection, body#connect .connectInstagram, body#about .about {
+body#prerecord .recordControls, body#pick #selection, body#connect .connectInstagram, body#about .about, #pick .goToStep2 {
   display: block;
 }
 
-body#record #timer, body#endrecord #timer, body#record #status, body#endrecord #status, body#endrecord #goToStep3 {
+body#record #timer, body#endrecord #timer, body#record #status, body#endrecord #status, body#endrecord #goToStep3{
   display: block;
+}
+
+body#endrecord .help, body#record .help {
+  display: inline;
 }
 
 body#home      .bottom { height: 60px; }
