@@ -1153,6 +1153,11 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 
 }
 
+#progressMessage {
+	font-size: 30px;
+	text-shadow: 0 2px 0px rgba(0,0,0,0.9);
+}
+
 .cover:hover {
 	background-color: rgba(0,0,0,0.1);
 	cursor: pointer;
