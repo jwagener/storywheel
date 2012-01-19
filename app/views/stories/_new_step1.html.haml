@@ -1,6 +1,5 @@
 %a.connect.hidden{:href => "https://instagram.com/oauth/authorize/?client_id=95ee14ed94f046d89b6746b02ea0ecb5&redirect_uri=http://carousel.ponyho.st/builder.html&response_type=token"} Connect to instagram
-%h1 Pick your pictures
- 
+%h1 Pick your pictures 
 
 #selection.hidden
   %ul.selection
@@ -11,9 +10,12 @@
 
 %a.button.connectInstagram.hidden{:href => ""} Connect to Instagram
 
+%h3.help First step is to pick your pictures from <a href="http://instagr.am/" target="_blank">Instagram</a>. We're working on adding more services soon.
+
 #images        
   %ul.all-images
     - 0.times do
       %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')"}
+
 
 = render :partial => "stories/bottom_controls"
