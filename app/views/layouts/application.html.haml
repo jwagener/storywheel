@@ -9,63 +9,8 @@
       %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json};"
   %body{:id => (@track.present? ? "show" : "home")}
     #preload.hidden
+    = render :partial => "stories/templates"
     #page
-      .top
-        .screen.intro
-          #currentImage.hidden
-            %span#timer.hidden 0.00
-            %span#status.hidden 5 pictures left.
-          .home.hidden
-            %h1 Story Wheel
-            %h2 Tell the story behind your images
-            %img#wheel{:src => "/carousel.png"}
-            = link_to 'Create your Story Wheel now!', "/stories/new", :class => "button build-your-own"
-          .show.hidden
-            - if @track
-              .cover#playButton{:href => "#"}
-                .text
-                  %h1= @track.user.username
-                  %h2= @track.title
+      .top= render :partial => "stories/top"
+      .bottom= render :partial => "stories/bottom"
 
-
-          .progress.hidden
-            %h1 Story Wheel
-            %h2 Tell the story behind your images
-            %img#wheel{:src => "/carousel.png"}
-            .clear
-            %span#progressMessage
-
-            //= link_to 'Build your own Story Wheel', connect_instagram_path, :class => "button build-your-own"
-        
-        .stories.hidden
-          %ul 
-          %a.prev <
-          %a.next >
-      .bottom
-        
-        
-        .footer
-          %ul
-            %li= link_to "Story Wheel", "/"
-            %li= link_to "Create your Story Wheel", "#", :class => "build-your-own"
-            %li= link_to "About", "#", :class => "aboutLink"
-            %li.social
-              <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            %li.social              
-              <iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=82985198723" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
-
-          %a{:href => "http://soundcloudlabs.com", :class => "labs", :target => "_blank"}
-            SoundCloud Labs
-        
-        .about.hidden
-          %h1 About Story Wheel
-
-          Story Wheel was created by <a href="http://twitter.com/johanneswagener">Johannes Wagener</a> &amp; <a href="http://twitter.com/kbirkenbach">Katharina Birkenbach</a>. It initially got started at the MusicHackDay in Boston 2012.
-          It's using the SoundCloud API to store the recordings of each story.
-
-          Background music is picked from http://soundcloud.com/tags/soundscape?creativecommons=1
-        
-        #step1.step.hidden= render :partial => "new_step1"
-        #step2.step.hidden= render :partial => "new_step2"
-        #step3.step.hidden= render :partial => "new_step3"

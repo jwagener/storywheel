@@ -1,0 +1,25 @@
+.footer
+  %ul
+    %li= link_to "Story Wheel", "/"
+    %li= link_to "Create your Story Wheel", "#", :class => "build-your-own"
+    %li= link_to "About", "#", :class => "aboutLink"
+    %li.social
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    %li.social              
+      <iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=82985198723" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
+
+  %a{:href => "http://soundcloudlabs.com", :class => "labs", :target => "_blank"}
+    SoundCloud Labs
+
+.about.hidden
+  %h1 About Story Wheel
+
+  Story Wheel was created by <a href="http://twitter.com/johanneswagener">Johannes Wagener</a> &amp; <a href="http://twitter.com/kbirkenbach">Katharina Birkenbach</a>. It initially got started at the MusicHackDay in Boston 2012.
+  It's using the SoundCloud API to store the recordings of each story.
+
+  Background music is picked from http://soundcloud.com/tags/soundscape?creativecommons=1
+
+#step1.step.hidden= render :partial => "new_step1"
+#step2.step.hidden= render :partial => "new_step2"
+#step3.step.hidden= render :partial => "new_step3"
