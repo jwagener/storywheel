@@ -31,14 +31,21 @@ $("ul.all-images li").live "click", (e) ->
 
 # Second step
 
+$(".goToStep2").live "click", (e) ->
+  if $("ul.selection li.image").length > -1
+    $("ul.selection li.image").appendTo("ul.step2-selection");
+  else
+    alert("Pick some photos first")
+  SW.setState("prerecord")
+  e.preventDefault()
+
+
 showNextImage = ->
   $img = $("#selection li.image").first()
   images = $("#selection li.image")
   imagesLeft = images.length
 
-  console.log(imagesLeft)
   if imagesLeft == 0
-    console.log('fin')
     SC.recordStop();
     updateTimer(0);
     SW.setState("finalize")
@@ -53,18 +60,12 @@ showNextImage = ->
     $img.remove()
     imagesLeft--
     if imagesLeft == 0
-      $("#status").html("This is the last picture.<br/>Finish your story!")
+      statusText = "This is the last picture.<br/>Finish your story!"
+    else if imagesLeft == 1
+      statusText = "1 picture left."
     else
-      $("#status").text(imagesLeft + " pictures left.")
-
-$(".goToStep2").live "click", (e) ->
-  if $("ul.selection li.image").length > -1
-    $("ul.selection li.image").appendTo("ul.step2-selection");
-  else
-    alert("Pick some photos first")
-  SW.setState("prerecord")
-  e.preventDefault()
-
+      statusText = imagesLeft + " pictures left."
+    $("#status").html(statusText)
 
 $(window).keyup (e) ->
   if e.keyCode == 32 && $("body#record").length > 0
@@ -72,16 +73,13 @@ $(window).keyup (e) ->
     e.preventDefault()
 
 
-$("body#record #currentImage").live "click", (e) ->
-  console.log('1')
+$("#recordStatus").live "click", (e) ->
   showNextImage()
   e.preventDefault()
 
 # Start Recording
 $(".startRecording").live "click", (e) -> 
   updateTimer(0);  
-  #SW.setState("record")
-  #showNextImage()
   SC.record
     start: () ->
       SW.setState("record")

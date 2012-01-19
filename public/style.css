@@ -89,11 +89,16 @@ h2 {
   display: none!important;
 }
 
+.screen {
+  margin-top: 120px;
+}
+
 
 .screen.intro {
   width: 500px;
-  margin: auto;
-  margin-top: 8%;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .screen.intro {
@@ -121,12 +126,9 @@ h2 {
   margin: auto;
   background-repeat: no-repeat;
 	background-size: 360px;
-  margin-top: 80px;
 }
 
 body#record #currentImage {
-	margin-top: 140px;
-	padding-top: 370px;
 	font-size: 30px;
 	cursor: pointer;
 }
@@ -968,6 +970,16 @@ body.stories.new .intro .build-your-own {
 	margin: 30px 0 30px 0;
 }
 
+#recordStatus {
+  width: 270px;
+  margin: auto;
+  font-size: 30px;
+  padding-top: 350px;
+  padding-left: 100px;
+  padding-right: 100px;
+  cursor: pointer;
+}
+
 p {
   font-size: 10px;
 }
@@ -1001,7 +1013,7 @@ body#prerecord .recordControls, body#pick #selection, body#connect .connectInsta
   display: block;
 }
 
-body#record #timer, body#record #status {
+body#record #recordStatus {
   display: block;
 }
 
@@ -1021,7 +1033,7 @@ body#record    .bottom { height: 1999px; }
 body#record    .bottom #selection { display: none }
 body#finalize  .bottom { height: 1999px;  }
 body#upload    .bottom { height: 45px; } 
-body#record    .top { position: absolute; z-index: 9999999999; }
+body#record    .top { position: absolute; z-index: 999999;}
 body#about    .bottom { height: 1999px; }
 
 body.record .bottom {
