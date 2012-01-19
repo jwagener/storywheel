@@ -37,16 +37,25 @@ window.SW =
         SW.backgroundTrack.play() if SW.backgroundTrack?
       onfinish: ->
         if SW.backgroundTrack?
-          SW.fadeOut(SW.backgroundTrack, -1)
-  fadeOut: (s, amount) ->
+          SW.fadeOut SW.backgroundTrack, -1, () ->
+            SW.showImage(SW.imageUrlFromComment(comments[0]))
+            SW.setState("show")
+        else
+          SW.showImage(SW.imageUrlFromComment(comments[0]))
+          SW.setState("show")
+  fadeOut: (s, amount, callback) ->
     vol = s.volume;
     if vol == 0
       s.stop()
+      callback()
       return false
     s.setVolume(Math.max(0,vol+amount));
     setTimeout () -> 
-      SW.fadeOut s, amount
+      SW.fadeOut s, amount, callback
     , 200
+
+  imageUrlFromComment: (comment) ->
+    comment.body.match(/#([^>]*)\>/)[1]
 
       
 # story -> slides -> {image_large_url, image_small_url, timestamp}

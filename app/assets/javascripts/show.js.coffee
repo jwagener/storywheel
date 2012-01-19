@@ -18,7 +18,7 @@ $ ->
       for comment in comments
         if comment.user_id == track.user_id && comment.body.match(/storywheel.(com|cc)/)
           (->
-            imageUrl = comment.body.match(/#([^>]*)\>/)[1]
+            imageUrl = SW.imageUrlFromComment(comment)
             $("<img src='" + imageUrl + "' />").appendTo("#preload")
             SW.showImage(imageUrl) if comment.timestamp == 0
             SW.foregroundTrack.onposition comment.timestamp, () ->
