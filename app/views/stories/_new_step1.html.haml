@@ -10,9 +10,14 @@
 
 %a.button.connectInstagram.hidden{:href => ""} Connect to Instagram
 
+%h3.help.connecti We're working on adding more services soon.
+
+%h3.help.pick Choose the pictures you want to include in your story:
+
 #images        
   %ul.all-images
     - 0.times do
       %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')"}
+
 
 = render :partial => "stories/bottom_controls"
