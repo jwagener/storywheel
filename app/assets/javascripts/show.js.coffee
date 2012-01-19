@@ -21,6 +21,7 @@ $ ->
             imageUrl = SW.imageUrlFromComment(comment)
             $("<img src='" + imageUrl + "' />").appendTo("#preload")
             SW.showImage(imageUrl) if comment.timestamp == 0
+            co = comment
             SW.foregroundTrack.onposition comment.timestamp, () ->
               SW.showImage(imageUrl)
               if this.timestamp > 0

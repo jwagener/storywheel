@@ -3,11 +3,7 @@
     %li= link_to "Story Wheel", "/"
     %li= link_to "Create your Story Wheel", "#", :class => "build-your-own"
     %li= link_to "About", "#", :class => "aboutLink"
-    %li.social
-      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    %li.social              
-      <iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=82985198723" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
+    - # = render :partial => "stories/social"
 
   %a{:href => "http://soundcloudlabs.com", :class => "labs", :target => "_blank"}
     SoundCloud Labs
