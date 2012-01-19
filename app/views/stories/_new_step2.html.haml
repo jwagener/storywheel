@@ -12,9 +12,4 @@
     - 0.times do
       %li.image{:style => "background-image: url('http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg')", "data-image-url" => "http://distilleryimage9.s3.amazonaws.com/9644ca5e0aaa11e1a87612313804ec91_7.jpg"}
 
-.controls
-  .inner
-    .help.hidden Hit space to get to the next image  
-    %a#goToStep3.button.save.red.hidden{:href => ""} Stop Recording
-    %span.reset
-      %a.button.cancel{:href => "/stories/new"} Cancel
+= render :partial => "stories/bottom_controls"

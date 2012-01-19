@@ -124,7 +124,7 @@ h2 {
   margin-top: 80px;
 }
 
-body#record #currentImage, body#endrecord #currentImage {
+body#record #currentImage {
 	margin-top: 140px;
 	padding-top: 370px;
 	font-size: 30px;
@@ -989,11 +989,11 @@ p {
 }
 
 /* states */
-body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2, body#record #step2, body#endrecord #step2, body#finalize #step3 {
+body#home .stories, body#connect #step1, body#pick #step1, body#prerecord #step2, body#record #step2, body#finalize #step3 {
   display: block;
 }
 
-body#home .home, body#show .show, body#show #currentImage, body#upload .progress, body#record #currentImage, body#endrecord #currentImage, body#play #currentImage {
+body#home .home, body#show .show, body#show #currentImage, body#upload .progress, body#record #currentImage, body#play #currentImage {
   display: block;
 }
 
@@ -1001,11 +1001,11 @@ body#prerecord .recordControls, body#pick #selection, body#connect .connectInsta
   display: block;
 }
 
-body#record #timer, body#endrecord #timer, body#record #status, body#endrecord #status, body#endrecord #goToStep3{
+body#record #timer, body#record #status {
   display: block;
 }
 
-body#endrecord .help, body#record .help {
+body#record .help, body#finalize #uploadButton {
   display: inline;
 }
 
@@ -1019,13 +1019,12 @@ body#prerecord .bottom { height: 1999px; }
 body#prerecord .bottom #selection { display: none }
 body#record    .bottom { height: 1999px; }
 body#record    .bottom #selection { display: none }
-body#endrecord .bottom { height: 1999px; }
 body#finalize  .bottom { height: 1999px;  }
 body#upload    .bottom { height: 45px; } 
 body#record    .top { position: absolute; z-index: 9999999999; }
 body#about    .bottom { height: 1999px; }
 
-body.record .bottom, body.endrecord .bottom {
+body.record .bottom {
   top: 60%;
 }
 

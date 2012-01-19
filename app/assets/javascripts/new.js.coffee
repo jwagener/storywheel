@@ -33,18 +33,29 @@ $("ul.all-images li").live "click", (e) ->
 
 showNextImage = ->
   $img = $("#selection li.image").first()
-  SW.showImage($img.attr("data-image-url"))
-  slides.push
-    imageUrl: $img.attr("data-image-url")
-    timestamp: Recorder.flashInterface().recordingDuration()
+  images = $("#selection li.image")
+  imagesLeft = images.length
 
-  $img.remove()
-  imagesLeft = $("#selection li.image").length 
+  console.log(imagesLeft)
   if imagesLeft == 0
-    $("#status").html("This is the last picture.<br/>Finish your story!")
-    SW.setState("endrecord")
+    console.log('fin')
+    SC.recordStop();
+    updateTimer(0);
+    SW.setState("finalize")
   else
-    $("#status").text(imagesLeft + " pictures are left.")
+    $img = images.first()
+
+    SW.showImage($img.attr("data-image-url"))
+    slides.push
+      imageUrl: $img.attr("data-image-url")
+      timestamp: Recorder.flashInterface().recordingDuration()
+
+    $img.remove()
+    imagesLeft--
+    if imagesLeft == 0
+      $("#status").html("This is the last picture.<br/>Finish your story!")
+    else
+      $("#status").text(imagesLeft + " pictures left.")
 
 $(".goToStep2").live "click", (e) ->
   if $("ul.selection li.image").length > -1
@@ -56,12 +67,13 @@ $(".goToStep2").live "click", (e) ->
 
 
 $(window).keyup (e) ->
-  if e.keyCode == 32 && $("body#record, body#endrecord").length > 0
+  if e.keyCode == 32 && $("body#record").length > 0
     showNextImage()
     e.preventDefault()
 
 
-$("body#record #currentImage, body#endrecord #currentImage").live "click", (e) ->
+$("body#record #currentImage").live "click", (e) ->
+  console.log('1')
   showNextImage()
   e.preventDefault()
 
@@ -82,9 +94,6 @@ $(".startRecording").live "click", (e) ->
 
 
 $("#goToStep3").live "click", (e) ->
-  SC.recordStop();
-  updateTimer(0);
-  SW.setState("finalize")
   e.preventDefault()
   
 $("#uploadButton").live "click", (e) ->

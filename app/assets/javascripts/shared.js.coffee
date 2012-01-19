@@ -21,7 +21,7 @@ window.SW =
     $("#currentImage").css("background-image", "url("+imageUrl+")")
 
   setState: (state) ->
-    states = ["home", "connect", "pick", "prerecord", "record", "endrecord", "finalize", "upload", "show", "play"]
+    states = ["home", "connect", "pick", "prerecord", "record", "finalize", "upload", "show", "play"]
     $("body").attr("id", state)
 
   loadSlideClick: () ->
