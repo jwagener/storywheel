@@ -11,6 +11,8 @@ $ ->
 
 
   $("body#show").each ->
+    if window.location.hash == "#autoplay"
+      SW.setState("play")
     limit = 50
     offset = 0
     commentsByTimestamp = {}
