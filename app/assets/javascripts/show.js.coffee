@@ -31,8 +31,8 @@ $ ->
         offset += limit
         SW.addComments()
       else
-        #console.log('ready to play')
-        #SW.play()
+        if window.location.hash == "#autoplay"
+          SW.play()
 
     SC.whenStreamingReady ->
       SW.foregroundTrack = SC.stream track.id, autoLoad: true

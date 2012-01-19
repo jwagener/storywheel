@@ -1,7 +1,7 @@
 %script{id: "storyTmpl", type:"text/x-jquery-tmpl"}
   %li
     %h3{:style => "background-image: url(${artwork_url});"}
-      %a{:href => "${story_url}"}
+      %a{:href => "${story_url}#autoplay"}
         %span.user= "${user.username}"
         %br
         %span= "${title}"
