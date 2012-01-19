@@ -37,7 +37,8 @@ $ ->
     SC.whenStreamingReady ->
       SW.foregroundTrack = SC.stream track.id, autoLoad: true
       if matchData = track.tag_list.match(/storywheel:backgroundTrackId=([^ ]*)/)
-        SW.backgroundTrack = SC.stream matchData[1], {autoLoad: true, volume: 25}
+        if matchData[1] != ""
+          SW.backgroundTrack = SC.stream matchData[1], {autoLoad: true, volume: 25}
       SW.loadSlideClick()
       SW.addComments()
 
