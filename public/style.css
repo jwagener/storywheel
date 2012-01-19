@@ -1178,9 +1178,12 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 }
 
 h3.help {
-	font-size: 21px;
-	width: 300px;
+	font-size: 24px;
 	margin: 20px auto;
+}
+
+body#connect h3.help.pick, body#pick h3.help.connecti {
+	display: none;
 }
 
 ul::after {
