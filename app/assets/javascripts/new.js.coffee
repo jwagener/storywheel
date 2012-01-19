@@ -60,11 +60,11 @@ showNextImage = ->
     $img.remove()
     imagesLeft--
     if imagesLeft == 0
-      statusText = "This is the last picture.<br/>Finish your story!"
+      statusText = "The last picture. Wrap it up!"
     else if imagesLeft == 1
       statusText = "1 picture left."
     else
-      statusText = imagesLeft + " pictures left."
+      statusText = imagesLeft + " pictures left"
     $("#status").html(statusText)
 
 $(window).keyup (e) ->
