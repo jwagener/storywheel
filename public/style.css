@@ -90,9 +90,12 @@ h2 {
 }
 
 .screen {
-  margin-top: 6%;
+  margin-top: 8%;
 }
 
+body#record .screen, body#endrecord .screen {
+	margin-top: 126px;
+}
 
 .screen.intro {
   width: 500px;
