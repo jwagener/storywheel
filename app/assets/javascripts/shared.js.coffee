@@ -2,7 +2,7 @@ window.SETTINGS =
   soundcloud:
     client_id: "3a57e26203bc5210285a02f8eee95d91"
     redirect_uri: "http://localhost:3000/callback.html"
-  soundcloudGroup: "/groups/59904" # official one is 63307
+  soundcloudGroup: "/groups/63665" # official one is 63307
   slideClickTrackId: 27266065
   backgroundTrackIds: [1627453, 33423817, 25780527] #nature of daylight, werd
 
