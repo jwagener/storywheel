@@ -15,6 +15,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
+    expires_in 15.minutes, :public => true
     @social = SOCIAL
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +26,8 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
+    expires_in 15.minutes, :public => true
+
     @social = SOCIAL
 
     if params[:track].blank?
