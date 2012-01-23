@@ -369,7 +369,7 @@ a.labs:hover {
 
 }
 
-.footer ul li.social iframe {
+.footer ul li.social.twitter iframe {
 	padding: 5px 0;
 	width: 85px !important;
 	float: left;
