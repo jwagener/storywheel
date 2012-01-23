@@ -1,7 +1,21 @@
 class StoriesController < ApplicationController
+  SOCIAL = {
+      title: "Story Wheel",
+      description: "Tell the story behind your pictures",
+      url: "http://storywheel.cc",
+      image: "http://storywheel.cc/facebook.jpg",
+      type: "website"
+  }
+
+  before_filter do
+    @social = SOCIAL
+    @social[:url] = request.url
+  end
+
   # GET /stories
   # GET /stories.json
   def index
+    @social = SOCIAL
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stories }
@@ -11,6 +25,8 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
+    @social = SOCIAL
+
     if params[:track].blank?
       redirect_to root_url
     else
@@ -24,8 +40,10 @@ class StoriesController < ApplicationController
       @comments = cache_store.fetch "#{permalink}/comments", :force => force do
         logger.info "SC GET: #{permalink}/comments"
         sc.get("#{@track.uri}/comments", :limit => 200)
-      end.sort_by(&:timestamp)
-      
+      end.sort_by(&:timestamp)      
+      @social[:title] = "#{@track.title} by #{@track.user.username}"
+      @social[:description] = "Story Wheel - Tell the story behind your pictures"
+      @social[:type] = "article"
       render :template => "stories/index"
     end
   end

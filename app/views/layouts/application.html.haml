@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 %html
   %head
-    %title Story Wheel
+    %title Story Wheel - Tell the story behind your pictures
     = stylesheet_link_tag    "/style.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
     = javascript_include_tag "application", "http://connect.soundcloud.com/sdk.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"
     = csrf_meta_tags
+    %meta{property: "og:site_name",   content: "Story Wheel"}
+    %meta{property: "fb:admins",      content: "507017754"}
+    %meta{property: "og:title",       content: @social[:title]}
+    %meta{property: "og:type",        content: @social[:type]}
+    %meta{property: "og:url",         content: @social[:url]}
+    %meta{property: "og:image",       content: @social[:image]}
+    %meta{property: "og:description", content: @social[:description]}
+
     - if @track.present?
       %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json};"
   %body{:id => (@track.present? ? "show" : "home")}
