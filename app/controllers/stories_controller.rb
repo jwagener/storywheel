@@ -13,13 +13,12 @@ class StoriesController < ApplicationController
     @social[:url] = request.url.gsub("localhost:3000", "storywheel.cc")
   end
 
-  # GET /stories
   # GET /stories.json
   def index
     expires_in 15.minutes, :public => true
     @social = SOCIAL
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { response.etag = "index" }
       format.json { render json: @stories }
     end
   end
@@ -49,6 +48,7 @@ class StoriesController < ApplicationController
       @social[:description] = "Story Wheel - Tell the story behind your pictures"
       @social[:type] = "article"
       @social[:twitter] = "Listen to #{@social[:title]} on #StoryWheel"
+      response.etag = permalink
       render :template => "stories/index"
     end
   end
