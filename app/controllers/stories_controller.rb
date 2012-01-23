@@ -4,7 +4,8 @@ class StoriesController < ApplicationController
       description: "Tell the story behind your pictures",
       url: "http://storywheel.cc",
       image: "http://storywheel.cc/facebook.jpg",
-      type: "website"
+      type: "website",
+      twitter: "Check out #StoryWheel"
   }
 
   before_filter do
@@ -47,6 +48,7 @@ class StoriesController < ApplicationController
       @social[:title] = "#{@track.title} by #{@track.user.username}"
       @social[:description] = "Story Wheel - Tell the story behind your pictures"
       @social[:type] = "article"
+      @social[:twitter] = "Listen to #{@social[:title]} on #StoryWheel"
       render :template => "stories/index"
     end
   end
