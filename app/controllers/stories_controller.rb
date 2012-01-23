@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
 
   before_filter do
     @social = SOCIAL
-    @social[:url] = request.url
+    @social[:url] = request.url.gsub("localhost:3000", "storywheel.cc")
   end
 
   # GET /stories
