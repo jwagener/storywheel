@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
       title: "Story Wheel",
       description: "Tell the story behind your pictures",
       url: "http://storywheel.cc",
-      image: "http://storywheel.cc/facebook.jpg",
+      image: "http://storywheel.cc/facebook_2.jpg",
       type: "website",
       twitter: "Check out #StoryWheel"
   }
