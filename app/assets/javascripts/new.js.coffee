@@ -184,7 +184,8 @@ window.instagramCallback = () ->
             thumbnail_url: this.images.thumbnail.url,
             timestamp: null
           $("#imageTmpl").tmpl(image).appendTo("ul.all-images");
-        $("ul.selection").sortable();
+        $("ul.selection").sortable({connectWith: ".all-images"})
+        $(".all-images").sortable({connectWith: "ul.selection"})
     )
 
     

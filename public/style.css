@@ -772,10 +772,6 @@ a.labs:hover {
 	background-size: 70px;
 	background-position: 50%;
 	background-color: black;
-	transition: all 0.2s linear;
-	-moz-transition: all 0.2s linear;
-	-webkit-transition: all 0.2s linear;
-	-o-transition: all 0.2s linear;
 	text-decoration: none;
 	color: rgba(81,103,138, 0);
 	font-family: helvetica, arial, sans-serif;
