@@ -12,7 +12,7 @@
     %meta{property: "og:url",         content: @social[:url]}
     %meta{property: "og:image",       content: @social[:image]}
     %meta{property: "og:description", content: @social[:description]}
-
+    = airbrake_javascript_notifier
     - if @track.present?
       %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json};"
   %body{:id => (@track.present? ? "show" : "home")}
