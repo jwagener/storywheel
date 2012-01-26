@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
 
   before_filter do
     if request.url.include?("http://www")
-      redirect_to request.url.gsub("http://www", "http://")
+      redirect_to request.url.gsub("http://www.", "http://")
     end
     false
   end
