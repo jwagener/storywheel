@@ -51,63 +51,27 @@ class StoriesController < ApplicationController
         logger.info "SC GET: #{permalink}/comments"
         sc.get("#{@track.uri}/comments", :limit => 200)
       end.sort_by(&:timestamp)      
+      @options = optionsFromTagList(@track.tag_list)
+      @social[:image] = @options[:image] if @options[:image]
       @social[:title] = "#{@track.title} by #{@track.user.username}"
       @social[:description] = "Story Wheel - Tell the story behind your pictures"
       @social[:type] = "article"
       @social[:twitter] = "Listen to #{@social[:title]} on #StoryWheel"
+
       response.etag = permalink
       render :template => "stories/index"
     end
   end
 
-  # GET /stories/new
-  # GET /stories/new.json
-  def new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @story }
-    end
-  end
+private
 
-  # GET /stories/1/edit
-  def edit
-  end
-
-  # POST /stories
-  # POST /stories.json
-  def create
-
-    respond_to do |format|
-      if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
-        format.json { render json: @story, status: :created, location: @story }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
+  def optionsFromTagList(tag_list)
+    options = tag_list.split(" ").inject({}) do |obj, tag|
+      if m = tag.match(/:(.*)=(.*)/)
+        obj[m[1]] = m[2]
       end
+      obj
     end
-  end
-
-  # PUT /stories/1
-  # PUT /stories/1.json
-  def update
-    respond_to do |format|
-      if @story.update_attributes(params[:story])
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /stories/1
-  # DELETE /stories/1.json
-  def destroy
-    respond_to do |format|
-      format.html { redirect_to stories_url }
-      format.json { head :ok }
-    end
+    HashWithIndifferentAccess.new(options)
   end
 end
