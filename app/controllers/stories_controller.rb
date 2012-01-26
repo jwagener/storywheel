@@ -9,6 +9,13 @@ class StoriesController < ApplicationController
   }
 
   before_filter do
+    if request.url.include?("http://www")
+      redirect_to request.url.gsub("http://www", "http://")
+    end
+    false
+  end
+
+  before_filter do
     @social = SOCIAL
     @social[:url] = request.url.gsub("localhost:3000", "storywheel.cc")
   end
