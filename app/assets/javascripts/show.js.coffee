@@ -13,7 +13,7 @@ $ ->
 
 
   $("body#show").each ->
-    if window.location.hash == "#autoplay"
+    if SW.options.autoplay
       SW.setState("play")
     limit = 50
     offset = 0
@@ -32,7 +32,7 @@ $ ->
                 SW.playSlideClick()
             , comment
           )()
-      if window.location.hash == "#autoplay"
+      if SW.options.autoplay
         SW.play()
     SC.whenStreamingReady ->
       SW.foregroundTrack = SC.stream track.id, autoLoad: true

@@ -16,8 +16,10 @@ window.SW =
   backgroundTrack: null
   foregroundTrack: null
   slides: []
+  demos: ["http://storywheel.cc/tengoogs/things", "http://storywheel.cc/steve-mays/a-story", "http://storywheel.cc/patrickjonespoet/poppysky", "http://storywheel.cc/parkejos/get-well-soon-we-love-y-ou", "http://storywheel.cc/tracyshaun/dreaming", "http://storywheel.cc/rogerforlovers/the-boy-the-sea"]
   options: 
     slideSound: true
+    autoplay:   false
   
   showImage: (imageUrl) ->
     $("#currentImage").css("background-image", "url("+imageUrl+")")
@@ -41,7 +43,12 @@ window.SW =
         if SW.backgroundTrack?
           SW.fadeOut SW.backgroundTrack, -1, () ->
             SW.showImage(SW.imageUrlFromComment(comments[0]))
-            SW.setState("show")
+
+            if SW.options.demo
+              SW.goToNextDemo()
+            else
+              SW.setState("show")
+
         else
           SW.showImage(SW.imageUrlFromComment(comments[0]))
           SW.setState("show")
@@ -66,6 +73,14 @@ window.SW =
 
     if SW.fragmentOptions.slideSound == "0"
       SW.options.slideSound = false
+    if SW.fragmentOptions.autoplay?
+      SW.options.autoplay = true
+
+
+  goToNextDemo: () ->
+    index = parseInt(Math.random() * SW.demos.length, 10)
+    window.location = SW.demos[index] + "#autoplay&demo=1"
+
 
 
 
