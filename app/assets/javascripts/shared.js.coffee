@@ -16,6 +16,8 @@ window.SW =
   backgroundTrack: null
   foregroundTrack: null
   slides: []
+  options: 
+    slideSound: true
   
   showImage: (imageUrl) ->
     $("#currentImage").css("background-image", "url("+imageUrl+")")
@@ -57,12 +59,17 @@ window.SW =
   imageUrlFromComment: (comment) ->
     comment.body.match(/#([^>]*)\>/)[1]
 
+  parseFragmentOptions: () ->
+    SW.fragmentOptions = new SC.URI(window.location, {decodeFragment: true}).fragment
+    if SW.fragmentOptions.demo == "1"
+      $("body").addClass("demo")
+
+    if SW.fragmentOptions.slideSound == "0"
+      SW.options.slideSound = false
+
+
+
       
-# story -> slides -> {image_large_url, image_small_url, timestamp}
-#       -> audio
-#       -> background_audio
-#
-#
 
 $(".cancel").live "click", (e) ->
   $(this).closest(".reset").addClass("really")

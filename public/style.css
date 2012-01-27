@@ -84,6 +84,9 @@ h2 {
 	-o-transition: height 0.4s linear;
 }
 
+body.demo .bottom {
+  display: none!important;
+}
 
 .new .home {
   display: none!important;

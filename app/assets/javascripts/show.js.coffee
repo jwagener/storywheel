@@ -1,4 +1,6 @@
 $ ->
+  SW.parseFragmentOptions()
+
   $("body#home").each ->
     SC.get SETTINGS.soundcloudGroup + "/tracks", (tracks) ->
       $.each tracks, ->
@@ -26,7 +28,7 @@ $ ->
             co = comment
             SW.foregroundTrack.onposition comment.timestamp, () ->
               SW.showImage(imageUrl)
-              if this.timestamp > 0
+              if this.timestamp > 0 && SW.options.slideSound
                 SW.playSlideClick()
             , comment
           )()
