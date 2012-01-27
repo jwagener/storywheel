@@ -1133,10 +1133,9 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 	z-index: 9999999999;
 }
 
-.cover {
+#playButton {
 	background: rgba(0,0,0,0.4);
 	width: 360px;
-	background-image: url(play.png);
 	background-repeat: no-repeat;
 	background-position: 112px 190px;
 	margin: 0 auto;
@@ -1151,7 +1150,12 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 	-moz-transition: background-color 0.4s linear;
 	-webkit-transition: background-color 0.4s linear;
 	-o-transition: background-color 0.4s linear;
+  cursor: wait;
+}
 
+#playButton.ready {
+    background-image: url(play.png);
+    cursor: pointer;
 }
 
 #progressMessage {

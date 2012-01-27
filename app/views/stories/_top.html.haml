@@ -7,7 +7,7 @@
     = link_to 'Create your Story Wheel now!', "/stories/new", :class => "button build-your-own"
   .show.hidden
     - if @track
-      .cover#playButton{:href => "#"}
+      .cover#playButton{}
         .text
           %h1= @track.user.username
           %h2= @track.title

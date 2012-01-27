@@ -41,9 +41,10 @@ $ ->
           SW.backgroundTrack = SC.stream matchData[1], {autoLoad: true, volume: 25}
       SW.loadSlideClick()
       SW.addComments()
+      $("#playButton").addClass("ready")
 
 
-$("#playButton").live "click", (e) ->
+$("#playButton.ready").live "click", (e) ->
   e.preventDefault()
   SW.play()
 
