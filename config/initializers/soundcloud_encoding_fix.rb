@@ -3,7 +3,8 @@ require 'soundcloud'
 class Soundcloud
   def handle_response(refreshing_enabled=true, &block)
     response = block.call
-    parsed_response = ::JSON.parse(response.body)
+    parsed_response = HashResponseWrapper.new(::JSON.parse(response.body))
+
     if parsed_response && !response.success?
       if parsed_response.code == 401 && refreshing_enabled && options_for_refresh_flow_present?
         exchange_token

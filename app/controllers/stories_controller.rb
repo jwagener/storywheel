@@ -61,6 +61,9 @@ class StoriesController < ApplicationController
       response.etag = permalink
       render :template => "stories/index"
     end
+
+  rescue Soundcloud::ResponseError => e
+    raise ActiveRecord::RecordNotFound
   end
 
 private
