@@ -70,7 +70,7 @@ window.SW =
     SW.fragmentOptions = new SC.URI(window.location, {decodeFragment: true}).fragment
     if SW.fragmentOptions.demo == "1"
       $("body").addClass("demo")
-
+      SW.options.demo = true
     if SW.fragmentOptions.slideSound == "0"
       SW.options.slideSound = false
     if SW.fragmentOptions.autoplay?
@@ -80,11 +80,6 @@ window.SW =
   goToNextDemo: () ->
     index = parseInt(Math.random() * SW.demos.length, 10)
     window.location = SW.demos[index] + "#autoplay&demo=1"
-
-
-
-
-      
 
 $(".cancel").live "click", (e) ->
   $(this).closest(".reset").addClass("really")

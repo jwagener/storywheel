@@ -1170,6 +1170,7 @@ body#about .bottom { background: rgba(0,0,0,0.4)}
 
 .cover .text {
 	position: absolute;
+  overflow: hidden;
 	top: 10px;
 	left: 10px;
 	width: 340px;

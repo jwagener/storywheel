@@ -6,8 +6,8 @@ $ ->
       $.each tracks, ->
         track = this
         track.story_url = track.permalink_url.replace("http://soundcloud.com", "")
-        if match = track.tag_list.match(/storywheel:image=([^ ]*)/)
-          track.artwork_url = match[1].replace("_7", "_5") # I HOPE THIS WORKS FOR ALL PICTURES!
+        if SW.trackOptions.image
+          track.artwork_url = SW.trackOptions.image.replace("_7", "_5") # I HOPE THIS WORKS FOR ALL PICTURES!
         $("#storyTmpl").tmpl(track).appendTo(".stories ul");
 
 
@@ -36,9 +36,8 @@ $ ->
         SW.play()
     SC.whenStreamingReady ->
       SW.foregroundTrack = SC.stream track.id, autoLoad: true
-      if matchData = track.tag_list.match(/storywheel:backgroundTrackId=([^ ]*)/)
-        if matchData[1] != ""
-          SW.backgroundTrack = SC.stream matchData[1], {autoLoad: true, volume: 25}
+      if SW.trackOptions.backgroundTrackId?
+        SW.backgroundTrack = SC.stream SW.trackOptions.backgroundTrackId, {autoLoad: true, volume: SW.trackOptions.backgroundVolume || 25 }
       SW.loadSlideClick()
       SW.addComments()
       $("#playButton").addClass("ready")

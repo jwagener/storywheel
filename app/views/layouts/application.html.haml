@@ -14,7 +14,7 @@
     %meta{property: "og:description", content: @social[:description]}
     = airbrake_javascript_notifier
     - if @track.present?
-      %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json};"
+      %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json}; SW.trackOptions = #{@options.to_json};"
   %body{:id => (@track.present? ? "show" : "home")}
     #preload.hidden
     = render :partial => "stories/templates"
