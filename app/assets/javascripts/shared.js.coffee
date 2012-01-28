@@ -16,7 +16,7 @@ window.SW =
   backgroundTrack: null
   foregroundTrack: null
   slides: []
-  demos: ["http://storywheel.cc/tengoogs/things", "http://storywheel.cc/steve-mays/a-story", "http://storywheel.cc/patrickjonespoet/poppysky", "http://storywheel.cc/parkejos/get-well-soon-we-love-y-ou", "http://storywheel.cc/tracyshaun/dreaming", "http://storywheel.cc/rogerforlovers/the-boy-the-sea"]
+  demos: ["http://storywheel.cc/tengoogs/things", "http://storywheel.cc/steve-mays/a-story", "http://storywheel.cc/patrickjonespoet/poppysky", "http://storywheel.cc/tracyshaun/dreaming", "http://storywheel.cc/rogerforlovers/the-boy-the-sea"]
   options: 
     slideSound: true
     autoplay:   false
@@ -41,20 +41,22 @@ window.SW =
       onplay: ->
         SW.backgroundTrack.play() if SW.backgroundTrack?
       onfinish: ->
+        finish = () ->
+          SW.showImage(SW.imageUrlFromComment(comments[0]))
+          if SW.options.demo
+            SW.goToNextDemo()
+          else
+            SW.setState("show")
         if SW.backgroundTrack?
           SW.fadeOut SW.backgroundTrack, -1, () ->
-            SW.showImage(SW.imageUrlFromComment(comments[0]))
-
-            if SW.options.demo
-              SW.goToNextDemo()
-            else
-              SW.setState("show")
-
+            finish()
         else
-          SW.showImage(SW.imageUrlFromComment(comments[0]))
-          SW.setState("show")
+          finish()
+
   fadeOut: (s, amount, callback) ->
     vol = s.volume;
+    if !vol
+      vol = 0
     if vol == 0
       s.stop()
       callback()
