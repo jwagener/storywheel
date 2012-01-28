@@ -20,6 +20,7 @@ window.SW =
   options: 
     slideSound: true
     autoplay:   false
+  trackOptions: {}
   
   showImage: (imageUrl) ->
     $("#currentImage").css("background-image", "url("+imageUrl+")")

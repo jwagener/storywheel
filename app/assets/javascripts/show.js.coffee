@@ -2,14 +2,18 @@ $ ->
   SW.parseFragmentOptions()
 
   $("body#home").each ->
-    SC.get SETTINGS.soundcloudGroup + "/tracks", (tracks) ->
-      $.each tracks, ->
-        track = this
-        track.story_url = track.permalink_url.replace("http://soundcloud.com", "")
-        if SW.trackOptions.image
-          track.artwork_url = SW.trackOptions.image.replace("_7", "_5") # I HOPE THIS WORKS FOR ALL PICTURES!
-        $("#storyTmpl").tmpl(track).appendTo(".stories ul");
-
+    loadStories = (offset) -> 
+      SC.get SETTINGS.soundcloudGroup + "/tracks", {"offset": offset}, (tracks) ->
+        if tracks.length == 50
+          loadStories( offset + 50)
+        $.each tracks, ->
+          track = this
+          track.story_url = track.permalink_url.replace("http://soundcloud.com", "")
+          if match = track.tag_list.match(/storywheel:image=([^ ]*)/)
+            track.artwork_url = match[1].replace("_7", "_5") # I HOPE THIS WORKS FOR ALL PICTURES!
+          $("#storyTmpl").tmpl(track).appendTo(".stories ul");
+    loadStories(0)
+    
 
 
   $("body#show").each ->
