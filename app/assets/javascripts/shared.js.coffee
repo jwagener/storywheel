@@ -14,12 +14,20 @@ window.SW =
       redirect_uri: SW.options.soundcloudRedirectUri
       
     SW.parseFragmentOptions()
-
     if SW.options.demo
       $("body").addClass("demo")
 
+    if SW.getState() == "home"
+      SW.loadAllStories(0)
+    
+    if SW.getState() == "show"
+      SW.preparePlay()
+
   showImage: (imageUrl) ->
     $("#currentImage").css("background-image", "url("+imageUrl+")")
+
+  getState: ->
+    $("body").attr("id")
 
   setState: (state) ->
     states = ["home", "connect", "pick", "prerecord", "record", "finalize", "upload", "show", "play"]
@@ -30,6 +38,36 @@ window.SW =
     
   playSlideClick: () ->
     SW.slideSound.play()
+
+  preparePlay: () ->
+    if SW.options.autoplay
+      SW.setState("play")
+    limit = 50
+    offset = 0
+    commentsByTimestamp = {}
+    SW.addComments = ->
+      for comment in comments
+        if comment.user_id == track.user_id && comment.body.match(/storywheel.(com|cc)/)
+          (->
+            imageUrl = SW.Helpers.imageUrlFromComment(comment)
+            $("<img src='" + imageUrl + "' />").appendTo("#preload")
+            SW.showImage(imageUrl) if comment.timestamp == 0
+            co = comment
+            SW.foregroundTrackSound.onposition comment.timestamp, () ->
+              SW.showImage(imageUrl)
+              if this.timestamp > 0 && SW.options.slideSound
+                SW.playSlideClick()
+            , comment
+          )()
+      if SW.options.autoplay
+        SW.play()
+    SC.whenStreamingReady ->
+      SW.foregroundTrackSound = SC.stream window.track.id, autoLoad: true
+      if SW.options.backgroundTrackId? && SW.options.backgroundTrackId != ""
+        SW.backgroundTrackSound = SC.stream SW.options.backgroundTrackId, {autoLoad: true, volume: SW.options.backgroundVolume }
+      SW.loadSlideClick()
+      SW.addComments()
+      $("#playButton").addClass("ready")
 
   play: ->
     SW.setState("play")
@@ -52,7 +90,7 @@ window.SW =
   parseFragmentOptions: () ->
     fragmentOptions = new SC.URI(window.location, {decodeFragment: true}).fragment
     if fragmentOptions.demo == "1"
-      options.demo = true
+      SW.options.demo = true
     if fragmentOptions.slideSound == "0"
       SW.options.slideSound = false
     if fragmentOptions.autoplay?
@@ -115,7 +153,18 @@ window.SW =
             $("#imageTmpl").tmpl(image).appendTo("ul.all-images");
           $("ul.selection").sortable({connectWith: ".all-images"})
           $(".all-images").sortable({connectWith: "ul.selection"})
-      )      
+      )
+      
+  loadAllStories: (offset) -> 
+    SC.get "/groups/" + SW.options.soundcloudGroupId + "/tracks", {"offset": offset}, (tracks) ->
+      if tracks.length == 50
+        SW.loadAllStories( offset + 50)
+      $.each tracks, ->
+        track = this
+        track.story_url = track.permalink_url.replace("http://soundcloud.com", "")
+        if match = track.tag_list.match(/storywheel:image=([^ ]*)/)
+          track.artwork_url = match[1].replace("_7", "_5") # I HOPE THIS WORKS FOR ALL PICTURES!
+        $("#storyTmpl").tmpl(track).appendTo(".stories ul");
 
 SW.Helpers =
   imageUrlFromComment: (comment) ->
@@ -134,5 +183,6 @@ SW.Helpers =
       SW.Helpers.fadeOut sound, amount, callback
     , 200
 
-# window.storywheelOptions provided by rails render
-SW.initialize(window.storywheelOptions)
+$ ->
+  # window.storywheelOptions provided by rails render
+  SW.initialize(window.storywheelOptions)

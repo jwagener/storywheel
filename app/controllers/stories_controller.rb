@@ -8,7 +8,7 @@ class StoriesController < ApplicationController
     demo:                  false,
     slideSound:            true,
     autoplay:              false,
-    backgroundVolume:      25
+    backgroundVolume:      25,
     # other options:
     #backgroundTrackId # background Music
     #image # primary image in preview
