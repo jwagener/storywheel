@@ -1,8 +1,9 @@
 window.SW =
   instagramToken: null
   instagramPopup: null
-  backgroundTrack: null
-  foregroundTrack: null
+  backgroundTrackSound: null
+  foregroundTrackSound: null
+  slideSound: null
   slides: []
   options: {}
   
@@ -25,16 +26,16 @@ window.SW =
     $("body").attr("id", state)
 
   loadSlideClick: () ->
-    SW.slideClick = SC.stream SW.options.slideClickTrackId, autoLoad: true
+    SW.slideSound = SC.stream SW.options.slideTrackId, autoLoad: true
     
   playSlideClick: () ->
-    SW.slideClick.play()
+    SW.slideSound.play()
 
   play: ->
     SW.setState("play")
-    SW.foregroundTrack.play
+    SW.foregroundTrackSound.play
       onplay: ->
-        SW.backgroundTrack.play() if SW.backgroundTrack?
+        SW.backgroundTrackSound.play() if SW.backgroundTrackSound?
       onfinish: ->
         finish = () ->
           SW.showImage(SW.Helpers.imageUrlFromComment(comments[0]))
@@ -42,8 +43,8 @@ window.SW =
             SW.goToNextDemo()
           else
             SW.setState("show")
-        if SW.backgroundTrack?
-          SW.fadeOut SW.backgroundTrack, -1, () ->
+        if SW.backgroundTrackSound?
+          SW.fadeOut SW.backgroundTrackSound, -1, () ->
             finish()
         else
           finish()
@@ -130,7 +131,7 @@ SW.Helpers =
       return false
     sound.setVolume(Math.max(0,vol+amount));
     setTimeout () -> 
-      SW.fadeOut sound, amount, callback
+      SW.Helpers.fadeOut sound, amount, callback
     , 200
 
 # window.storywheelOptions provided by rails render

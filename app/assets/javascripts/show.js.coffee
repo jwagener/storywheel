@@ -26,7 +26,7 @@ $ ->
             $("<img src='" + imageUrl + "' />").appendTo("#preload")
             SW.showImage(imageUrl) if comment.timestamp == 0
             co = comment
-            SW.foregroundTrack.onposition comment.timestamp, () ->
+            SW.foregroundTrackSound.onposition comment.timestamp, () ->
               SW.showImage(imageUrl)
               if this.timestamp > 0 && SW.options.slideSound
                 SW.playSlideClick()
@@ -35,9 +35,9 @@ $ ->
       if SW.options.autoplay
         SW.play()
     SC.whenStreamingReady ->
-      SW.foregroundTrack = SC.stream window.track.id, autoLoad: true
+      SW.foregroundTrackSound = SC.stream window.track.id, autoLoad: true
       if SW.options.backgroundTrackId? && SW.options.backgroundTrackId != ""
-        SW.backgroundTrack = SC.stream SW.options.backgroundTrackId, {autoLoad: true, volume: SW.options.backgroundVolume }
+        SW.backgroundTrackSound = SC.stream SW.options.backgroundTrackId, {autoLoad: true, volume: SW.options.backgroundVolume }
       SW.loadSlideClick()
       SW.addComments()
       $("#playButton").addClass("ready")
