@@ -14,14 +14,10 @@ window.SW =
       redirect_uri: SW.options.soundcloudRedirectUri
       
     SW.parseFragmentOptions()
-    if SW.options.demo
-      $("body").addClass("demo")
-
-    if SW.getState() == "home"
-      SW.loadAllStories(0)
-    
-    if SW.getState() == "show"
-      SW.preparePlay()
+    $("body").addClass("demo") if SW.options.demo
+    SW.setState("play")        if SW.options.autoplay
+    SW.loadAllStories(0)       if SW.getState() == "home"
+    SW.preparePlay()           if SW.getState() == "show"
 
   showImage: (imageUrl) ->
     $("#currentImage").css("background-image", "url("+imageUrl+")")
@@ -33,40 +29,40 @@ window.SW =
     states = ["home", "connect", "pick", "prerecord", "record", "finalize", "upload", "show", "play"]
     $("body").attr("id", state)
 
-  loadSlideClick: () ->
+  loadSlideSound: () ->
     SW.slideSound = SC.stream SW.options.slideTrackId, autoLoad: true
     
-  playSlideClick: () ->
-    SW.slideSound.play()
+  playSlideSound: () ->
+    if SW.options.slideSound
+      SW.slideSound.play()
 
-  preparePlay: () ->
-    if SW.options.autoplay
-      SW.setState("play")
-    limit = 50
-    offset = 0
-    commentsByTimestamp = {}
-    SW.addComments = ->
-      for comment in comments
-        if comment.user_id == track.user_id && comment.body.match(/storywheel.(com|cc)/)
-          (->
-            imageUrl = SW.Helpers.imageUrlFromComment(comment)
-            $("<img src='" + imageUrl + "' />").appendTo("#preload")
-            SW.showImage(imageUrl) if comment.timestamp == 0
-            co = comment
+  preloadImage: (url) ->
+    $("<img src='" + url + "' />").appendTo("#preload")
+
+  registerCommentCallbacks: (comments) ->
+    for comment in comments
+      if comment.user_id == track.user_id && comment.body.match(/storywheel.(com|cc)/)
+        (->
+          imageUrl = SW.Helpers.imageUrlFromComment(comment)
+          SW.preloadImage(imageUrl)
+          if comment.timestamp == 0
+            SW.showImage(imageUrl) 
+          else
             SW.foregroundTrackSound.onposition comment.timestamp, () ->
               SW.showImage(imageUrl)
-              if this.timestamp > 0 && SW.options.slideSound
-                SW.playSlideClick()
+              SW.playSlideSound()
             , comment
-          )()
-      if SW.options.autoplay
-        SW.play()
+        )()
+  
+  preparePlay: () ->
     SC.whenStreamingReady ->
       SW.foregroundTrackSound = SC.stream window.track.id, autoLoad: true
       if SW.options.backgroundTrackId? && SW.options.backgroundTrackId != ""
         SW.backgroundTrackSound = SC.stream SW.options.backgroundTrackId, {autoLoad: true, volume: SW.options.backgroundVolume }
-      SW.loadSlideClick()
-      SW.addComments()
+      SW.loadSlideSound()
+      SW.registerCommentCallbacks(window.comments)
+      if SW.options.autoplay
+        SW.play()
       $("#playButton").addClass("ready")
 
   play: ->
@@ -139,22 +135,28 @@ window.SW =
     if error
       throw new Error(uri.query.error)
     else
-      SW.instagramToken = uri.fragment.access_token
+      accessToken = uri.fragment.access_token
       SW.setState("pick")
-      $.ajax(
-        dataType: "JSONP"
-        url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=48&access_token=" + SW.instagramToken
-        success: (r) ->
-          $.each r.data, -> 
-            image = 
-              url: this.images.standard_resolution.url,
-              thumbnail_url: this.images.thumbnail.url,
-              timestamp: null
-            $("#imageTmpl").tmpl(image).appendTo("ul.all-images");
-          $("ul.selection").sortable({connectWith: ".all-images"})
-          $(".all-images").sortable({connectWith: "ul.selection"})
-      )
-      
+      SW.loadInstagramPictures(accessToken)
+
+  loadInstagramPictures: (token, maxId) ->
+    endpoint = "https://api.instagram.com/v1/users/self/media/recent"
+    url = endpoint + "?callback=?&count=48&access_token=" + token
+    if maxId?
+      url += "&max_id" + maxId
+    $.ajax
+      dataType: "JSONP"
+      "url": url
+      success: (r) ->
+        $.each r.data, -> 
+          image = 
+            url: this.images.standard_resolution.url,
+            thumbnail_url: this.images.thumbnail.url,
+            timestamp: null
+          $("#imageTmpl").tmpl(image).appendTo("ul.all-images");
+        $("ul.selection").sortable({connectWith: ".all-images"})
+        $(".all-images").sortable({connectWith: "ul.selection"})
+
   loadAllStories: (offset) -> 
     SC.get "/groups/" + SW.options.soundcloudGroupId + "/tracks", {"offset": offset}, (tracks) ->
       if tracks.length == 50
