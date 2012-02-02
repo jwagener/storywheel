@@ -1,7 +1,7 @@
 $ ->
   $("body#home").each ->
     loadStories = (offset) -> 
-      SC.get SW.soundcloudGroup + "/tracks", {"offset": offset}, (tracks) ->
+      SC.get "/groups/" + SW.options.soundcloudGroupId + "/tracks", {"offset": offset}, (tracks) ->
         if tracks.length == 50
           loadStories( offset + 50)
         $.each tracks, ->
@@ -35,9 +35,9 @@ $ ->
       if SW.options.autoplay
         SW.play()
     SC.whenStreamingReady ->
-      SW.foregroundTrack = SC.stream track.id, autoLoad: true
-      if SW.trackOptions.backgroundTrackId?
-        SW.backgroundTrack = SC.stream SW.trackOptions.backgroundTrackId, {autoLoad: true, volume: SW.trackOptions.backgroundVolume || 25 }
+      SW.foregroundTrack = SC.stream window.track.id, autoLoad: true
+      if SW.options.backgroundTrackId? && SW.options.backgroundTrackId != ""
+        SW.backgroundTrack = SC.stream SW.options.backgroundTrackId, {autoLoad: true, volume: SW.options.backgroundVolume }
       SW.loadSlideClick()
       SW.addComments()
       $("#playButton").addClass("ready")

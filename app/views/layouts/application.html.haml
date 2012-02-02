@@ -2,6 +2,9 @@
 %html
   %head
     %title Story Wheel - Tell the story behind your pictures
+    - if @track.present?
+      %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json}; window.storywheelOptions = #{@options.to_json};"
+
     = stylesheet_link_tag    "/style.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
     = javascript_include_tag "http://connect.soundcloud.com/sdk.js", "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js", "application"
     = csrf_meta_tags
@@ -13,8 +16,6 @@
     %meta{property: "og:image",       content: @social[:image]}
     %meta{property: "og:description", content: @social[:description]}
     = airbrake_javascript_notifier
-    - if @track.present?
-      %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json}; SW.trackOptions = #{@options.to_json};"
   %body{:id => (@track.present? ? "show" : "home")}
     #preload.hidden
     = render :partial => "stories/templates"

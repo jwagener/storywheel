@@ -77,7 +77,7 @@ $("#uploadButton").live "click", (e) ->
           }, (comment) ->
             # ignore
         
-        SC.put SW.soundcloudGroup + "/contributions/" + track.id, (contribution) ->
+        SC.put "/groups/" + SW.options.soundcloudGroupId + "/contributions/" + track.id, (contribution) ->
           #contributed
         
         checkState = -> 

@@ -1,22 +1,22 @@
 window.SW =
-  soundcloudCredentials:
-    client_id: "3a57e26203bc5210285a02f8eee95d91"
-    redirect_uri: "http://localhost:3000/callback.html"
-
   instagramToken: null
   instagramPopup: null
-  soundcloudGroup: "/groups/63665" # official one is 63307
-  slideClickTrackId: 27266065
-  backgroundTrackIds: [1627453, 33423817, 25780527] #nature of daylight, werd
   backgroundTrack: null
   foregroundTrack: null
   slides: []
-  demos: ["http://storywheel.cc/tengoogs/things", "http://storywheel.cc/steve-mays/a-story", "http://storywheel.cc/patrickjonespoet/poppysky", "http://storywheel.cc/tracyshaun/dreaming", "http://storywheel.cc/rogerforlovers/the-boy-the-sea",  "http://storywheel.cc/im2b/my-home", "http://storywheel.cc/hankus/my-new-friend", "http://storywheel.cc/cobedy/jeordie-mcevens"]
-  options: 
-    slideSound: true
-    autoplay:   false
-  trackOptions: {}
+  options: {}
   
+  initialize: (options)->
+    SW.options = options
+    SC.initialize 
+      client_id:    SW.options.soundcloudClientId
+      redirect_uri: SW.options.soundcloudRedirectUri
+      
+    SW.parseFragmentOptions()
+
+    if SW.options.demo
+      $("body").addClass("demo")
+
   showImage: (imageUrl) ->
     $("#currentImage").css("background-image", "url("+imageUrl+")")
 
@@ -25,7 +25,7 @@ window.SW =
     $("body").attr("id", state)
 
   loadSlideClick: () ->
-    SW.slideClick = SC.stream SW.slideClickTrackId, autoLoad: true
+    SW.slideClick = SC.stream SW.options.slideClickTrackId, autoLoad: true
     
   playSlideClick: () ->
     SW.slideClick.play()
@@ -49,18 +49,17 @@ window.SW =
           finish()
 
   parseFragmentOptions: () ->
-    SW.fragmentOptions = new SC.URI(window.location, {decodeFragment: true}).fragment
-    if SW.fragmentOptions.demo == "1"
-      $("body").addClass("demo")
-      SW.options.demo = true
-    if SW.fragmentOptions.slideSound == "0"
+    fragmentOptions = new SC.URI(window.location, {decodeFragment: true}).fragment
+    if fragmentOptions.demo == "1"
+      options.demo = true
+    if fragmentOptions.slideSound == "0"
       SW.options.slideSound = false
-    if SW.fragmentOptions.autoplay?
+    if fragmentOptions.autoplay?
       SW.options.autoplay = true
 
   goToNextDemo: () ->
-    index = parseInt(Math.random() * SW.demos.length, 10)
-    window.location = SW.demos[index] + "#autoplay&demo=1"
+    index = parseInt(Math.random() * SW.options.demoTracks.length, 10)
+    window.location = SW.options.demoTracks[index] + "#autoplay&demo=1"
 
   updateTimer: (ms) ->
     $("#timer").text(SC.Helper.millisecondsToHMS(ms));
@@ -117,15 +116,6 @@ window.SW =
           $(".all-images").sortable({connectWith: "ul.selection"})
       )      
 
-if window.location.host != "localhost:3000"
-  SW.soundcloudCredentials = 
-    client_id: "732fa8e77cc2fe02a4a9edfe5f76135d"
-    redirect_uri: "http://storywheel.cc/callback.html"
-
-SC.initialize(SW.soundcloudCredentials)
-SW.parseFragmentOptions()
-
-
 SW.Helpers =
   imageUrlFromComment: (comment) ->
     comment.body.match(/#([^>]*)\>/)[1]
@@ -142,3 +132,6 @@ SW.Helpers =
     setTimeout () -> 
       SW.fadeOut sound, amount, callback
     , 200
+
+# window.storywheelOptions provided by rails render
+SW.initialize(window.storywheelOptions)

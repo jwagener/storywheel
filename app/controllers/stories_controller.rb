@@ -1,4 +1,20 @@
 class StoriesController < ApplicationController
+  DEFAULT_OPTIONS = {
+    soundcloudClientId:    Rails.env == "production" ? "732fa8e77cc2fe02a4a9edfe5f76135d"  : "3a57e26203bc5210285a02f8eee95d91",
+    soundcloudRedirectUri: Rails.env == "production" ? "http://storywheel.cc/callback.htm" : "http://localhost:3000/callback.html",
+    soundcloudGroupId:     63665, # official one is 63307
+    slideClickTrackId:     27266065,
+    demoTracks:            ["http://storywheel.cc/tengoogs/things", "http://storywheel.cc/steve-mays/a-story", "http://storywheel.cc/patrickjonespoet/poppysky", "http://storywheel.cc/tracyshaun/dreaming", "http://storywheel.cc/rogerforlovers/the-boy-the-sea",  "http://storywheel.cc/im2b/my-home", "http://storywheel.cc/hankus/my-new-friend", "http://storywheel.cc/cobedy/jeordie-mcevens"],
+    demo:                  false,
+    slideSound:            true,
+    autoplay:              false,
+    backgroundVolume:      25
+    # other options:
+    #backgroundTrackId # background Music
+    #image # primary image in preview
+    #backgroundImage:       "" # not yet implemented, set manual background image
+  }
+
   SOCIAL = {
       title: "Story Wheel",
       description: "Tell the story behind your pictures",
@@ -51,7 +67,7 @@ class StoriesController < ApplicationController
         logger.info "SC GET: #{permalink}/comments"
         sc.get("#{@track.uri}/comments", :limit => 200)
       end.sort_by(&:timestamp)      
-      @options = optionsFromTagList(@track.tag_list)
+      @options = DEFAULT_OPTIONS.merge optionsFromTagList(@track.tag_list)
       @social[:image] = @options[:image] if @options[:image]
       @social[:title] = "#{@track.title} by #{@track.user.username}"
       @social[:description] = "Story Wheel - Tell the story behind your pictures"
