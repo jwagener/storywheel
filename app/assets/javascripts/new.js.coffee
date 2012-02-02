@@ -1,25 +1,12 @@
-$ ->
-  SC.initialize(SW.soundcloud)
-  
-  
-  uri = new SC.URI(window.location.toString(), {decodeFragment: true});
-  accessToken = uri.fragment.access_token;
-   
-
 $(".build-your-own").live "click", (e) ->
   SW.setState("connect")
   e.preventDefault()
 
-
-# List UI
 $("ul.all-images li").live "click", (e) ->
   empties = $("ul.selection li.empty")
   if empties.length < 2
     empties.first().clone().appendTo("ul.selection")
   empties.first().replaceWith($(this))
-
-
-# Second step
 
 $(".goToStep2").live "click", (e) ->
   if $("ul.selection li.image").length > -1
@@ -29,56 +16,25 @@ $(".goToStep2").live "click", (e) ->
   SW.setState("prerecord")
   e.preventDefault()
 
-
-showNextImage = ->
-  $img = $("#selection li.image").first()
-  images = $("#selection li.image")
-  imagesLeft = images.length
-
-  if imagesLeft == 0
-    SC.recordStop();
-    updateTimer(0);
-    SW.setState("finalize")
-  else
-    $img = images.first()
-
-    SW.showImage($img.attr("data-image-url"))
-    SW.slides.push
-      imageUrl: $img.attr("data-image-url")
-      timestamp: Recorder.flashInterface().recordingDuration()
-
-    $img.remove()
-    imagesLeft--
-    if imagesLeft == 0
-      statusText = "The last picture. Wrap it up!"
-    else if imagesLeft == 1
-      statusText = "1 picture left."
-    else
-      statusText = imagesLeft + " pictures left"
-    $("#status").html(statusText)
-
 $(window).keyup (e) ->
   if e.keyCode == 32 && $("body#record").length > 0
-    showNextImage()
+    SW.showNextImageFromSelection()
     e.preventDefault()
 
-
 $("#recordStatus").live "click", (e) ->
-  showNextImage()
+  SW.showNextImageFromSelection()
   e.preventDefault()
 
-# Start Recording
 $(".startRecording").live "click", (e) -> 
-  updateTimer(0);  
+  SW.updateTimer(0);  
   SC.record
     start: () ->
       SW.setState("record")
-      showNextImage()
+      SW.showNextImageFromSelection()
   
     progress: (ms, avgPeak) ->
-      updateTimer(ms);
+      SW.updateTimer(ms);
   e.preventDefault()
-
 
 $("#goToStep3").live "click", (e) ->
   e.preventDefault()
@@ -130,56 +86,20 @@ $("#uploadButton").live "click", (e) ->
               window.location = track.permalink_url.replace("soundcloud.com", window.location.host)
             else
               window.setTimeout(checkState, 2000)
-        window.setTimeout(checkState, 2000)
-
-updateTimer = (ms) ->
-  $("#timer").text(SC.Helper.millisecondsToHMS(ms));
+        window.setTimeout(checkState, 2000)    
     
-    
-####################################################
-################# NEW STUFF ########################
-
-$(".emotion .button").live "click", (e) ->
-  $(this).toggleClass("red").siblings().removeClass("red")
-  e.preventDefault()
-
 $(".connectInstagram").live 'click', (e) ->
   e.preventDefault()
   instagramUrl = "/connect-instagram"
-  window.instagramPopup = SC.Helper.openCenteredPopup(instagramUrl, 1024, 370)
+  SW.instagramPopup = SC.Helper.openCenteredPopup(instagramUrl, 1024, 370)
 
+$(".cancel").live "click", (e) ->
+  $(this).closest(".reset").addClass("really")
+  e.preventDefault()
 
-window.instagramToken = null
-window.instagramPopup = null
-window.instagramCallback = () ->
-  popupLocation = window.instagramPopup.location.toString()
-  uri = new SC.URI(popupLocation, {decodeQuery: true, decodeFragment: true})
-  error = uri.query.error || uri.fragment.error
-  window.instagramPopup.close()
-
-  if error
-    throw new Error(uri.query.error)
-  else
-    window.instagramToken = uri.fragment.access_token
-    SW.setState("pick")
-    #$(".connectInstagram").hide()
-    $.ajax(
-      dataType: "JSONP"
-      url: "https://api.instagram.com/v1/users/self/media/recent?callback=?&count=48&access_token=" + window.instagramToken
-      success: (r) ->
-        $.each r.data, -> 
-          image = 
-            url: this.images.standard_resolution.url,
-            thumbnail_url: this.images.thumbnail.url,
-            timestamp: null
-          $("#imageTmpl").tmpl(image).appendTo("ul.all-images");
-        $("ul.selection").sortable({connectWith: ".all-images"})
-        $(".all-images").sortable({connectWith: "ul.selection"})
-    )
-
-    
-    
-    
+$(".reset .no").live "click", (e) ->
+  $(this).closest(".reset").removeClass("really")
+  e.preventDefault()
     
     
     
