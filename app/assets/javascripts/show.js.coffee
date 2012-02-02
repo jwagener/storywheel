@@ -3,7 +3,7 @@ $ ->
 
   $("body#home").each ->
     loadStories = (offset) -> 
-      SC.get SETTINGS.soundcloudGroup + "/tracks", {"offset": offset}, (tracks) ->
+      SC.get SW.soundcloudGroup + "/tracks", {"offset": offset}, (tracks) ->
         if tracks.length == 50
           loadStories( offset + 50)
         $.each tracks, ->

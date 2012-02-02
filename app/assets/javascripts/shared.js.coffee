@@ -1,18 +1,10 @@
-window.SETTINGS = 
+window.SW =
   soundcloud:
     client_id: "3a57e26203bc5210285a02f8eee95d91"
     redirect_uri: "http://localhost:3000/callback.html"
   soundcloudGroup: "/groups/63665" # official one is 63307
   slideClickTrackId: 27266065
   backgroundTrackIds: [1627453, 33423817, 25780527] #nature of daylight, werd
-
-if window.location.host != "localhost:3000"
-  SETTINGS.soundcloud = 
-    client_id: "732fa8e77cc2fe02a4a9edfe5f76135d"
-    redirect_uri: "http://storywheel.cc/callback.html"
-
-
-window.SW =
   backgroundTrack: null
   foregroundTrack: null
   slides: []
@@ -30,7 +22,7 @@ window.SW =
     $("body").attr("id", state)
 
   loadSlideClick: () ->
-    SW.slideClick = SC.stream SETTINGS.slideClickTrackId, autoLoad: true
+    SW.slideClick = SC.stream SW.slideClickTrackId, autoLoad: true
     
   playSlideClick: () ->
     SW.slideClick.play()
@@ -83,6 +75,12 @@ window.SW =
   goToNextDemo: () ->
     index = parseInt(Math.random() * SW.demos.length, 10)
     window.location = SW.demos[index] + "#autoplay&demo=1"
+
+if window.location.host != "localhost:3000"
+  SW.soundcloud = 
+    client_id: "732fa8e77cc2fe02a4a9edfe5f76135d"
+    redirect_uri: "http://storywheel.cc/callback.html"
+
 
 $(".cancel").live "click", (e) ->
   $(this).closest(".reset").addClass("really")

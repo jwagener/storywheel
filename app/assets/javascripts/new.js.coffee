@@ -1,15 +1,5 @@
-# Story Creation
-
-# Load Instagram Pictures
-
-slides = []
-window.recordingPosition = 0
-
-    
-  
-
 $ ->
-  SC.initialize(SETTINGS.soundcloud)
+  SC.initialize(SW.soundcloud)
   
   
   uri = new SC.URI(window.location.toString(), {decodeFragment: true});
@@ -53,7 +43,7 @@ showNextImage = ->
     $img = images.first()
 
     SW.showImage($img.attr("data-image-url"))
-    slides.push
+    SW.slides.push
       imageUrl: $img.attr("data-image-url")
       timestamp: Recorder.flashInterface().recordingDuration()
 
@@ -86,7 +76,6 @@ $(".startRecording").live "click", (e) ->
       showNextImage()
   
     progress: (ms, avgPeak) ->
-      window.recordingPosition = ms;
       updateTimer(ms);
   e.preventDefault()
 
@@ -102,7 +91,7 @@ $("#uploadButton").live "click", (e) ->
       title = $("#title").val()
       title = "A story" if title == ""
       tags = []
-      tags.push("storywheel:image=" + slides[0].imageUrl) # TODO use 150_150
+      tags.push("storywheel:image=" + SW.slides[0].imageUrl) # TODO use 150_150
       tags.push("storywheel:backgroundTrackId=" + ($("#backgroundTrackId").val() || ""));
       
       options =
@@ -120,7 +109,7 @@ $("#uploadButton").live "click", (e) ->
         # update description with link to carousel
         # create comments
         i = 0
-        $.each slides, ->
+        $.each SW.slides, ->
           slide = this
           i++
           body = "<a href=" + storyUrl + "#" + slide.imageUrl + ">StoryWheel Picture #" + i + "</a>"
@@ -132,7 +121,7 @@ $("#uploadButton").live "click", (e) ->
           }, (comment) ->
             # ignore
         
-        SC.put SETTINGS.soundcloudGroup + "/contributions/" + track.id, (contribution) ->
+        SC.put SW.soundcloudGroup + "/contributions/" + track.id, (contribution) ->
           #contributed
         
         checkState = -> 
